@@ -1,4 +1,4 @@
-## Übung 2: Terraform
+## Übung 2: Terraform - Ressource(n)
 
 Die Übungen finden in der [Git/Bash](https://git-scm.com/downloads) statt. 
 
@@ -24,10 +24,13 @@ Führt die Terraform Befehle zum Initialisieren, Vorschau und Erstellen der Ress
 Zerstört die Ressource wieder:
 
     terraform destroy
-    
-**Hinweis** mittels `-auto-approve` hinter `apply` und `destroy` wird die Sicherheitsabfrage übersprungen.    
+   
 
 ### Tipps & Tricks
+
+Mittels `-auto-approve` hinter `apply` und `destroy` wird die Sicherheitsabfrage übersprungen, Bsp:
+
+    terraform apply -auto-approve
 
 Um den Code (`main.tf`) sauber zu formatieren, verwendet man:
 
