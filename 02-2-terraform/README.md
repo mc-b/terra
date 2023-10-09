@@ -27,7 +27,7 @@ Zerstört die Ressource wieder:
     
 **Hinweis** mittels `-auto-approve` hinter `apply` und `destroy` wird die Sicherheitsabfrage übersprungen.    
 
-###Tipps & Tricks
+### Tipps & Tricks
 
 Um den Code (`main.tf`) sauber zu formatieren, verwendet man:
 
