@@ -1,0 +1,10 @@
+#cloud-config - Installiert den Apache Web Server mit PHP Unterstuetzung und einer Introseite
+packages:
+  - apache2 
+  - php 
+  - libapache2-mod-php 
+write_files:
+ - content: |
+     <?php echo '<p>Hallo ich bin eine PHP Datei</p>'; ?>
+   path: /var/www/html/index.php
+   permissions: '0644' 
