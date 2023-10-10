@@ -32,11 +32,31 @@ Testet es:
 
     terraform init
     terraform apply -auto-approve       
-    
-Alternativ zum fixen Wert `16` in `variables.tf` können wir den Wert mittels der Umgebungsvariable `TF_VAR_length` überschreiben.
 
+**Umgebungsvariablen**
+
+Alternativ zum fixen Wert `16` in `variables.tf` können wir den Wert mittels der Umgebungsvariable `TF_VAR_length` überschreiben.
  
     terraform destroy -auto-approve
     export TF_VAR_length=20
     terraform apply -auto-approve       
-                  
+
+**count**
+
+Jetzt haben wir zwei Ressourcen beschrieben, welche gleich aufgebaut sein. Da bietet sich `count` an.
+
+Alle Ressourcen zerstören
+
+    terraform destroy -auto-approve
+
+Ändern von `main.tf`:
+
+    resource "random_string" "zufallstext" {
+      length  = var.length
+      special = false
+      count   = 2
+    }
+
+Ressourcen (als Array) erstellen:
+
+    terraform apply -auto-approve       
