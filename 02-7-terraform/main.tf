@@ -1,5 +1,8 @@
 ###
 #   Testumgebung Webseite mit PHP, Adminer und MySQL Umgebung
+#
+#   FIXME: provisioner in Modul auslagern
+
 
 resource "null_resource" "web" {
 
@@ -9,7 +12,7 @@ resource "null_resource" "web" {
 
   # terraform apply
   provisioner "local-exec" {
-    command    = "multipass launch --name ${var.name_web} -c2 -m2GB -d32GB --cloud-init cloud-init-php.yaml"
+    command    = "multipass launch --name ${var.name_web} -c${var.cores} -m${var.memory}GB -d${var.storage}GB --cloud-init ${var.userdata_web}"
     on_failure = continue
   }
   provisioner "local-exec" {
@@ -27,7 +30,7 @@ resource "null_resource" "mysql" {
 
   # terraform apply
   provisioner "local-exec" {
-    command    = "multipass launch --name ${var.name_mysql} -c2 -m2GB -d32GB --cloud-init cloud-init-mysql.yaml"
+    command    = "multipass launch --name ${var.name_mysql} -c${var.cores} -m${var.memory}GB -d${var.storage}GB --cloud-init ${var.userdata_mysql}"
     on_failure = continue
   }
   provisioner "local-exec" {

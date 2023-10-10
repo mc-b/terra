@@ -1,0 +1,28 @@
+#cloud-config
+users:
+  - name: ubuntu
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users, admin
+    home: /home/ubuntu
+    shell: /bin/bash
+    lock_passwd: false
+    plain_text_passwd: 'password'        
+# login ssh and console with password
+ssh_pwauth: true
+disable_root: false    
+packages:
+  - mysql-server 
+write_files:
+ - content: |
+    CREATE USER 'myuser'@'localhost' IDENTIFIED BY 'mypass';
+    CREATE USER 'myuser'@'%' IDENTIFIED BY 'mypass';
+    GRANT ALL ON *.* TO 'myuser'@'localhost';
+    GRANT ALL ON *.* TO 'myuser'@'%';
+    FLUSH PRIVILEGES;
+   path: /tmp/initdb.sql
+   permissions: '0644'  
+runcmd:
+  - 'sudo mysql </tmp/initdb.sql'
+  - sudo rm /tmp/initdb.sql 
+  - sudo sed -i -e"s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
+  - sudo systemctl restart mysql

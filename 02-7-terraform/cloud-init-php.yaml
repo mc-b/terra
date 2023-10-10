@@ -1,0 +1,28 @@
+#cloud-config
+users:
+  - name: ubuntu
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users, admin
+    home: /home/ubuntu
+    shell: /bin/bash
+    lock_passwd: false
+    plain_text_passwd: 'password'        
+# login ssh and console with password
+ssh_pwauth: true
+disable_root: false    
+packages:
+  - apache2 
+  - curl 
+  - wget 
+  - php 
+  - libapache2-mod-php 
+  - php-mysql 
+  - adminer
+write_files:
+ - content: |
+     <?php echo '<p>Hallo ich bin eine PHP Datei</p>'; ?>
+   path: /var/www/html/index.php
+   permissions: '0644'  
+runcmd:
+  - sudo a2enconf adminer
+  - sudo systemctl restart apache2
