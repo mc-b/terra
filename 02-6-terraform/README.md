@@ -8,7 +8,7 @@ Die Übungen finden in der [Git/Bash](https://git-scm.com/downloads) statt.
     
 Kopiert die Dateien `main.tf` und `output.tf` von der Übung [02-5-terraform](../02-5-terraform/)    
     
-Mittels eines Provioners soll die IP-Adresse ausgegeben werden. Dazu müssen wir eine zusätzlich eine Ressource erstellen und die `Data Source` referenzieren. 
+Mittels eines Provisioners soll die IP-Adresse ausgegeben werden. Dazu müssen wir eine zusätzlich eine Ressource erstellen und die `Data Source` referenzieren. 
 
 Die Referenz erfolgt mittels `data.<source>.<data...>`.
 
@@ -25,7 +25,7 @@ Erweitert `main.tf` um folgenden Code:
       }
     }
 
-Führt die Providers nach und Erstellt die Ressource und führt den Provioner aus:
+Teilt die Änderungen Terraform mit und erstellt die Ressource mit den Provisioners:
 
     terraform init
     terraform apply -auto-approve     

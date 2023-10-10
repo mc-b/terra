@@ -17,4 +17,4 @@ Terraform Initialisieren und Umgebung anlegen:
     terraform init
     terraform apply
     
-Nach der Installation wird eine Introseite angezeigt mit weiteren Informationen.       
+Nach der Installation wird eine Intro Seite angezeigt mit weiteren Informationen.       
