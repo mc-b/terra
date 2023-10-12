@@ -1,4 +1,4 @@
-## Übung 2: AWS - Terraform Import
+## Übung 5: AWS - Terraform Import
 
 In dieser Übung wollen wir die erstellten AWS Ressourcen aus [Übung 4](../03-4-aws/) nach Terraform überführen.
 
