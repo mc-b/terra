@@ -25,7 +25,7 @@ Implementiert den [Webshop](../A#beispielapplikation-webshop) in der Azure Cloud
 
 Starten mittels
 
-    cd 03-2-azure
+    cd 03-3-azure
 
     az login
     

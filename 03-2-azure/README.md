@@ -6,7 +6,7 @@ Diese Arbeiten müssen in der **PowerShell** ausgeführt werden, weil Git/Bash m
 
 Wechsel in das Arbeitsverzeichnis
 
-    cd 03-3-azure
+    cd 03-2-azure
     
 Erstellen einer Datei `provider.tf`, für den Azure Provider, mit folgenden Inhalt    
 

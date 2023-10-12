@@ -11,7 +11,7 @@ Implementiert den [Webshop](../03-2-azure/) in der AWS Cloud mittels Terraform.
 
 Starten mittels
 
-    cd 03-2-aws
+    cd 03-6-aws
 
     aws configure
         AWS Access Key ID [****************....]:

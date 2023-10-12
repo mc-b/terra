@@ -12,7 +12,7 @@ Die Anleitung finden wir [hier](https://docs.aws.amazon.com/cli/latest/userguide
 
 Wechsel in das Arbeitsverzeichnis
 
-    cd 03-1-aws
+    cd 03-4-aws
 
 Einloggen in AWS Cloud
 
