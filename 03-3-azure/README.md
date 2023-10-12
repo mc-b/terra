@@ -1,83 +1,39 @@
-## Übung 3: Azure CLI - Terraform Import
+## Übung 3: Azure und Terraform
 
-In dieser Übung wollen wir die erstellten Azure Ressourcen aus [Übung 1](../01-1-iac/) nach Terraform überführen.
+Für die Übung sind die CLI für Azure und Terraform zu installieren.
 
-Diese Arbeiten müssen in der **PowerShell** ausgeführt werden, weil Git/Bash mit `/sub...` nicht klar kommt.
+* [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/)
+* [Terraform Installation](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started)
 
-Wechsel in das Arbeitsverzeichnis
+### Beispielapplikation WebShop
 
-    cd 03-3-azure
-    
-Erstellen einer Datei `provider.tf`, für den Azure Provider, mit folgenden Inhalt    
+![](https://github.com/mc-b/duk/raw/e85d53e7765f16833ccfc24672ae044c90cd26c1/data/jupyter/demo/images/Microservices-REST.png)
 
-    provider "azurerm" {
-      features {}
-    }
-    
-Initialisierung des Providers
+Quelle: Buch Microservices Rezepte
+- - -
 
-    terraform init    
+Das Beispiel besteht aus drei Microservices: Order, Customer und Catalog.
 
-Anmelden an der Azure Cloud 
+Order nutzt Catalog und Customer mit der REST-Schnittstelle. Ausserdem bietet jeder Microservice einige HTML-Seiten an.
+
+Zusätzlich ist im Beispiel ein Apache-Webserver installiert, der dem Benutzer mit einer Webseite einen einfachen Einstieg in das System ermöglicht.
+
+
+### Vorgehen
+
+Implementiert den [Webshop](../A#beispielapplikation-webshop) in der Azure Cloud mittels Terraform.
+
+Starten mittels
+
+    cd 03-2-azure
 
     az login
     
-### Ressource Gruppe
+    terraform init
+    terraform apply -auto-approve
 
-Um die Ressource Gruppe zu importieren, brauchen wir deren `id`. Deshalb zeigen wir mit dem Azure CLI zuerst deren Informationen an:
+Nach dem erstellen der Ressourcen, VM `webshop` anwählen und IP-Adresse im Browser eingeben.
 
-    az group list
-    
-Die Ausgabe sieht in etwa so aus:
+**Links**
 
-    {
-      "id": "/subscriptions/.../resourceGroups/mygroup",
-      "location": "switzerlandnorth",
-      "name": "mygroup",
-      "type": "Microsoft.Resources/resourceGroups"
-    }
-    
-Mit der `id`, ohne vorangestelltes `/`, können wir die Gruppe importieren. **...** durch Eure Subscriptions-Id ersetzen. 
-
-    terraform import azurerm_resource_group.mygroup subscriptions/.../resourceGroups/mygroup
-    
-Die erstelle Terraform Deklaration können wir wie folgt anzeigen:
-
-    terraform state show azurerm_resource_group.mygroup
-    
-
-### Virtuelle Maschine
-
-    az vm list
-    
-Die Ausgabe sieht in etwa so aus:
-
-    [
-      {
-        "hardwareProfile": {
-          "vmSize": "Standard_D2_v4",
-        },
-        "id": "/subscriptions/.../resourceGroups/MYGROUP/providers/Microsoft.Compute/virtualMachines/myvm",
-       
-Import 
-
-    terraform import azurerm_linux_virtual_machine.myvm subscriptions/.../resourceGroups/MYGROUP/providers/Microsoft.Compute/virtualMachines/myvm  
-    
-Deklaration
-
-    terraform state show azurerm_linux_virtual_machine.myvm         
-        
-### Restliche Ressourcen
-
-Für die restlichen Ressourcen wie
-- Netzwerk
-- Firewall
-etc. bleibt das Vorgehen gleich.
-
-Die benötigten Metadaten sind in `main.tf` zu überführen, variable Werte durch Variablen `variables.tf` ersetzen und mit den bekannten Terraform Befehlen testen.
- 
-### Links
-
-* [Schritt für Schritt Anleitung](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-cli)           
-* [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/)
-* [Offizielle Cloud-init Beispiele](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)
+* [Virtuelle Maschinen erstellen](https://github.com/hashicorp/terraform-provider-azurerm/tree/main/examples/virtual-machines)
