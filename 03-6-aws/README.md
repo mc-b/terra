@@ -7,7 +7,7 @@ Für die Übung sind die CLI für AWS und Terraform zu installieren.
 
 ### Vorgehen
 
-Implementiert den [Webshop](../03-2-azure/) in der AWS Cloud mittels Terraform.
+Implementiert den [Webshop](../03-3-azure/) in der AWS Cloud mittels Terraform.
 
 Starten mittels
 
