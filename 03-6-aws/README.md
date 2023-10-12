@@ -1,4 +1,4 @@
-## Übung 2: AWS und Terraform
+## Übung 6: AWS und Terraform
 
 Für die Übung sind die CLI für AWS und Terraform zu installieren.
 
