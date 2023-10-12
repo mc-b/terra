@@ -1,4 +1,4 @@
-## Übung23: Azure CLI - Terraform Import
+## Übung2: Azure CLI - Terraform Import
 
 In dieser Übung wollen wir die erstellten Azure Ressourcen aus [Übung 1](../01-1-iac/) nach Terraform überführen.
 
