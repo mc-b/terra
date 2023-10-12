@@ -6,6 +6,10 @@ Mittels dieser Datei und dem jeweiligen Cloud CLI, erstellen wir eine neu VM.
 
 ### Vorgehen
 
+Wechsel in das Arbeitsverzeichnis
+
+    cd 03-1-azure
+
 Anmelden an der Azure Cloud 
 
     az login
@@ -17,11 +21,27 @@ Anschliessend müssen folgende Aktionen ausgeführt werden:
 
 <pre>
 az group create --name mygroup --location switzerlandnorth
-az vm create --resource-group mygroup --name myvm --image UbuntuLTS --size Standard_D2_v4 --location switzerlandnorth --custom-data cloud-init.yaml --generate-ssh-keys --public-ip-sku Standard
+az vm create --resource-group mygroup --name myvm --image Ubuntu2204 --size Standard_D2_v4 --location switzerlandnorth --custom-data cloud-init.yaml --generate-ssh-keys --public-ip-sku Standard
 az vm open-port --port 80 --resource-group mygroup --name myvm
 </pre>    
+
+Die Ausgabe ist ungefähr wie folgt:
+
+    {
+    "fqdns": "",
+    "id": "/subscriptions/.../resourceGroups/mygroup/providers/Microsoft.Compute/virtualMachines/myvm",
+    "location": "switzerlandnorth",
+    "macAddress": "...",
+    "powerState": "VM running",
+    "privateIpAddress": "10.0.0.4",
+    "publicIpAddress": "...",
+    "resourceGroup": "mygroup",
+    "zones": ""
+    }
     
-**Überprüft das Ergebnis, durch Anwählen der IP-Adresse Eurer VM im Browser.**
+**Überprüft das Ergebnis, durch Anwählen der Public IP-Adresse Eurer VM im Browser.**
+
+Die erstellten Ressourcen können auch via Microsoft Azure [Portal](https://portal.azure.com/) angeschaut werden.
 
 Um die VM zu löschen, genügt es, die Resource Gruppe zu löschen.    
 

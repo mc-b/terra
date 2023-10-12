@@ -10,6 +10,10 @@ Zuerst muss AWS so konfiguriert werden, dass wir das AWS CLI verwenden können.
 
 Die Anleitung finden wir [hier](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
 
+Wechsel in das Arbeitsverzeichnis
+
+    cd 03-1-aws
+
 Einloggen in AWS Cloud
 
     aws configure
