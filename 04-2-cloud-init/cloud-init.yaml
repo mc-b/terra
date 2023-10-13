@@ -1,0 +1,19 @@
+## template: jinja
+#cloud-config
+
+packages:
+  - apache2
+ssh_authorized_keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDPvLEdsh/Vpu22zN3M/lmLE8zEO1alk/aWzIbZVwXJYa1RbNHocyZlvE8XDcv1WqeuVqoQ2DPflkQxdrbp2G08AWYgPNiQrMDkZBHG4GlU2Jhe9kCRiWVx/oVDeK8v3+w2nhFt8Jk/eeQ1+E19JlFak1iYveCpHqa68W3NIWj5b10I9VVPmMJVJ4KbpEpuWNuKH0p0YsUKfTQdvrn42fz5jYS1aV7qCCOOzB3WC833QRy04iHZObxDWIi/IFeIp1Gw2FkzPhoZyx4Fk9bsXfm301IePp9cwzArI2LdcOhwEZ3RW2F7ie2WJlVy5tzJjMGCaE1tZTjiCahLNEeTiTQp public-key@cloud.tbz.ch
+
+write_files:
+- path: /var/www/html/index.html
+  permissions: '0444'
+  content: |
+    <html>
+    <body>
+    My hostname is : {{ ds.meta_data.public_hostname }} <br>
+    I am running in the cloud: {{ v1.cloud_name }}  <br>
+    My distro is: {{ v1.distro }} <br>
+    </body>
+    </hmtl>
