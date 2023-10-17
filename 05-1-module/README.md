@@ -26,7 +26,7 @@ Zuerst erstellen wir ein Verzeichnis `modules/create_local_file` und dort die Da
    
 Das sind die Argumente, welche dem Modul übergeben werden können.
 
-In der Datei `modules/create_local_file/maintf` kommen die eigentlichen Ressourcen, hier eine Datei
+In der Datei `modules/create_local_file/main.tf` kommen die eigentlichen Ressourcen, hier eine Datei
 
     resource "local_file" "lokale_Datei" {
       content  = var.content_of_file
