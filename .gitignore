@@ -1,1 +1,7 @@
+/.terraform.lock.hcl
+/.terraform/
+/.terraform.tfstate.lock.info
+/terraform.tfstate
+/terraform.tfstate.*
+config.txt
 /beispiele/

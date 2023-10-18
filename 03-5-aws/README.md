@@ -66,7 +66,7 @@ Deklaration
 
     terraform state show aws_instance.myvm        
         
-### Restliche Ressourcen
+#### Restliche Ressourcen
 
 Für die restlichen Ressourcen wie
 - Netzwerk
@@ -74,6 +74,19 @@ Für die restlichen Ressourcen wie
 etc. bleibt das Vorgehen gleich.
 
 Die benötigten Metadaten sind in `main.tf` zu überführen, variable Werte durch Variablen `variables.tf` ersetzen und mit den bekannten Terraform Befehlen testen.
+
+### Variante 2 - Experimentell
+
+Erstellt eine Datei `import.tf` und fügt alle zu Importierenden Ressourcen, im nachfolgenden Format, in die Datei ein:
+
+    import {
+        to  = aws_instance.main
+        id  = "i-01da79e473269858d"
+    }
+
+Mittels `terraform plan` können die entsprechenden Terraform Deklaration automatisch erstellt werden:
+
+    terraform plan -generate-config-out=main.tf
  
 ### Links
 
@@ -82,3 +95,5 @@ Die benötigten Metadaten sind in `main.tf` zu überführen, variable Werte durc
 * [Schritt für Schritt Anleitung](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2.html)         
 * [AWS CLI](https://aws.amazon.com/de/cli/)
 * [Offizielle Cloud-init Beispiele](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)
+* [Neue Import Variante](https://www.youtube.com/watch?v=znfh_00EDZ0&ab_channel=NedintheCloud)
+

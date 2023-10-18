@@ -67,7 +67,7 @@ Deklaration
 
     terraform state show azurerm_linux_virtual_machine.myvm         
         
-### Restliche Ressourcen
+#### Restliche Ressourcen
 
 Für die restlichen Ressourcen wie
 - Netzwerk
@@ -75,9 +75,23 @@ Für die restlichen Ressourcen wie
 etc. bleibt das Vorgehen gleich.
 
 Die benötigten Metadaten sind in `main.tf` zu überführen, variable Werte durch Variablen `variables.tf` ersetzen und mit den bekannten Terraform Befehlen testen.
+
+### Variante 2 - Experimentell
+
+Erstellt eine Datei `import.tf` und fügt alle zu Importierenden Ressourcen, im nachfolgenden Format, in die Datei ein:
+
+    import {
+        to  = azurerm_linux_virtual_machine.main  
+        id  = "/subscriptions/.../resourceGroups/MYGROUP/providers/Microsoft.Compute/virtualMachines/myvm"
+    }
+
+Mittels `terraform plan` können die entsprechenden Terraform Deklaration automatisch erstellt werden:
+
+    terraform plan -generate-config-out=main.tf
  
 ### Links
 
 * [Schritt für Schritt Anleitung](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-cli)           
 * [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/)
 * [Offizielle Cloud-init Beispiele](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)
+* [Neue Import Variante](https://www.youtube.com/watch?v=znfh_00EDZ0&ab_channel=NedintheCloud)
