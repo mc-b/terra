@@ -21,8 +21,6 @@ Mögliche Module um VMs mit den dazugehörenden Netzwerk- und Firewall-Einstellu
 
 Nachdem wir uns entschieden haben, welches Modul wir verwenden wollen, wir dieses Verwenden. 
 
-Damit Terraform weiss, dass das Modul aus einem Git-Repository zu holen ist, ist `git::` voranzustellen.
-
 Für die Übung erstellen wir eine Datei `main.tf` mit folgendem Inhalt:
 
     module "myvm" {
@@ -35,10 +33,10 @@ Für die Übung erstellen wir eine Datei `main.tf` mit folgendem Inhalt:
       description = "Meine VM"
       userdata    = "cloud-init.yaml"
       
-      # Im Gegensatz zu git:: braucht es diese hier nochmals, obwohl in variables.tf 
-      url   = ""
-      key   = ""
-      vpn   = ""      
+      # MAAS Server Access Info
+      url = var.url
+      key = var.key
+      vpn = var.vpn      
     }
     
 Je nach gewünschter Cloud ist einer der `source` Einträge zu aktiveren, d.h. Kommentarzeichen `#` entfernen.    
@@ -76,11 +74,11 @@ Dazu `main.tf`, Eintrag `module` einen Zähler und den Eintrag `count` erweitern
       userdata    = "cloud-init.yaml"
       
       count     = 3
-      
-      # Im Gegensatz zu git:: braucht es diese hier nochmals, obwohl in variables.tf 
-      url   = ""
-      key   = ""
-      vpn   = ""       
+
+      # MAAS Server Access Info
+      url = var.url
+      key = var.key
+      vpn = var.vpn        
     }
 
 ### Tips & Tricks

@@ -34,6 +34,11 @@ Für die Übung erstellen wir eine Datei `main.tf` mit folgendem Inhalt:
       module      = "myvm-${terraform.workspace}"
       description = "Meine VM"
       userdata    = "cloud-init.yaml"
+
+      # MAAS Server Access Info
+      url = var.url
+      key = var.key
+      vpn = var.vpn        
     }
     
 Je nach gewünschter Cloud ist einer der `source` Einträge zu aktiveren, d.h. Kommentarzeichen `#` entfernen.    
@@ -83,7 +88,7 @@ Clonen es Modul in ein lokale Verzeichnis, z.B. `terraform-lerncloud-module`.
     
 Ändern der Source auf:    
 
-      source      = "./terraform-lerncloud-module"
+    source      = "./terraform-lerncloud-module"
       
 Nun kann das Modul ausgiebig getestet werden und evtl. Änderungen wieder ins Git-Repository gepusht werden.      
 
