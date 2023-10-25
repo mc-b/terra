@@ -80,17 +80,7 @@ Die benötigten Metadaten sind in `main.tf` zu überführen, variable Werte durc
 
 Gibt alle erstellen Ressourcen zur Ressource Gruppe aus:
 
-    az resource list --query "[?resourceGroup=='mygroup'].{ name: name, flavor: kind, resourceType: type, region: location }" --output table
-    
-Die Ausgabe sieht in etwa so aus:
-
-    Name          ResourceType                             Region
-    ------------  ---------------------------------------  ----------------
-    myvmVNET      Microsoft.Network/virtualNetworks        switzerlandnorth
-    myvmPublicIP  Microsoft.Network/publicIPAddresses      switzerlandnorth
-    myvmNSG       Microsoft.Network/networkSecurityGroups  switzerlandnorth
-    myvmVMNic     Microsoft.Network/networkInterfaces      switzerlandnorth
-    myvm          Microsoft.Compute/virtualMachines        switzerlandnorth
+    az resource list --query "[?resourceGroup=='mygroup'].{ id: id, name: name, flavor: kind, resourceType: type, region: location }"
 
 Erstellt eine Datei `import.tf` und fügt alle zu Importierenden Ressourcen, im nachfolgenden Format, in die Datei ein:
 
