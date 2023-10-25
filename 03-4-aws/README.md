@@ -1,4 +1,4 @@
-## Übung 4: AWS CLI
+## Übung 03-4: AWS CLI
 
 Als Cloud-init Datei verwenden wir die gleiche YAML-Datei wie aus [Übung 1](../01-1-iac/cloud-init-nginx.yaml).
 

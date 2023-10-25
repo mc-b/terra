@@ -1,4 +1,4 @@
-## Übung 2: Azure - Terraform Import
+## Übung 03-2: Azure - Terraform Import
 
 In dieser Übung wollen wir die erstellten Azure Ressourcen aus [Übung 1](../03-1-azure/) nach Terraform überführen.
 

@@ -1,4 +1,4 @@
-## Übung 5: Terraform - Data Source
+## Übung 02-5: Terraform - Data Source
 
 Die Übungen finden in der [Git/Bash](https://git-scm.com/downloads) statt. 
 

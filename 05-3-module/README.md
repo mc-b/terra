@@ -1,4 +1,4 @@
-## Übung 3: Terraform - Module Outputs
+## Übung 05-3: Terraform - Module Outputs
 
 Die Übungen finden in der [Git/Bash](https://git-scm.com/downloads) statt. 
 

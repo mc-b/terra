@@ -1,4 +1,4 @@
-## Übung 4: Terraform - Module aus der Terraform Module Registry
+## Übung 05-4: Terraform - Module aus der Terraform Module Registry
 
 Die Übungen finden in der [Git/Bash](https://git-scm.com/downloads) statt. 
 

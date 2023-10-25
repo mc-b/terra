@@ -1,4 +1,4 @@
-## Übung 1: Terraform und Cloud-init
+## Übung 04-1: Terraform und Cloud-init
 
 Portiert die Übung [Terraform mit Multipass](../02-1-terraform) in die Cloud. Die Übungen [Azure](../03-3-azure/) und Terraform und [AWS](../03-6-aws/) und Terraform können als Grundlage dienen.
 

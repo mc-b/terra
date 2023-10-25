@@ -1,4 +1,4 @@
-## Übung 3: Azure und Terraform
+## Übung 03-3: Azure und Terraform
 
 Für die Übung sind die CLI für Azure und Terraform zu installieren.
 

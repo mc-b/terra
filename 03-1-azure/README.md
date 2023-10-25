@@ -1,4 +1,4 @@
-## Übung 1: Azure CLI
+## Übung 03-1: Azure CLI
 
 Als Cloud-init Datei verwenden wir die gleiche YAML-Datei wie aus [Übung 1](../01-1-iac/cloud-init-nginx.yaml).
 

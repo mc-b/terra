@@ -1,4 +1,4 @@
-## Übungen: Infrastruktur als Code
+## Übung 01-1: Infrastruktur als Code
 
 Die Übungen finden in der [Git/Bash](https://git-scm.com/downloads) statt. 
 

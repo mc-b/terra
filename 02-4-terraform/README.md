@@ -1,4 +1,4 @@
-## Übung 4: Terraform - Variablen
+## Übung 02-4: Terraform - Variablen
 
 Die Übungen finden in der [Git/Bash](https://git-scm.com/downloads) statt. 
 

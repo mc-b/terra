@@ -1,4 +1,4 @@
-## Übung 2: Cloud Meta-Data
+## Übung 04-2: Cloud Meta-Data
 
 Die Übungen finden in der [Git/Bash](https://git-scm.com/downloads) statt. 
 

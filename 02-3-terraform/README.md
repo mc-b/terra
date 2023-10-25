@@ -1,4 +1,4 @@
-## Übung 3: Terraform - State
+## Übung 02-3: Terraform - State
 
 Die Übungen finden in der [Git/Bash](https://git-scm.com/downloads) statt. 
 

@@ -1,4 +1,4 @@
-## Übung 2: Terraform - Module aus Git-Repository
+## Übung 05-2: Terraform - Module aus Git-Repository
 
 Die Übungen finden in der [Git/Bash](https://git-scm.com/downloads) statt. 
 

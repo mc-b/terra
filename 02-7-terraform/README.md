@@ -1,4 +1,4 @@
-## Übung 7: Terraform mit Multipass
+## Übung 02-7: Terraform mit Multipass
 
 Dazu Erstellen wir zwei VMs:
 * eine VM mit dem Apache Web Server, PHP und Adminer

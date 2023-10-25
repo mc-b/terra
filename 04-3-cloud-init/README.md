@@ -1,4 +1,4 @@
-## Übung 3: Cloud-init - Wiederverwendbare Scripte 
+## Übung 04-3: Cloud-init - Wiederverwendbare Scripte 
 
 In dieser Übung, erweitern wir Cloud-init um wiederverwendbare Scripte.
 

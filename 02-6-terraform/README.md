@@ -1,4 +1,4 @@
-## Übung 6: Terraform - Provisioners 
+## Übung 02-6: Terraform - Provisioners 
 
 Die Übungen finden in der [Git/Bash](https://git-scm.com/downloads) statt. 
 
