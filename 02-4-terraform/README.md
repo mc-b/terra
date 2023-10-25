@@ -59,4 +59,13 @@ Alle Ressourcen zerstören
 
 Ressourcen (als Array) erstellen:
 
-    terraform apply -auto-approve       
+    terraform apply -auto-approve 
+    
+Nach einer Weile stellen wir fest, dass wir neu 10 Strings brauchen. Dazu ändern wir `main.tf` wie folgt `count = 10` und führen die Änderungen nach.
+
+    terraform apply -auto-approve 
+    
+Wieder nach einer Weile, brauchen wir doch nur zwei. Darum ändern wir `main.tf` wie folgt `count = 2` und führen wieder die Änderungen nach.
+
+    terraform apply -auto-approve 
+           
