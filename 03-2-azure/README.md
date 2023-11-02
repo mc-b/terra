@@ -113,7 +113,7 @@ Die Ausgabe sieht in etwa so aus:
     ]
     
 
-Erstellt eine Datei `import.tf` und fügt alle zu Importierenden Ressourcen, im nachfolgenden Format, in die Datei ein (`...` durch `subscription` ersetzen):
+Erstellt eine Datei `import.tf` und fügt alle zu Importierenden Ressourcen, im nachfolgenden Format, in die Datei ein (`...` durch `subscription-id` ersetzen):
 
     import {
         to  = azurerm_public_ip.main  
