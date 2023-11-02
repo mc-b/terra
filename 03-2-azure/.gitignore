@@ -4,3 +4,5 @@
 /terraform.tfstate
 /terraform.tfstate.*
 
+/import.tf
+/main.tf

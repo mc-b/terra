@@ -81,9 +81,56 @@ Die benötigten Metadaten sind in `main.tf` zu überführen, variable Werte durc
 Gibt alle erstellen Ressourcen zur Ressource Gruppe aus:
 
     az resource list --query "[?resourceGroup=='mygroup'].{ id: id, name: name, flavor: kind, resourceType: type, region: location }"
+    
+Die Ausgabe sieht in etwa so aus:
 
-Erstellt eine Datei `import.tf` und fügt alle zu Importierenden Ressourcen, im nachfolgenden Format, in die Datei ein:
+    [
+      {
+        "id": "/subscriptions/.../resourceGroups/mygroup/providers/Microsoft.Network/publicIPAddresses/myvmPublicIP",
+        "name": "myvmPublicIP",
+        "resourceType": "Microsoft.Network/publicIPAddresses"
+      },
+      {
+        "id": "/subscriptions/.../resourceGroups/mygroup/providers/Microsoft.Network/networkSecurityGroups/myvmNSG",
+        "name": "myvmNSG",
+        "resourceType": "Microsoft.Network/networkSecurityGroups"
+      },
+      {
+        "id": "/subscriptions/.../resourceGroups/mygroup/providers/Microsoft.Network/virtualNetworks/myvmVNET",
+        "name": "myvmVNET",
+        "resourceType": "Microsoft.Network/virtualNetworks"
+      },
+      {
+        "id": "/subscriptions/.../resourceGroups/mygroup/providers/Microsoft.Network/networkInterfaces/myvmVMNic",
+        "name": "myvmVMNic",
+        "resourceType": "Microsoft.Network/networkInterfaces"
+      },
+      {
+        "id": "/subscriptions/.../resourceGroups/mygroup/providers/Microsoft.Compute/virtualMachines/myvm",
+        "name": "myvm",
+        "resourceType": "Microsoft.Compute/virtualMachines"
+      }
+    ]
+    
 
+Erstellt eine Datei `import.tf` und fügt alle zu Importierenden Ressourcen, im nachfolgenden Format, in die Datei ein (`...` durch `subscription` ersetzen):
+
+    import {
+        to  = azurerm_public_ip.main  
+        id  = "/subscriptions/.../resourceGroups/mygroup/providers/Microsoft.Network/publicIPAddresses/myvmPublicIP"
+    }
+    import {
+        to  = azurerm_network_security_group.main  
+        id  = "/subscriptions/.../resourceGroups/mygroup/providers/Microsoft.Network/networkSecurityGroups/myvmNSG"
+    }
+    import {
+        to  = azurerm_virtual_network.main  
+        id  = "/subscriptions/.../resourceGroups/mygroup/providers/Microsoft.Network/virtualNetworks/myvmVNET"
+    }
+    import {
+        to  = azurerm_network_interface.main  
+        id  = "/subscriptions/.../resourceGroups/mygroup/providers/Microsoft.Network/networkInterfaces/myvmVMNic"
+    }
     import {
         to  = azurerm_linux_virtual_machine.main  
         id  = "/subscriptions/.../resourceGroups/MYGROUP/providers/Microsoft.Compute/virtualMachines/myvm"
