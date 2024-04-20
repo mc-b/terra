@@ -1,4 +1,4 @@
-## Übung 01-3: Windows PowerShell
+## Beispiel 01-3: Windows PowerShell
 
 PowerShell (auch Windows PowerShell und PowerShell Core) ist ein plattformübergreifendes Framework von Microsoft zur Automatisierung, Konfiguration und Verwaltung von Systemen, das einen Kommandozeileninterpreter inklusive Skriptsprache bietet.
 

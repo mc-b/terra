@@ -1,4 +1,4 @@
-## Übung 04-1-powershell: Cloud-init und PowerShell
+## Beispiel 04-1-powershell: Cloud-init und PowerShell
 
 Im Feld user.data wo üblicherweise eine Cloud-init Deklaration steht, kann für Windows VMs auch ein PowerShell Script angegeben werden.
 

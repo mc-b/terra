@@ -1,4 +1,4 @@
-## Übung 01-4: Infrastruktur als Code mit Vagrant
+## Beispiel 01-4: Infrastruktur als Code mit Vagrant
 
 ![](https://www.vagrantup.com/_next/image?url=https%3A%2F%2Fwww.datocms-assets.com%2F58478%2F1667241891-vagrant-illustration.png&w=3840&q=75)
 

@@ -1,4 +1,4 @@
-## Übung 01-2: Infrastruktur als Code - Cloudbase-init
+## Beispiel 01-2: Infrastruktur als Code - Cloudbase-init
 
 «Cloud-Init ist der Standard für die automatische Installation von Linux basierenden Systemen in der Cloud. 
 
