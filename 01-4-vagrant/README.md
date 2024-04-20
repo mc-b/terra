@@ -39,3 +39,6 @@ Es sollte eine VM mit installiertem XML Notepad erstellt werden. User und Passwo
 Nach erfolgten Tests kann die VM wieder zerstört werden.
 
     vagrant destroy
+
+Das `Vagrantfile` verwendet die Vagrant Box von [Gusztáv Varga](https://github.com/gusztavvargadr/packer/tree/master/samples/windows-10).    
+    
