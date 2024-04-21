@@ -48,4 +48,5 @@ Nach dem erstellen der Ressourcen, VM `webshop` anwählen und IP-Adresse im Brow
 
 **Links**
 
+* [Terraform Google Cloud Tutorial](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-build)
 * [Virtuelle Maschinen erstellen](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance)

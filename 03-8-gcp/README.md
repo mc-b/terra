@@ -82,6 +82,7 @@ Mittels `terraform plan` können die entsprechenden Terraform Deklaration automa
 
 * [Google Cloud SDK Installation](https://cloud.google.com/sdk/docs/install)         
 * [Google Cloud SDK Dokumentation](https://cloud.google.com/sdk)
+* [Terraform Google Cloud Tutorial](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-build)
 * [Offizielle Cloud-init Beispiele](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)
 * [Neue Import Variante](https://www.youtube.com/watch?v=znfh_00EDZ0&ab_channel=NedintheCloud)
 
