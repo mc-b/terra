@@ -37,9 +37,10 @@ Anschließend können wir uns die laufenden VMs anzeigen
 
 **Überprüft das Ergebnis, indem ihr die IP-Adresse Eurer VM im Browser auswählt.**
 
-Um die erstellten Ressourcen zu löschen, genügt es, die VM zu löschen:
+Anschliessend können die Ressourcen wieder gelöscht werden:
 
     gcloud compute instances delete myinstance
+    gcloud compute firewall-rules delete myfwrule
 
 ### Links
 
