@@ -54,5 +54,9 @@ Nach erfolgten Tests kann die VM wieder zerstört werden.
 
     vagrant destroy
 
-Das `Vagrantfile` verwendet die Vagrant Box von [Gusztáv Varga](https://github.com/gusztavvargadr/packer/tree/master/samples/windows-10).    
+**Tipp** falls die Erstellung der VM hängenbleibt, Windows Taskmanager öffnen und Ruby Prozess killen.    
+
+Das `Vagrantfile` verwendet die Vagrant Box von [Gusztáv Varga](https://github.com/gusztavvargadr/packer/tree/master/samples/windows-10).   
+
+
     
