@@ -76,7 +76,7 @@ Erstellt eine Datei `import.tf` und fügt alle zu Importierenden Ressourcen, im 
 
 Mittels `terraform plan` können die entsprechenden Terraform Deklaration automatisch erstellt werden:
 
-    terraform plan -generate-config-out=main.tf
+    terraform plan -generate-config-out main.tf
  
 ### Links
 
