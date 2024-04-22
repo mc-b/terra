@@ -1,17 +1,31 @@
 Vagrant.configure("2") do |config|
     # Verwende die Windows-Box
     config.vm.box = "gusztavvargadr/windows-10-22h2-enterprise"
+    config.vm.boot_timeout = 360      
   
     # Konfiguriere den Provider, zum Beispiel VirtualBox oder VMware
     config.vm.provider "hyperv" do |vb|
       vb.memory = "4096" # Setze den Arbeitsspeicher auf 4 GB
       vb.cpus = 4 # Verwende 4 CPUs
     end
+    
+    # Keine SMB Verbindung aufbauen
+    config.vm.synced_folder ".", "/vagrant", disabled: true    
   
     # Führe das PowerShell-Skript aus
-    config.vm.provision "shell", inline: <<-SHELL
-      # Installiere XML Notepad über winget
-      winget install -e --id Microsoft.XMLNotepad
-    SHELL
+    config.vm.provision "shell", inline: <<-POWERSHELL
+        # PowerShell-Skript, um Chrome herunterzuladen und zu installieren
+        $url = "https://dl.google.com/chrome/install/GoogleChromeStandaloneEnterprise64.msi"
+        $output = "$env:TEMP/ChromeInstaller.msi"
+        
+        # Chrome herunterladen
+        Invoke-WebRequest -Uri $url -OutFile $output
+        
+        # Chrome installieren
+        Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $output /qn /norestart" -Wait
+        
+        # Aufräumen
+        Remove-Item $output
+    POWERSHELL
   end
   
