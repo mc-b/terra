@@ -19,7 +19,7 @@ Einloggen in Google Cloud und Umgebung Initialisieren
     gcloud auth login
     gcloud init
 
-**Tipp** sollte eine Fehlermeldung wegen fehlenden PowerShell Rechten kommen `PowerShell.exe -ExecutionPolicy Bypass -File "C:\Program Files (x86)\Google\Cloud SDK\google-cloud-sdk\bin\gcloud.ps1"` statt `gcloud` verwenden.        
+**Tipp** sollte eine Fehlermeldung wegen fehlenden PowerShell Rechten kommen `PowerShell.exe -ExecutionPolicy Bypass -File "C:\Program Files (x86)\Google\Cloud SDK\google-cloud-sdk\bin\gcloud.ps1"` statt `gcloud` verwenden. Alternativ kann `gcloud.ps1` umgenannt werden.  
 
 Anschließend müssen folgende Aktionen ausgeführt werden:
 * Firewall-Regel erstellen und Ports öffnen
