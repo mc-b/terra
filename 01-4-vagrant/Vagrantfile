@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
     config.vm.provision "shell", inline: <<-POWERSHELL
         # PowerShell-Skript, um Chrome herunterzuladen und zu installieren
         $url = "https://dl.google.com/chrome/install/GoogleChromeStandaloneEnterprise64.msi"
-        $output = "$env:TEMP/ChromeInstaller.msi"
+        $output = "$env:TEMP\\ChromeInstaller.msi"
         
         # Chrome herunterladen
         Invoke-WebRequest -Uri $url -OutFile $output
