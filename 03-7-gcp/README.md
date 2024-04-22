@@ -1,4 +1,4 @@
-## Übung 03-7: Google Cloud (GCP) - übersetzt von AWS mittels ChatGPT
+## Übung 03-7: Google Cloud (GCP)
 
 Als Cloud-init Datei verwenden wir die gleiche YAML-Datei wie aus [Übung 1](../01-1-iac/cloud-init-nginx.yaml).
 
@@ -14,11 +14,12 @@ Wechsel in das Arbeitsverzeichnis
 
     cd 03-7-gcp
 
-Einloggen in Google Cloud
+Einloggen in Google Cloud und Umgebung Initialisieren
 
     gcloud auth login
-
     gcloud init
+
+**Tipp** sollte eine Fehlermeldung wegen fehlenden PowerShell Rechten kommen `PowerShell.exe -ExecutionPolicy Bypass -File "C:\Program Files (x86)\Google\Cloud SDK\google-cloud-sdk\bin\gcloud.ps1"` statt `gcloud` verwenden.        
 
 Anschließend müssen folgende Aktionen ausgeführt werden:
 * Firewall-Regel erstellen und Ports öffnen
@@ -27,7 +28,7 @@ Anschließend müssen folgende Aktionen ausgeführt werden:
 <pre>
 gcloud compute firewall-rules create myfwrule --allow tcp:22,tcp:80 --description "Standard Ports"
 
-gcloud compute instances create myinstance --image-family debian-9 --image-project debian-cloud --machine-type f1-micro --tags http-server --metadata-from-file startup-script=cloud-init.yaml
+gcloud compute instances create myinstance --image-family ubuntu-2204-lts --image-project ubuntu-os-cloud --machine-type f1-micro --tags http-server --metadata-from-file startup-script=cloud-init.yaml
 </pre>    
 
 Anschließend können wir uns die laufenden VMs anzeigen
