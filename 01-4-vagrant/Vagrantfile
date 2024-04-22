@@ -12,20 +12,5 @@ Vagrant.configure("2") do |config|
     # Keine SMB Verbindung aufbauen
     config.vm.synced_folder ".", "/vagrant", disabled: true    
   
-    # Führe das PowerShell-Skript aus
-    config.vm.provision "shell", inline: <<-POWERSHELL
-        # PowerShell-Skript, um Chrome herunterzuladen und zu installieren
-        $url = "https://dl.google.com/chrome/install/GoogleChromeStandaloneEnterprise64.msi"
-        $output = "$env:TEMP\\ChromeInstaller.msi"
-        
-        # Chrome herunterladen
-        Invoke-WebRequest -Uri $url -OutFile $output
-        
-        # Chrome installieren
-        Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $output /qn /norestart" -Wait
-        
-        # Aufräumen
-        Remove-Item $output
-    POWERSHELL
   end
   
