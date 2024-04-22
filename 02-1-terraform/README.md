@@ -18,3 +18,8 @@ Terraform Initialisieren und Umgebung anlegen:
     terraform apply
     
 Nach der Installation wird eine Intro Seite angezeigt mit weiteren Informationen.       
+
+Werden die VMs nicht mehr benötigt können sie wie folgt gelöscht werden:
+
+    terraform destroy
+    
