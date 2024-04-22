@@ -1,6 +1,6 @@
 ## Beispiel 04-1-powershell: Cloud-init und PowerShell
 
-Im Feld user.data wo üblicherweise eine Cloud-init Deklaration steht, kann für Windows VMs auch ein PowerShell Script angegeben werden.
+Im Feld `user.data`, wo üblicherweise eine Cloud-init Deklaration steht, kann für Windows VMs auch ein PowerShell Script angegeben werden.
 
 Dazu ist der Eintrag mit 
 
@@ -8,7 +8,7 @@ Dazu ist der Eintrag mit
     
 zu umschliessen.
 
-Der Eintrag um den Chrome Browser zu installieren müsste laut ChatGPT wie folgt aussehen:
+Um z.B. den Chrome Browser zu installieren, ist folgendes im Feld `user.data` einzufügen:
 
     <powershell>
     # PowerShell-Skript, um Chrome herunterzuladen und zu installieren
