@@ -10,7 +10,7 @@ terraform {
 }
 
 provider "google" {
-  project = "primal-seeker-290111"
+  project = "<your-project-id>"
   region  = "us-east1"
   zone    = "us-east1-b"
 
