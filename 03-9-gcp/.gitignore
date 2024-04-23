@@ -3,5 +3,3 @@
 /terraform.tfstate
 /terraform.tfstate.backup
 /.terraform.tfstate.lock.info
-/graph.png
-/graph.svg
