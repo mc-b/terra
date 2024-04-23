@@ -4,3 +4,6 @@
 /terraform.tfstate
 /terraform.tfstate.*
 config.txt
+/provider.tf
+/main-import.tf
+/import.tf

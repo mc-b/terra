@@ -14,7 +14,7 @@ Wechsel in das Arbeitsverzeichnis
 
     cd 03-7-gcp
 
-Einloggen in Google Cloud und Umgebung Initialisieren
+Einloggen in Google Cloud und Umgebung Initialisieren. Verwendet als Region `us-east1-b`.
 
     gcloud auth login
     gcloud init

@@ -1,4 +1,4 @@
-## Übung 03-8: Google Cloud - Terraform Import - übersetzt von AWS mittels ChatGPT
+## Übung 03-8: Google Cloud - Terraform Import 
 
 In dieser Übung wollen wir die erstellten Google Ressourcen aus [Übung 7](../03-7-gcp/) nach Terraform überführen.
 
@@ -6,7 +6,7 @@ Wechsel in das Arbeitsverzeichnis
 
     cd 03-8-gcp
     
-Erstellen einer Datei `provider.tf`, für den GCP Provider, mit folgenden Inhalt    
+Erstellen einer Datei `provider.tf`, für den GCP Provider, mit folgenden Inhalt.    
 
     terraform {
       required_providers {
@@ -20,11 +20,10 @@ Erstellen einer Datei `provider.tf`, für den GCP Provider, mit folgenden Inhalt
     }
     
     provider "google" {
-      credentials = file("path/to/credentials.json")
-      project     = "your-project-id"
-      region      = "us-east1"
+      project = "<your-project-id>"
+      region  = "us-east1"
+      zone    = "us-east1-b"
     }
-
     
 Initialisierung des Providers
 
@@ -33,13 +32,17 @@ Initialisierung des Providers
 Einloggen in GCP Cloud
 
     gcloud auth application-default login
+    
+Auflisten der aktuellen Projekte (es muss eines ausgewählt werden), übertragen in `provider.tf` setzen via `gcloud`.
    
+    gcloud projects list
+    gcloud config set project <your-project-id>
 
 ### Virtuelle Maschine
 
 Um die Ressource Gruppe zu importieren, brauchen wir deren `id`. Deshalb zeigen wir mit dem GCP CLI zuerst deren Informationen an:
 
-    gcloud compute instances describe instance-name --zone=us-east1-b
+    gcloud compute instances describe myinstance --zone=us-east1-b
     
 Die Ausgabe sieht in etwa so aus:
 
@@ -48,11 +51,11 @@ Die Ausgabe sieht in etwa so aus:
 
 Import 
 
-    terraform import google_compute_instance.myvm 1234567890123456789
+    terraform import google_compute_instance.myinstance 1234567890123456789
     
 Deklaration
 
-    terraform state show google_compute_instance.myvm        
+    terraform state show google_compute_instance.myinstance        
    
         
 #### Restliche Ressourcen
@@ -72,7 +75,8 @@ Erstellt eine Datei `import.tf` und fügt alle zu Importierenden Ressourcen, im 
         to  = google_compute_instance.main
         id  = "1234567890123456789"
     }
-
+    
+Löscht eine evtl. vorhandene `main.tf` Datei weg `rm main.tf`.    
 
 Mittels `terraform plan` können die entsprechenden Terraform Deklaration automatisch erstellt werden:
 
