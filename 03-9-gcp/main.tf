@@ -1,37 +1,22 @@
-terraform {
-  required_providers {
-    google = {
-      source  = "hashicorp/google"
-      version = "~> 3.5"
-    }
-  }
 
-  required_version = ">= 0.14.9"
-}
 
-provider "google" {
-  project = "<PROJECT_ID>"
-  region  = "us-east1"
-}
-
-# VPC inkl. Zugriff via Internet. Braucht alle drei Eintraege damit es funktioniert
+# VPC inkl. Zugriff via Internet
 
 resource "google_compute_network" "webshop" {
-  name                    = "webshop"
-  auto_create_subnetworks = false
+  name = "webshop-network"
 }
 
 resource "google_compute_subnetwork" "webshop_intern" {
-  name          = "webshop-intern"
+  name          = "webshop-intern-subnet"
   ip_cidr_range = "10.0.1.0/24"
   network       = google_compute_network.webshop.self_link
 }
 
-# Interne Firewall-Regel für SSH und HTTP
+# Firewall-Regeln für den internen Zugriff
 
 resource "google_compute_firewall" "webshop_intern" {
-  name    = "webshop-intern"
-  network = google_compute_network.webshop.self_link
+  name    = "webshop-intern-fw"
+  network = google_compute_network.webshop.name
 
   allow {
     protocol = "tcp"
@@ -41,11 +26,11 @@ resource "google_compute_firewall" "webshop_intern" {
   source_ranges = ["10.0.1.0/24"]
 }
 
-# Externe Firewall-Regel für SSH und HTTP
+# Firewall-Regeln für externen Zugriff
 
 resource "google_compute_firewall" "webshop" {
-  name    = "webshop"
-  network = google_compute_network.webshop.self_link
+  name    = "webshop-fw"
+  network = google_compute_network.webshop.name
 
   allow {
     protocol = "tcp"
@@ -59,100 +44,88 @@ resource "google_compute_firewall" "webshop" {
 
 resource "google_compute_instance" "order" {
   name         = "order"
-  machine_type = "e2-micro"
-  zone         = "us-east1-b"
-  tags         = ["order"]
+  machine_type = "f1-micro"
+  zone         = "us-east1-b" // Die gewünschte Zone in der GCP
 
   boot_disk {
     initialize_params {
-      image = "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20240319"
+      image = var.image
       size  = 10
     }
   }
 
   network_interface {
-    network = google_compute_network.webshop.self_link
+    subnetwork = google_compute_subnetwork.webshop_intern.self_link
     access_config {
-      // Hier kannst du die Einstellungen für die öffentliche IP-Adresse konfigurieren
+      // Ermöglicht das Zuweisen einer externen IP-Adresse
     }
   }
 
   metadata = {
-    // Hier kannst du die Benutzerdaten konfigurieren
+    user-data = data.template_file.order.rendered
   }
 }
 
 resource "google_compute_instance" "customer" {
   name         = "customer"
-  machine_type = "e2-micro"
-  zone         = "us-east1-b"
-  tags         = ["customer"]
-
+  machine_type = "f1-micro"
+  zone         = "us-east1-b" // Die gewünschte Zone in der GCP
   boot_disk {
     initialize_params {
-      image = "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20240319"
+      image = var.image
       size  = 10
     }
   }
-
   network_interface {
-    network = google_compute_network.webshop.self_link
+    subnetwork = google_compute_subnetwork.webshop_intern.self_link
     access_config {
-      // Hier kannst du die Einstellungen für die öffentliche IP-Adresse konfigurieren
+      // Ermöglicht das Zuweisen einer externen IP-Adresse
     }
   }
-
   metadata = {
-    // Hier kannst du die Benutzerdaten konfigurieren
+    user-data = data.template_file.customer.rendered
   }
 }
 
 resource "google_compute_instance" "catalog" {
   name         = "catalog"
-  machine_type = "e2-micro"
-  zone         = "us-east1-b"
-  tags         = ["catalog"]
-
+  machine_type = "f1-micro"
+  zone         = "us-east1-b" // Die gewünschte Zone in der GCP
   boot_disk {
     initialize_params {
-      image = "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20240319"
+      image = var.image
       size  = 10
     }
   }
-
   network_interface {
-    network = google_compute_network.webshop.self_link
+    subnetwork = google_compute_subnetwork.webshop_intern.self_link
     access_config {
-      // Hier kannst du die Einstellungen für die öffentliche IP-Adresse konfigurieren
+      // Ermöglicht das Zuweisen einer externen IP-Adresse
     }
   }
-
   metadata = {
-    // Hier kannst du die Benutzerdaten konfigurieren
+    user-data = data.template_file.catalog.rendered
   }
 }
 
 resource "google_compute_instance" "webshop" {
   name         = "webshop"
-  machine_type = "e2-micro"
-  zone         = "us-east1-b"
-  tags         = ["webshop"]
-
+  machine_type = "f1-micro"
+  zone         = "us-east1-b" // Die gewünschte Zone in der GCP
   boot_disk {
     initialize_params {
-      image = "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20240319"
+      image = var.image
       size  = 10
     }
   }
-
   network_interface {
-    network = google_compute_network.webshop.self_link
+    subnetwork = google_compute_subnetwork.webshop_intern.self_link
     access_config {
-      // Hier kannst du die Einstellungen für die öffentliche IP-Adresse konfigurieren
+      // Ermöglicht das Zuweisen einer externen IP-Adresse
     }
   }
 
   metadata = {
-    // Hier kannst du die Benutzerdaten konfigurieren
+    user-data = data.template_file.webshop.rendered
   }
 }

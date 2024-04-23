@@ -4,7 +4,7 @@
 variable "image" {
   description = "Image Id"
   type        = string
-  default     = "ubuntu-os-cloud/ubuntu-2004-lts" # Beispiel für Ubuntu 20.04 LTS
+  default     = "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20240319" # Beispiel für Ubuntu 22.04 LTS
 }
 
 # Scripts

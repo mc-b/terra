@@ -1,4 +1,4 @@
-## Übung 03-9: Google Cloud und Terraform - übersetzt von AWS mittels ChatGPT
+## Übung 03-9: Google Cloud und Terraform (übersetzt von AWS mittels ChatGPT)
 
 Für die Übung sind die CLI für Google Cloud und Terraform zu installieren.
 
@@ -21,15 +21,9 @@ Zusätzlich ist im Beispiel ein Apache-Webserver installiert, der dem Benutzer m
 
 ### Vorgehen
 
-Implementiert den [Webshop](../A#beispielapplikation-webshop) in der Azure Cloud mittels Terraform.
+Implementiert den Webshop in der Google Cloud mittels Terraform.
 
-Als erstes muss der Eintrag:
-
-    <PROJECT_ID>
-
-entsprechend deiner GCP-Konfiguration angepasst werden. Dies geschieht in der Datei `main.tf`.
-
-Dann kann das Beispiel gestartet werden:
+Wechsel in das Arbeitsverzeichnis
 
     cd 03-9-gcp
 
@@ -37,7 +31,7 @@ Einloggen in GCP Cloud
 
     gcloud auth application-default login
     
-Auflisten der aktuellen Projekte (es muss eines ausgewählt werden), übertragen in `provider.tf` setzen via `gcloud`.
+Auflisten der aktuellen Projekte (es muss eines ausgewählt werden), übertragen in `provider.tf` und setzen via `gcloud`.
    
     gcloud projects list
     gcloud config set project <your-project-id>    
