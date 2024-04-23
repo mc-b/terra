@@ -10,9 +10,8 @@ terraform {
 }
 
 provider "google" {
-  credentials = file("<GOOGLE_APPLICATION_CREDENTIALS_FILE_PATH>")
-  project     = "<PROJECT_ID>"
-  region      = "<REGION>"
+  project = "<PROJECT_ID>"
+  region  = "us-east1"
 }
 
 # VPC inkl. Zugriff via Internet. Braucht alle drei Eintraege damit es funktioniert
@@ -61,12 +60,13 @@ resource "google_compute_firewall" "webshop" {
 resource "google_compute_instance" "order" {
   name         = "order"
   machine_type = "e2-micro"
-  zone         = "<ZONE>"
+  zone         = "us-east1-b"
   tags         = ["order"]
 
   boot_disk {
     initialize_params {
-      image = "<IMAGE>"
+      image = "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20240319"
+      size  = 10
     }
   }
 
@@ -85,12 +85,13 @@ resource "google_compute_instance" "order" {
 resource "google_compute_instance" "customer" {
   name         = "customer"
   machine_type = "e2-micro"
-  zone         = "<ZONE>"
+  zone         = "us-east1-b"
   tags         = ["customer"]
 
   boot_disk {
     initialize_params {
-      image = "<IMAGE>"
+      image = "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20240319"
+      size  = 10
     }
   }
 
@@ -109,12 +110,13 @@ resource "google_compute_instance" "customer" {
 resource "google_compute_instance" "catalog" {
   name         = "catalog"
   machine_type = "e2-micro"
-  zone         = "<ZONE>"
+  zone         = "us-east1-b"
   tags         = ["catalog"]
 
   boot_disk {
     initialize_params {
-      image = "<IMAGE>"
+      image = "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20240319"
+      size  = 10
     }
   }
 
@@ -133,12 +135,13 @@ resource "google_compute_instance" "catalog" {
 resource "google_compute_instance" "webshop" {
   name         = "webshop"
   machine_type = "e2-micro"
-  zone         = "<ZONE>"
+  zone         = "us-east1-b"
   tags         = ["webshop"]
 
   boot_disk {
     initialize_params {
-      image = "<IMAGE>"
+      image = "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20240319"
+      size  = 10
     }
   }
 

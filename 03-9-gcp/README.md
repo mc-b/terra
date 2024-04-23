@@ -23,13 +23,9 @@ Zusätzlich ist im Beispiel ein Apache-Webserver installiert, der dem Benutzer m
 
 Implementiert den [Webshop](../A#beispielapplikation-webshop) in der Azure Cloud mittels Terraform.
 
-Als erstes müssen die Einträge:
+Als erstes muss der Eintrag:
 
-    <GOOGLE_APPLICATION_CREDENTIALS_FILE_PATH>,
     <PROJECT_ID>
-    <REGION>
-    <ZONE> 
-    <IMAGE> 
 
 entsprechend deiner GCP-Konfiguration angepasst werden. Dies geschieht in der Datei `main.tf`.
 
@@ -37,10 +33,15 @@ Dann kann das Beispiel gestartet werden:
 
     cd 03-9-gcp
 
-    gcloud auth login
+Einloggen in GCP Cloud
 
-    gcloud init
+    gcloud auth application-default login
     
+Auflisten der aktuellen Projekte (es muss eines ausgewählt werden), übertragen in `provider.tf` setzen via `gcloud`.
+   
+    gcloud projects list
+    gcloud config set project <your-project-id>    
+
     terraform init
     terraform apply -auto-approve
 
