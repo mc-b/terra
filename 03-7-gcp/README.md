@@ -39,8 +39,8 @@ Anschließend können wir uns die laufenden VMs anzeigen
 
 Anschliessend können die Ressourcen wieder gelöscht werden:
 
-    gcloud compute instances delete myvm --zone us-east1-b
-    gcloud compute firewall-rules delete myfwrule
+    gcloud compute instances delete myvm --zone us-east1-b -q
+    gcloud compute firewall-rules delete myfwrule -q
 
 ### Links
 
