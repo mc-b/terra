@@ -42,7 +42,7 @@ Auflisten der aktuellen Projekte (es muss eines ausgewählt werden), übertragen
 
 Um die Ressource Gruppe zu importieren, brauchen wir deren `id`. Deshalb zeigen wir mit dem GCP CLI zuerst deren Informationen an:
 
-    gcloud compute instances describe myinstance --zone=us-east1-b
+    gcloud compute instances describe myvm --zone=us-east1-b
     
 Die Ausgabe sieht in etwa so aus:
 
@@ -51,11 +51,11 @@ Die Ausgabe sieht in etwa so aus:
 
 Import 
 
-    terraform import google_compute_instance.myinstance 1234567890123456789
+    terraform import google_compute_instance.myvm 1234567890123456789
     
 Deklaration
 
-    terraform state show google_compute_instance.myinstance        
+    terraform state show google_compute_instance.myvm        
    
         
 #### Restliche Ressourcen
