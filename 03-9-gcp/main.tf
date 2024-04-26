@@ -12,6 +12,29 @@ resource "google_compute_subnetwork" "webshop_intern" {
   network       = google_compute_network.webshop.self_link
 }
 
+# Ausgehender Verkehr zulassen auch ohne Public IP
+
+resource "google_compute_router" "webshop_router" {
+  name    = "webshop-router"
+  network = google_compute_network.webshop.id
+
+  bgp {
+    asn = 64514
+  }
+}
+
+resource "google_compute_router_nat" "webshop_nat" {
+  name                               = "webshop-router-nat"
+  router                             = google_compute_router.webshop_router.name
+  nat_ip_allocate_option             = "AUTO_ONLY"
+  source_subnetwork_ip_ranges_to_nat = "ALL_SUBNETWORKS_ALL_IP_RANGES"
+
+  log_config {
+    enable = true
+    filter = "ERRORS_ONLY"
+  }
+}
+
 # Firewall-Regeln für den internen Zugriff
 
 resource "google_compute_firewall" "webshop_intern" {
@@ -56,9 +79,6 @@ resource "google_compute_instance" "order" {
 
   network_interface {
     subnetwork = google_compute_subnetwork.webshop_intern.self_link
-    access_config {
-      // Ermöglicht das Zuweisen einer externen IP-Adresse
-    }
   }
 
   metadata = {
@@ -78,9 +98,6 @@ resource "google_compute_instance" "customer" {
   }
   network_interface {
     subnetwork = google_compute_subnetwork.webshop_intern.self_link
-    access_config {
-      // Ermöglicht das Zuweisen einer externen IP-Adresse
-    }
   }
   metadata = {
     user-data = data.template_file.customer.rendered
@@ -99,9 +116,6 @@ resource "google_compute_instance" "catalog" {
   }
   network_interface {
     subnetwork = google_compute_subnetwork.webshop_intern.self_link
-    access_config {
-      // Ermöglicht das Zuweisen einer externen IP-Adresse
-    }
   }
   metadata = {
     user-data = data.template_file.catalog.rendered
