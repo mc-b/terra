@@ -25,11 +25,11 @@ Anschließend müssen folgende Aktionen ausgeführt werden:
 * Firewall-Regel erstellen und Ports öffnen
 * Erstellen der VM 
 
-<pre>
-gcloud compute firewall-rules create myfwrule --allow tcp:22,tcp:80 --description "Standard Ports"
+Die Befehle sind wie folgt:
 
-gcloud compute instances create myinstance --image-family ubuntu-2204-lts --image-project ubuntu-os-cloud --machine-type f1-micro --tags http-server --metadata-from-file startup-script=cloud-init.yaml
-</pre>    
+    gcloud compute firewall-rules create myfwrule --allow tcp:22,tcp:80 --description "Standard Ports"
+    gcloud compute instances create myvm --image-family ubuntu-2204-lts --image-project ubuntu-os-cloud --machine-type f1-micro --tags http-server --metadata-from-file user-data=cloud-init.yaml --zone us-east1-b
+   
 
 Anschließend können wir uns die laufenden VMs anzeigen
 
@@ -39,7 +39,7 @@ Anschließend können wir uns die laufenden VMs anzeigen
 
 Anschliessend können die Ressourcen wieder gelöscht werden:
 
-    gcloud compute instances delete myinstance
+    gcloud compute instances delete myvm --zone us-east1-b
     gcloud compute firewall-rules delete myfwrule
 
 ### Links
