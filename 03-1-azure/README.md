@@ -21,7 +21,7 @@ Anschliessend müssen folgende Aktionen ausgeführt werden:
 
 <pre>
 az group create --name mygroup --location switzerlandnorth
-az vm create --resource-group mygroup --name myvm --image Ubuntu2204 --size Standard_D2_v4 --location switzerlandnorth --custom-data cloud-init.yaml --generate-ssh-keys --public-ip-sku Standard
+az vm create --resource-group mygroup --name myvm --image Ubuntu2204 --size Standard_B1ls --location switzerlandnorth --custom-data cloud-init.yaml --generate-ssh-keys --public-ip-sku Standard
 az vm open-port --port 80 --resource-group mygroup --name myvm
 </pre>    
 
