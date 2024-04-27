@@ -34,7 +34,10 @@ Einloggen in GCP Cloud
 Auflisten der aktuellen Projekte (es muss eines ausgewählt werden), übertragen in `provider.tf` und setzen via `gcloud`.
    
     gcloud projects list
-    gcloud config set project <your-project-id>    
+    gcloud config set project <your-project-id>
+    gcloud auth application-default set-quota-project <your-project-id>
+    
+Die weitere Arbeit übernimmt Terraform:   
 
     terraform init
     terraform apply -auto-approve
