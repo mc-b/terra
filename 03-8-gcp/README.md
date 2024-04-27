@@ -49,9 +49,15 @@ Die Ausgabe sieht in etwa so aus:
     creationTimestamp: '2022-04-19T12:34:56.789-07:00'
     id: '1234567890123456789'
 
-Import 
+Import (1234567890123456789 durch ID von oben ersetzen) 
 
     terraform import google_compute_instance.myvm 1234567890123456789
+    
+Oder direkt als Bash Script
+
+    ID=$(gcloud compute instances describe myvm --zone=us-east1-b --format="value(id)")
+    terraform import google_compute_instance.myvm ${ID}
+ 
     
 Deklaration
 
