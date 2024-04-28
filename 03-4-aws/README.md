@@ -41,13 +41,20 @@ aws ec2 run-instances --image-id ami-053b0d53c279acc90 --security-group-ids mygr
 
 Anschliessend können wir uns die laufenden VMs anzeigen
 
-    aws ec2 describe-instances --output table    
+    aws ec2 describe-instances --output table   
+    
+Und die erstellte Security Group
+
+    aws ec2 describe-security-groups
     
 **Überprüft das Ergebnis, durch Anwählen der IP-Adresse Eurer VM im Browser.**
 
-Um die erstellten Ressourcen zu löschen, genügt es, die VM zu löschen:
+Um die erstellten Ressourcen zu löschen. VM und Security Group löschen, der Disk der VM wird automatisch gelöscht:
 
     aws ec2 terminate-instances --instance-ids <InstanceId>
+    aws ec2 delete-security-group --group-id <ID-der-Security-Group>
+    
+**Hinweis** AWS verwendet fortlaufende Nummern (oder auch eigendefinierte Schlüssel) um Ressourcen zu identifizieren. Deshalb ist 
     
 ### Links
 
