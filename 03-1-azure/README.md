@@ -19,11 +19,11 @@ Anschliessend müssen folgende Aktionen ausgeführt werden:
 * Erstellen der VM 
 * Freigeben des Ports 80, damit wir via Browser auf die VM bzw. die Installierten Services zugreifen können.
 
-<pre>
-az group create --name mygroup --location switzerlandnorth
-az vm create --resource-group mygroup --name myvm --image Ubuntu2204 --size Standard_B1ls --location switzerlandnorth --custom-data cloud-init.yaml --generate-ssh-keys --public-ip-sku Standard
-az vm open-port --port 80 --resource-group mygroup --name myvm
-</pre>    
+Die Befehle sind wie folgt:
+
+    az group create --name mygroup --location switzerlandnorth
+    az vm create --resource-group mygroup --name myvm --image Ubuntu2204 --size Standard_B1ls --location switzerlandnorth --custom-data cloud-init.yaml --generate-ssh-keys --public-ip-sku Standard
+    az vm open-port --port 80 --resource-group mygroup --name myvm
 
 Die Ausgabe ist ungefähr wie folgt:
 
