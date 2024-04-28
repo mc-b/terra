@@ -8,7 +8,11 @@ Mittels dieser Datei und dem jeweiligen Cloud CLI, erstellen wir eine neu VM.
 
 Zuerst muss AWS so konfiguriert werden, dass wir das AWS CLI verwenden können.
 
-Die Anleitung finden wir [hier](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
+Die Schritte sind wie folgt:
+* Anmelden in der AWS Console mittels Stammbenutzer (root)
+* Pulldown rechts beim Usernamen -> Sicherheitsanmeldeinformationen
+* Einen neuen Zugriffsschlüssel anlegen
+* Id und Secret Access Key notieren, die brauchen wir für `aws configure` unten.
 
 Wechsel in das Arbeitsverzeichnis
 
