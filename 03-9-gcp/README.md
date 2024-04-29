@@ -1,4 +1,4 @@
-## Übung 03-9: Google Cloud und Terraform (übersetzt von AWS mittels ChatGPT)
+## Übung 03-9: Google Cloud und Terraform 
 
 Für die Übung sind die CLI für Google Cloud und Terraform zu installieren.
 
