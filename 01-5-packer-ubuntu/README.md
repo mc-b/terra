@@ -1,4 +1,4 @@
-## Übung 01-5: Erstellen von vorgefertigten Maschinen-Images - Packer
+## Übung 01-5: Erstellen von vorgefertigten Ubuntu Maschinen-Images - Packer
 
 Eines der am häufigsten eingesetzten Tools zum Erstellen eines vorgefertigten Maschinen-Images ist [Packer](). 
 
