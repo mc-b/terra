@@ -29,6 +29,8 @@ Als Output wird ein Hyper-V kompatibles Maschinen-Image erstellt, welcher im Hyp
     
 Der Output, ein Hyper-V Maschinen-Image, steht im Verzeichnis `output-ubuntu_20_server`. 
 
+**Hinweis**: Falls die VM nicht von selber herunterfährt, verbinden mittels `ssh ubuntu@<ip-addresse>`, Password ist `insecure` und `sudo -S -E shutdown -P now` ausführen.
+
 ### Packer Deklarationen
 
 Installationsschritte (u.a. Tastatureingaben) für Ubuntu Server 20 Legacy Installation
