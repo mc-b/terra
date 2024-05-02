@@ -76,5 +76,6 @@ Hier könnten z.B. weitere Installationsscripte oder Post Processoren stehen:
 ### Links
 
 * [Packer Beispiele für viele Betriebssysteme und Virtualsierungsumgebungen](https://github.com/chenhan1218/packer-desktop)
+* [Bento Vagrant Boxen](https://github.com/chef/bento/tree/main)
 * [Hyper-V Packer Plugin](https://developer.hashicorp.com/packer/integrations/hashicorp/hyperv/latest/components/builder/iso)
 

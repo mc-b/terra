@@ -31,7 +31,15 @@ Zeitbedarf, ca. 20 Minuten.
     
 **Für Windows 2022 Server**:
 
-Zeitbedarf, ca. 45 Minuten.
+Zeitbedarf, ca. 20 Minuten.
 
     packer build windows_2022.pkr.hcl
     
+
+### Links
+
+* [Anleitung: Windows 10 Installation automatisieren mit autounattend.xml Datei](https://www.youtube.com/watch?v=ChOR0BgGdIA)
+* [Unattended Installation for Windows](https://developer.hashicorp.com/packer/guides/automatic-operating-system-installs/autounattend_windows)
+* [Windows Answer File Generator](https://www.windowsafg.com/win10x86_x64_uefi.html)
+* [Packer Plug-In: Hyper-V ISO](https://developer.hashicorp.com/packer/integrations/hashicorp/hyperv/latest/components/builder/iso)
+* [Stefan Scherer Beispiele](https://github.com/StefanScherer/packer-windows)
