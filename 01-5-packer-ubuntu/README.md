@@ -78,4 +78,7 @@ Hier könnten z.B. weitere Installationsscripte oder Post Processoren stehen:
 * [Packer Beispiele für viele Betriebssysteme und Virtualsierungsumgebungen](https://github.com/chenhan1218/packer-desktop)
 * [Bento Vagrant Boxen](https://github.com/chef/bento/tree/main)
 * [Hyper-V Packer Plugin](https://developer.hashicorp.com/packer/integrations/hashicorp/hyperv/latest/components/builder/iso)
+* [Packer templates, associated scripts, and configuration for creating deployable OS images for MAAS.](https://github.com/canonical/packer-maas/tree/main)
+* [AlmaLinux OS Cloud Images is a project that contains Packer templates and other tools for building AlmaLinux OS images for various cloud platforms.](https://github.com/AlmaLinux/cloud-images)
+* [Generic base boxes, providing a variety of operating systems, and available across a number of different virtualized platforms.](https://github.com/lavabit/robox/)
 
