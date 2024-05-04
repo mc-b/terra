@@ -1,0 +1,14 @@
+{
+    "cdrom_image": "",
+    "compute_id": "local",
+    "default_name_format": "{name}",
+    "console_type": "telnet",
+    "cpus": 1,
+    "hda_disk_image": "WindowsServer2022.qcow2",
+    "name": "windows_2022",
+    "qemu_path": "/bin/qemu-system-x86_64",
+    "ram": 512,
+    "template_type": "qemu",
+    "symbol": ":/symbols/affinity/circle/red/vm.svg",    
+    "usage": "Windows Server 2022"
+}

@@ -85,32 +85,53 @@ source "hyperv-iso" "windows_2022" {
   winrm_username                   = "vagrant"
 }
 
+source "file" "dummy" {
+    content = "dummy"
+     target = "./dummy.txt"
+}
 
 build {
-  sources = ["source.hyperv-iso.windows_2022"]
+  sources = ["source.hyperv-iso.windows_2022", "source.file.dummy"]
 
   provisioner "windows-shell" {
+    only            = ["source.hyperv-iso.windows_2022"]
     execute_command = "{{ .Vars }} cmd /c \"{{ .Path }}\""
     scripts         = ["./scripts/enable-rdp.bat"]
   }
 
   provisioner "powershell" {
+    only            = ["source.hyperv-iso.windows_2022"]
     scripts = ["./scripts/vm-guest-tools.ps1", "./scripts/debloat-windows.ps1"]
   }
 
   provisioner "windows-restart" {
+    only            = ["source.hyperv-iso.windows_2022"]
     restart_timeout = "${var.restart_timeout}"
   }
 
   provisioner "windows-shell" {
+    only            = ["source.hyperv-iso.windows_2022"]
     execute_command = "{{ .Vars }} cmd /c \"{{ .Path }}\""
     scripts         = ["./scripts/pin-powershell.bat", "./scripts/set-winrm-automatic.bat", "./scripts/uac-enable.bat", "./scripts/compile-dotnet-assemblies.bat", "./scripts/dis-updates.bat", "./scripts/compact.bat"]
   }
 
+  
+  post-processors {
+  
   /*
   post-processor "vagrant" {
+    only            = ["source.hyperv-iso.windows_2022"]
     keep_input_artifact  = true
     output               = "windows_2022_{{ .Provider }}.box"
     vagrantfile_template = "vagrantfile-windows_2016.template"
   }*/
+
+    post-processor "compress" {
+      output = "output-windows_2022/Virtual Hard Disks/windows_2022.tar.gz"
+    }
+    
+    post-processor "shell-local" {
+        inline = ["qemu-img.exe convert -O qcow2 \"output-windows_2022/Virtual Hard Disks/WindowsServer2022.vhdx\" \"output-windows_2022/Virtual Hard Disks/WindowsServer2022.qcow2\""]
+    }
+  }    
 }
