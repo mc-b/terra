@@ -3,11 +3,11 @@
     "compute_id": "local",
     "default_name_format": "{name}",
     "console_type": "telnet",
-    "cpus": 1,
+    "cpus": 2,
     "hda_disk_image": "windows_10.qcow2",
     "name": "windows_10",
     "qemu_path": "/bin/qemu-system-x86_64",
-    "ram": 512,
+    "ram": 4096,
     "template_type": "qemu",
     "symbol": ":/symbols/affinity/circle/red/vm.svg",    
     "usage": "Windows 10"
