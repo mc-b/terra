@@ -1,9 +1,9 @@
 
 source "hyperv-iso" "ubuntu-database" {
-  boot_command                      = ["<tab><wait><tab><wait><tab><wait><tab><wait><tab><wait><tab><wait>",
-                                    "c<wait10>", "set gfxpayload=keep<enter><wait10>",
-                                    "linux /casper/vmlinuz autoinstall quiet net.ifnames=0 biosdevname=0 ",
-                                    "cloud-config-url=\"http://{{ .HTTPIP }}:{{ .HTTPPort }}/generic.ubuntu2204.vagrant.cfg\" --- <enter><wait10>", "initrd /casper/initrd<enter><wait10>", "boot<enter>"]
+  boot_command = ["<tab><wait><tab><wait><tab><wait><tab><wait><tab><wait><tab><wait>",
+    "c<wait10>", "set gfxpayload=keep<enter><wait10>",
+    "linux /casper/vmlinuz autoinstall quiet net.ifnames=0 biosdevname=0 ",
+  "cloud-config-url=\"http://{{ .HTTPIP }}:{{ .HTTPPort }}/generic.ubuntu2204.vagrant.cfg\" --- <enter><wait10>", "initrd /casper/initrd<enter><wait10>", "boot<enter>"]
   boot_keygroup_interval           = "1s"
   boot_wait                        = "10s"
   communicator                     = "ssh"
@@ -33,15 +33,31 @@ source "hyperv-iso" "ubuntu-database" {
   switch_name                      = "Default Switch"
 }
 
+source "file" "dummy" {
+    content = "dummy"
+     target = "./dummy.txt"
+}
+
 build {
-  sources = ["source.hyperv-iso.ubuntu-database"]
- 
+  sources = ["source.hyperv-iso.ubuntu-database", "source.file.dummy"]
+
   provisioner "shell" {
-    pause_before      = "2m0s"
-    execute_command     = "{{ .Vars }} /bin/bash '{{ .Path }}'"
-    scripts           = ["scripts/ubuntu2204/mysql.sh",
-                        "scripts/ubuntu2204/adminer.sh"]
+    only            = [ "source.hyperv-iso.ubuntu-database" ]
+    pause_before    = "2m0s"
+    execute_command = "{{ .Vars }} /bin/bash '{{ .Path }}'"
+    scripts = ["scripts/ubuntu2204/mysql.sh",
+    "scripts/ubuntu2204/adminer.sh"]
     start_retry_timeout = "45m"
     timeout             = "2h0m0s"
+  }
+  post-processors {
+
+    post-processor "compress" {
+      output = "output/ubuntu-database/Virtual Hard Disks/ubuntu-database.tar.gz"
+    }
+    
+    post-processor "shell-local" {
+        inline = ["qemu-img.exe convert -O qcow2 \"output/ubuntu-database/Virtual Hard Disks/ubuntu-database.vhdx\" \"output/ubuntu-database/Virtual Hard Disks/ubuntu-database.qcow2\""]
+    }
   }  
 }

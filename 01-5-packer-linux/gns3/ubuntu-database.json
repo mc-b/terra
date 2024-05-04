@@ -1,0 +1,14 @@
+{
+    "cdrom_image": "",
+    "compute_id": "local",
+    "default_name_format": "{name}",
+    "console_type": "telnet",
+    "cpus": 1,
+    "hda_disk_image": "ubuntu-database.qcow2",
+    "name": "ubuntu-database",
+    "qemu_path": "/bin/qemu-system-x86_64",
+    "ram": 512,
+    "template_type": "qemu",
+    "symbol": ":/symbols/affinity/circle/red/vm.svg",    
+    "usage": "Ubuntu Linux mit installiertem Web- und Datenbank Server"
+}

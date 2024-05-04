@@ -1,19 +1,25 @@
 
+variable "output_dir" {
+  type = string
+  default = "output/alpine-mailserver"
+}
+
+
 source "hyperv-iso" "alpine-mailserver" {
-  boot_command                    = ["<enter><wait10>", "root<enter><wait>",
-                                    "ifconfig eth0 up && udhcpc -i eth0<enter><wait>",
-                                    "wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/generic.alpine319.vagrant.cfg<enter><wait>",
-                                    "sed -i -e \"/rc-service/d\" /sbin/setup-sshd<enter><wait>",
-                                    "source generic.alpine319.vagrant.cfg<enter><wait>",
-                                    "printf \"vagrant\\nvagrant\\n\" | sh /sbin/setup-alpine -f /root/generic.alpine319.vagrant.cfg && ",
-                                    "mount /dev/sda2 /mnt && ",
-                                    "sed -E -i '/#? ?PasswordAuthentication/d' /mnt/etc/ssh/sshd_config && ",
-                                    "sed -E -i '/#? ?PermitRootLogin/d' /mnt/etc/ssh/sshd_config && ",
-                                    "echo 'PasswordAuthentication yes' >> /mnt/etc/ssh/sshd_config && ",
-                                    "echo 'PermitRootLogin yes' >> /mnt/etc/ssh/sshd_config && ",
-                                    "chroot /mnt apk add openntpd && chroot /mnt rc-update add openntpd default && ",
-                                    "chroot /mnt apk add hvtools && chroot /mnt rc-update add hv_fcopy_daemon default && ",
-                                    "chroot /mnt rc-update add hv_kvp_daemon default && chroot /mnt rc-update add hv_vss_daemon default && reboot<enter>"]
+  boot_command = ["<enter><wait10>", "root<enter><wait>",
+    "ifconfig eth0 up && udhcpc -i eth0<enter><wait>",
+    "wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/generic.alpine319.vagrant.cfg<enter><wait>",
+    "sed -i -e \"/rc-service/d\" /sbin/setup-sshd<enter><wait>",
+    "source generic.alpine319.vagrant.cfg<enter><wait>",
+    "printf \"vagrant\\nvagrant\\n\" | sh /sbin/setup-alpine -f /root/generic.alpine319.vagrant.cfg && ",
+    "mount /dev/sda2 /mnt && ",
+    "sed -E -i '/#? ?PasswordAuthentication/d' /mnt/etc/ssh/sshd_config && ",
+    "sed -E -i '/#? ?PermitRootLogin/d' /mnt/etc/ssh/sshd_config && ",
+    "echo 'PasswordAuthentication yes' >> /mnt/etc/ssh/sshd_config && ",
+    "echo 'PermitRootLogin yes' >> /mnt/etc/ssh/sshd_config && ",
+    "chroot /mnt apk add openntpd && chroot /mnt rc-update add openntpd default && ",
+    "chroot /mnt apk add hvtools && chroot /mnt rc-update add hv_fcopy_daemon default && ",
+  "chroot /mnt rc-update add hv_kvp_daemon default && chroot /mnt rc-update add hv_vss_daemon default && reboot<enter>"]
   boot_keygroup_interval           = "1s"
   boot_wait                        = "60s"
   communicator                     = "ssh"
@@ -42,11 +48,16 @@ source "hyperv-iso" "alpine-mailserver" {
   vm_name                          = "alpine-mailserver"
   switch_name                      = "Default Switch"
 }
+source "file" "dummy" {
+    content = "dummy"
+     target = "./dummy.txt"
+}
 
 build {
-  sources = ["source.hyperv-iso.alpine-mailserver"]
+  sources = ["source.hyperv-iso.alpine-mailserver", "source.file.dummy"]
 
   provisioner "shell" {
+    only                = [ "source.hyperv-iso.alpine-mailserver" ]
     execute_command     = "{{ .Vars }} /bin/ash '{{ .Path }}'"
     expect_disconnect   = "true"
     pause_before        = "2m0s"
@@ -54,4 +65,20 @@ build {
     start_retry_timeout = "45m"
     timeout             = "2h0m0s"
   }
+
+  post-processors {
+
+    post-processor "compress" {
+      output = "output/alpine-mailserver/Virtual Hard Disks/alpine-mailserver.tar.gz"
+    }
+    
+    post-processor "shell-local" {
+        inline = ["qemu-img.exe convert -O qcow2 \"output/alpine-mailserver/Virtual Hard Disks/alpine-mailserver.vhdx\" \"output/alpine-mailserver/Virtual Hard Disks/alpine-mailserver.qcow2\""]
+    }
+  }
 }
+
+
+
+
+

@@ -1,0 +1,14 @@
+{
+    "cdrom_image": "",
+    "compute_id": "local",
+    "default_name_format": "{name}",
+    "console_type": "telnet",
+    "cpus": 1,
+    "hda_disk_image": "alpine-mailserver.qcow2",
+    "name": "alpine-mailserver",
+    "qemu_path": "/bin/qemu-system-x86_64",
+    "ram": 512,
+    "template_type": "qemu",
+    "symbol": ":/symbols/affinity/circle/red/vm.svg",    
+    "usage": "Alpine Linux mit installiertem Postfix Mailserver"
+}
