@@ -38,6 +38,7 @@ build {
  
   provisioner "shell" {
     pause_before      = "2m0s"
+    execute_command     = "{{ .Vars }} /bin/bash '{{ .Path }}'"
     scripts           = ["scripts/ubuntu2204/mysql.sh",
                         "scripts/ubuntu2204/adminer.sh"]
     start_retry_timeout = "45m"
