@@ -47,7 +47,7 @@ build {
   sources = ["source.hyperv-iso.alpine-mailserver"]
 
   provisioner "shell" {
-    execute_command     = "{{ .Vars }} /bin/bash -x '{{ .Path }}'"
+    execute_command     = "{{ .Vars }} /bin/ash '{{ .Path }}'"
     expect_disconnect   = "true"
     pause_before        = "2m0s"
     scripts             = ["scripts/alpine319/postfix.sh"]

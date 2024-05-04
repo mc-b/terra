@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/ash -x
 
 retry() {
   local COUNT=1
