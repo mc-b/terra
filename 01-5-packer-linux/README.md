@@ -6,7 +6,7 @@ Images sind in erster Linie Rechenressourcen, auf denen alle Konfigurationen, Me
 
 Packer ist ein Open Source-Tool von HashiCorp, mit dem sich Maschinen-Images aus einer bestimmten Konfiguration erstellen lassen. Es automatisiert den gesamten Prozess der Maschinen-Image-Erstellung und beschleunigt so die Infrastruktur-bereitstellung. 
 
-In dieser Übung erstellen Maschinen-Images für diverse Linuxe.
+In dieser Übung erstellen wir Maschinen-Images für diverse Linuxe.
 
 **Dazu wird folgende Software benötigt**:
 * [Multipass](https://multipass.run/)
