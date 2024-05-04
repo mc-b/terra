@@ -2,7 +2,7 @@
     "cdrom_image": "",
     "compute_id": "local",
     "default_name_format": "{name}",
-    "console_type": "telnet",
+    "console_type": "vnc",
     "cpus": 2,
     "hda_disk_image": "windows_10.qcow2",
     "name": "windows_10",
