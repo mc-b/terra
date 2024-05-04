@@ -35,5 +35,12 @@ source "hyperv-iso" "ubuntu-database" {
 
 build {
   sources = ["source.hyperv-iso.ubuntu-database"]
-
+ 
+  provisioner "shell" {
+    pause_before      = "2m0s"
+    scripts           = ["scripts/ubuntu2204/mysql.sh",
+                        "scripts/ubuntu2204/adminer.sh"]
+    start_retry_timeout = "45m"
+    timeout             = "2h0m0s"
+  }  
 }
