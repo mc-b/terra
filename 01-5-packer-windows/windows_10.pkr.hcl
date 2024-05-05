@@ -97,7 +97,8 @@ build {
   provisioner "windows-shell" {
     execute_command = "{{ .Vars }} cmd /c \"{{ .Path }}\""
     remote_path     = "/tmp/script.bat"
-    scripts         = ["./scripts/enable-rdp.bat"]
+    scripts         = ["./scripts/enable-rdp.bat",
+                       "./scripts/chocolatey.bat"]
   }
 
   provisioner "powershell" {
@@ -111,7 +112,8 @@ build {
 
   provisioner "powershell" {
     scripts = ["./scripts/set-powerplan.ps1", 
-              "./scripts/docker/disable-windows-defender.ps1"]
+               "./scripts/docker/disable-windows-defender.ps1",
+               "./scripts/chocopacks.ps1",]
   }
 
   provisioner "windows-shell" {
@@ -121,7 +123,7 @@ build {
                     "./scripts/compile-dotnet-assemblies.bat", 
                     "./scripts/set-winrm-automatic.bat", 
                     "./scripts/uac-enable.bat", 
-                    "./scripts/dis-updates.bat", 
+                    "./scripts/dis-updates.bat",
                     "./scripts/compact.bat"]
   }
   
