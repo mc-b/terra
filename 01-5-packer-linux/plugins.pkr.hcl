@@ -4,10 +4,6 @@ packer {
       version = ">= 1.1.3"
       source  = "github.com/hashicorp/hyperv"
     }
-    googlecompute = {
-      source  = "github.com/hashicorp/googlecompute"
-      version = "~> 1"
-    }
   }
 }
 

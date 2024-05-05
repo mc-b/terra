@@ -51,7 +51,7 @@ variable "virtio_win_iso" {
 
 variable "vm_name" {
   type    = string
-  default = "windows_10"
+  default = "Windows10"
 }
 
 variable "vmx_version" {
@@ -70,7 +70,15 @@ source "hyperv-iso" "windows_10" {
   configuration_version = "8.0"
   cpus                  = "2"
   disk_size             = "${var.disk_size}"
-  floppy_files          = ["${var.autounattend}", "./floppy/WindowsPowershell.lnk", "./floppy/PinTo10.exe", "./scripts/fixnetwork.ps1", "./scripts/disable-screensaver.ps1", "./scripts/disable-winrm.ps1", "./scripts/enable-winrm.ps1", "./scripts/microsoft-updates.bat", "./scripts/win-updates.ps1"]
+  floppy_files          = ["${var.autounattend}", 
+                          "./floppy/WindowsPowershell.lnk", 
+                          "./floppy/PinTo10.exe", 
+                          "./scripts/fixnetwork.ps1", 
+                          "./scripts/disable-screensaver.ps1", 
+                          "./scripts/disable-winrm.ps1", 
+                          "./scripts/enable-winrm.ps1", 
+                          "./scripts/microsoft-updates.bat", 
+                          "./scripts/win-updates.ps1"]
   guest_additions_mode  = "none"
   iso_checksum          = "${var.iso_checksum}"
   iso_url               = "${var.iso_url}"
@@ -83,59 +91,44 @@ source "hyperv-iso" "windows_10" {
   winrm_username        = "vagrant"
 }
 
-source "file" "dummy" {
-    content = "dummy"
-     target = "./dummy.txt"
-}
-
 build {
-  sources = ["source.hyperv-iso.windows_10", "source.file.dummy"]
+  sources = ["source.hyperv-iso.windows_10"]
 
   provisioner "windows-shell" {
-    only            = ["source.hyperv-iso.windows_10"]  
     execute_command = "{{ .Vars }} cmd /c \"{{ .Path }}\""
     remote_path     = "/tmp/script.bat"
     scripts         = ["./scripts/enable-rdp.bat"]
   }
 
   provisioner "powershell" {
-    only            = ["source.hyperv-iso.windows_10"]  
-    scripts = ["./scripts/vm-guest-tools.ps1", "./scripts/debloat-windows.ps1"]
+    scripts = ["./scripts/vm-guest-tools.ps1", 
+              "./scripts/debloat-windows.ps1"]
   }
 
   provisioner "windows-restart" {
-    only            = ["source.hyperv-iso.windows_10"]  
     restart_timeout = "${var.restart_timeout}"
   }
 
   provisioner "powershell" {
-    only            = ["source.hyperv-iso.windows_10"]  
-    scripts = ["./scripts/set-powerplan.ps1", "./scripts/docker/disable-windows-defender.ps1"]
+    scripts = ["./scripts/set-powerplan.ps1", 
+              "./scripts/docker/disable-windows-defender.ps1"]
   }
 
   provisioner "windows-shell" {
-    only            = ["source.hyperv-iso.windows_10"]  
     execute_command = "{{ .Vars }} cmd /c \"{{ .Path }}\""
     remote_path     = "/tmp/script.bat"
-    scripts         = ["./scripts/pin-powershell.bat", "./scripts/compile-dotnet-assemblies.bat", "./scripts/set-winrm-automatic.bat", "./scripts/uac-enable.bat", "./scripts/dis-updates.bat", "./scripts/compact.bat"]
+    scripts         = ["./scripts/pin-powershell.bat", 
+                    "./scripts/compile-dotnet-assemblies.bat", 
+                    "./scripts/set-winrm-automatic.bat", 
+                    "./scripts/uac-enable.bat", 
+                    "./scripts/dis-updates.bat", 
+                    "./scripts/compact.bat"]
   }
   
   post-processors {
-  
-      /**
-      post-processor "vagrant" {
-        only            = ["source.hyperv-iso.windows_10"]  
-        keep_input_artifact  = true
-        output               = "windows_10_{{ .Provider }}.box"
-        vagrantfile_template = "vagrantfile-windows_10.template"
-      }*/  
-
-    post-processor "compress" {
-      output = "output-windows_10/Virtual Hard Disks/windows_10.tar.gz"
-    }
-    
+   
     post-processor "shell-local" {
-        inline = ["qemu-img.exe convert -O qcow2 \"output-windows_10/Virtual Hard Disks/windows_10.vhdx\" \"output-windows_10/Virtual Hard Disks/windows_10.qcow2\""]
+        inline = ["qemu-img.exe convert -O qcow2 \"output-windows_10/Virtual Hard Disks/Windows10.vhdx\" \"output-windows_10/Virtual Hard Disks/Windows10.qcow2\""]
     }
   }   
 }

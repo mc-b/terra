@@ -33,16 +33,10 @@ source "hyperv-iso" "ubuntu-database" {
   switch_name                      = "Default Switch"
 }
 
-source "file" "dummy" {
-    content = "dummy"
-     target = "./dummy.txt"
-}
-
 build {
-  sources = ["source.hyperv-iso.ubuntu-database", "source.file.dummy"]
+  sources = ["source.hyperv-iso.ubuntu-database"]
 
   provisioner "shell" {
-    only            = [ "source.hyperv-iso.ubuntu-database" ]
     pause_before    = "2m0s"
     execute_command = "{{ .Vars }} /bin/bash '{{ .Path }}'"
     scripts = ["scripts/ubuntu2204/mysql.sh",
@@ -52,10 +46,6 @@ build {
   }
   post-processors {
 
-    post-processor "compress" {
-      output = "output/ubuntu-database/Virtual Hard Disks/ubuntu-database.tar.gz"
-    }
-    
     post-processor "shell-local" {
         inline = ["qemu-img.exe convert -O qcow2 \"output/ubuntu-database/Virtual Hard Disks/ubuntu-database.vhdx\" \"output/ubuntu-database/Virtual Hard Disks/ubuntu-database.qcow2\""]
     }

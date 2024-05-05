@@ -5,7 +5,7 @@
     "console_type": "telnet",
     "cpus": 1,
     "hda_disk_image": "alpine-mailserver.qcow2",
-    "name": "alpine-mailserver",
+    "name": "Alpine-Linux-Mailserver",
     "qemu_path": "/bin/qemu-system-x86_64",
     "ram": 512,
     "template_type": "qemu",

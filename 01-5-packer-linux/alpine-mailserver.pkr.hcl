@@ -48,13 +48,9 @@ source "hyperv-iso" "alpine-mailserver" {
   vm_name                          = "alpine-mailserver"
   switch_name                      = "Default Switch"
 }
-source "file" "dummy" {
-    content = "dummy"
-     target = "./dummy.txt"
-}
 
 build {
-  sources = ["source.hyperv-iso.alpine-mailserver", "source.file.dummy"]
+  sources = ["source.hyperv-iso.alpine-mailserver"]
 
   provisioner "shell" {
     only                = [ "source.hyperv-iso.alpine-mailserver" ]
@@ -67,11 +63,7 @@ build {
   }
 
   post-processors {
-
-    post-processor "compress" {
-      output = "output/alpine-mailserver/Virtual Hard Disks/alpine-mailserver.tar.gz"
-    }
-    
+   
     post-processor "shell-local" {
         inline = ["qemu-img.exe convert -O qcow2 \"output/alpine-mailserver/Virtual Hard Disks/alpine-mailserver.vhdx\" \"output/alpine-mailserver/Virtual Hard Disks/alpine-mailserver.qcow2\""]
     }

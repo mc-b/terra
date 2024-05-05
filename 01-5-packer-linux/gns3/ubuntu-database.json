@@ -5,7 +5,7 @@
     "console_type": "telnet",
     "cpus": 2,
     "hda_disk_image": "ubuntu-database.qcow2",
-    "name": "ubuntu-database",
+    "name": "Ubuntu-Linux-Databaseserver",
     "qemu_path": "/bin/qemu-system-x86_64",
     "ram": 2048,
     "template_type": "qemu",
