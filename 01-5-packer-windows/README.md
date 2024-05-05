@@ -19,7 +19,7 @@ In dieser Übung erstellen wir ein Maschinen-Image für Windows 10 und Windows S
 
 ### Maschinen-Image erstellen
 
-Hyper-V Plug-In installieren
+**Hyper-V Plug-In installieren**:
 
     packer init plugins.pkr.hcl
     
@@ -34,6 +34,65 @@ Zeitbedarf, ca. 20 Minuten.
 Zeitbedarf, ca. 20 Minuten.
 
     packer build windows_2022.pkr.hcl
+    
+**Die wichtigsten Dateien sind**:
+* [plugins.pkr.hcl](plugins.pkr.hcl) - Deklaration der benötigten Packer Plug-Ins
+* [windows_10.pkr.hcl](windows_10.pkr.hcl) - Packer Anweisungen um Windows 10 zu installieren
+* [windows_2022.pkr.hcl](windows_2022.pkr.hcl) - Packer Anweisungen um Windows Server 2022 zu installieren
+
+**Die wichtigsten Verzeichnisse**:
+* [answer_files](answer_files/) - Konfigurationen für "Unattended Installation for Windows"
+* output-XXXXX - Wo die erstellten VM Images abgelegt werden
+* [packer_cache](packer_cache/) - Cache von Packer für die ISO-Images
+* [floppy](floppy/) und [scripts](scripts/) - weitere Script für das Feintuning von Windows.  
+
+**Packer Deklarationen**:
+
+Installationsschritte 
+
+    source "hyperv-iso" "windows_10" {
+      boot_wait             = "6m"
+      communicator          = "winrm"
+      configuration_version = "8.0"
+      cpus                  = "2"
+      disk_size             = "${var.disk_size}"
+      floppy_files          = ["${var.autounattend}", 
+                              "./floppy/WindowsPowershell.lnk", 
+                              "./floppy/PinTo10.exe", 
+                              "./scripts/fixnetwork.ps1", 
+                              "./scripts/disable-screensaver.ps1", 
+                              "./scripts/disable-winrm.ps1", 
+                              "./scripts/enable-winrm.ps1", 
+                              "./scripts/microsoft-updates.bat", 
+                              "./scripts/win-updates.ps1"]
+                                          
+URL ISO-Image und Checksumme welche bei neuen Version ggf. angepasst werden müssen.
+
+    variable "iso_checksum" {
+      type    = string
+      default = "sha256:ef7312733a9f5d7d51cfa04ac497671995674ca5e1058d5164d6028f0938d668"
+    }
+    
+    variable "iso_url" {
+      type    = string
+      default = "https://software-static.download.prss.microsoft.com/dbazure/988969d5-f34g-4e03-ac9d-1f9786c66750/19045.2006.220908-0225.22h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso"
+    }    
+    
+Weitere Installationsscripte oder Post Processoren:   
+
+    build {
+      sources = ["source.hyperv-iso.windows_10"]
+    
+      provisioner "windows-shell" {
+        execute_command = "{{ .Vars }} cmd /c \"{{ .Path }}\""
+        remote_path     = "/tmp/script.bat"
+        scripts         = ["./scripts/enable-rdp.bat"]
+      }
+   
+### Maschinen (VM) Images verwenden
+
+Öffnet den Hyper-V Manager und wählt "Virtuellen Computer importieren". Die Maschinen (VM) Images befinden sich im Verzeichnis `output-XXXXX`.
+Bis am Schluss verwendet überall die Standardeinstellungen, dann wählt "Computer kopieren". So könnt Ihr beliebe VMs ab dem Images erstellen.    
     
 ### Aufbereiten für GNS3
 

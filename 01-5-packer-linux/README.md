@@ -87,6 +87,12 @@ Password: steht in Datei /root/.my.cnf
 
     http://<ip vm>/adminer
     
+### Maschinen (VM) Images verwenden
+
+Öffnet den Hyper-V Manager und wählt "Virtuellen Computer importieren". Die Maschinen (VM) Images befinden sich im Verzeichnis `output`.
+Bis am Schluss verwendet überall die Standardeinstellungen, dann wählt "Computer kopieren". So könnt Ihr beliebe VMs ab dem Images erstellen.
+
+    
 ### Aufbereiten für GNS3
 
 Bei Build werden automatisch Images für [GNS3](https://www.gns3.com/) erstellt.
