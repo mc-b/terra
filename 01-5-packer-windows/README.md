@@ -35,6 +35,22 @@ Zeitbedarf, ca. 20 Minuten.
 
     packer build windows_2022.pkr.hcl
     
+### Aufbereiten für GNS3
+
+Bei Build werden automatisch Images für [GNS3](https://www.gns3.com/) erstellt.
+
+Zusammen mit den Konfigurationsdateien im [gns3/](gns3/)-Verzeichnis können diese einfach in [GNS3](https://www.gns3.com/) eingebunden werden.
+
+Vorgehen:
+* Alle Dateien von `output-windows.../..../Virtual Hard Disks/*.qcow2` auf GNS3 System ins Verzeichnis `/opt/gns3/images/QEMU` kopieren
+* Alle Dateien im `gns3`-Verzeichnis auf GNS3 System kopieren.
+* Wechsel auf GNS3 System, z.B. mittels `ssh`
+* Eintragen der VM Images als Templates mittels `curl`
+
+Die Befehle sind wie folgt:
+
+    curl -X POST "http://localhost:3080/v2/templates" -d "@windows_10.json
+    curl -X POST "http://localhost:3080/v2/templates" -d "@windows_2022.json"
 
 ### Links
 
