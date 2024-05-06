@@ -90,20 +90,32 @@ build {
 
   provisioner "windows-shell" {
     execute_command = "{{ .Vars }} cmd /c \"{{ .Path }}\""
-    scripts         = ["./scripts/enable-rdp.bat"]
+    scripts         = ["./scripts/enable-rdp.bat",
+                       "./scripts/chocolatey.bat"]
   }
 
   provisioner "powershell" {
-    scripts = ["./scripts/vm-guest-tools.ps1", "./scripts/debloat-windows.ps1"]
+    scripts         = ["./scripts/vm-guest-tools.ps1", 
+                       "./scripts/debloat-windows.ps1"]
   }
 
   provisioner "windows-restart" {
     restart_timeout = "${var.restart_timeout}"
   }
+  
+  provisioner "powershell" {
+    scripts = ["./scripts/chocopacks.ps1",
+               "./scripts/issexpress.ps1"]
+  }  
 
   provisioner "windows-shell" {
     execute_command = "{{ .Vars }} cmd /c \"{{ .Path }}\""
-    scripts         = ["./scripts/pin-powershell.bat", "./scripts/set-winrm-automatic.bat", "./scripts/uac-enable.bat", "./scripts/compile-dotnet-assemblies.bat", "./scripts/dis-updates.bat", "./scripts/compact.bat"]
+    scripts         = ["./scripts/pin-powershell.bat", 
+                        "./scripts/set-winrm-automatic.bat", 
+                        "./scripts/uac-enable.bat", 
+                        "./scripts/compile-dotnet-assemblies.bat", 
+                        "./scripts/dis-updates.bat", 
+                        "./scripts/compact.bat"]
   }
 
   post-processors {
