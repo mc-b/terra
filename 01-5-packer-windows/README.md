@@ -108,7 +108,7 @@ Vorgehen:
 
 Die Befehle sind wie folgt:
 
-    curl -X POST "http://localhost:3080/v2/templates" -d "@windows_10.json
+    curl -X POST "http://localhost:3080/v2/templates" -d "@windows_10.json"
     curl -X POST "http://localhost:3080/v2/templates" -d "@windows_2022.json"
 
 ### Links
