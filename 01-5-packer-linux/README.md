@@ -108,7 +108,7 @@ Vorgehen:
 Die Befehle sind wie folgt:
 
     curl -X POST "http://localhost:3080/v2/templates" -d "@alpine-mailserver.json"
-    curl -X POST "http://localhost:3080/v2/templates" -d "@alpine-mailserver.json"
+    curl -X POST "http://localhost:3080/v2/templates" -d "@ubuntu-database.json"
 
 ### Links
 
