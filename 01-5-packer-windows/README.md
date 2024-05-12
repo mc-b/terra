@@ -92,11 +92,50 @@ Weitere Installationsscripte oder Post Processoren:
 ### Maschinen (VM) Images verwenden
 
 Öffnet den Hyper-V Manager und wählt "Virtuellen Computer importieren". Die Maschinen (VM) Images befinden sich im Verzeichnis `output-XXXXX`.
-Bis am Schluss verwendet überall die Standardeinstellungen, dann wählt "Computer kopieren". So könnt Ihr beliebe VMs ab dem Images erstellen.    
+Bis am Schluss verwendet überall die Standardeinstellungen, dann wählt "Computer kopieren". So könnt Ihr beliebe VMs ab dem Images erstellen. 
+
+### Aufbereiten für MAAS.io
+
+Beim Builden werden automatisch Images im [QCOW2](https://en.wikipedia.org/wiki/Qcow)-Format erstellt, diese können 1:1 für [MAAS.io](https://maas.io) verwendet werden.
+
+Dazu müssen sie auf einen KVM-Host kopiert und gestartet werden. 
+
+Die Arbeiten sind wie folgt:
+* Kopieren der VM Images auf einen der KVM-Hosts ins Verzeichnis `/var/lib/libvirt/images`
+* Download der Windows Treiber [virtio-win ISO](https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md)
+* Starten der VM auf dem KVM-Host mittels `virsh`
+* Verbinden mit der Windows VM mittels VNC. Als IP-Adresse die des KVM-Hosts verwenden und Port 5902 o.ä.
+* Windows Driver Installationsprogramm von der angehängten [virtio-win ISO](https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md) CD-ROM ausführen
+* Remote Desktop aktivieren
+
+Die Befehle sind wie folgt:
+
+    sudo -i
+    cd /var/lib/libvirt/images
+    wget http://.... oder scp  # aufbereitete Windows downloaden, kopieren
+    wget https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso # Windows Treiber
+    chown virsh:virsh *
+    
+    sudo virt-install --name=win10 --ram=4096 --vcpus=2 --import --disk path=Windows10.qcow2,format=qcow2 \
+                 --disk path=virtio-win.iso,device=cdrom --os-variant=win10 --network bridge=br-eno1,model=virtio \
+                 --graphics vnc,listen=0.0.0.0 --noautoconsole  
+                 
+    sudo virt-install --name=win2022 --ram=4096 --vcpus=2 --import --disk path=WindowsServer2022.qcow2,format=qcow2 \
+                 --disk path=virtio-win.iso,device=cdrom --os-variant=win2k22 --network bridge=br-eno1,model=virtio \
+                 --graphics vnc,listen=0.0.0.0 --noautoconsole   
+                 
+Werden die VMs nicht mehr benötigt können sie heruntergefahren und entfernt werden.
+
+    virsh shutdown win10
+    virsh undefine win10  
+    
+
+    virsh shutdown win2022
+    virsh undefine win2022                                                  
     
 ### Aufbereiten für GNS3
 
-Bei Build werden automatisch Images für [GNS3](https://www.gns3.com/) erstellt.
+Beim Builden werden automatisch Images für [GNS3](https://www.gns3.com/) erstellt.
 
 Zusammen mit den Konfigurationsdateien im [gns3/](gns3/)-Verzeichnis können diese einfach in [GNS3](https://www.gns3.com/) eingebunden werden.
 

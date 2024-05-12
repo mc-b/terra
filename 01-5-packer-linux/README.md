@@ -95,7 +95,7 @@ Bis am Schluss verwendet überall die Standardeinstellungen, dann wählt "Comput
     
 ### Aufbereiten für GNS3
 
-Bei Build werden automatisch Images für [GNS3](https://www.gns3.com/) erstellt.
+Beim Builden werden automatisch Images für [GNS3](https://www.gns3.com/) erstellt.
 
 Zusammen mit den Konfigurationsdateien im [gns3/](gns3/)-Verzeichnis können diese einfach in [GNS3](https://www.gns3.com/) eingebunden werden.
 
