@@ -37,7 +37,7 @@ Die Ausgabe sieht in etwa so aus:
       "type": "Microsoft.Resources/resourceGroups"
     }
     
-Mit der `id`, ohne vorangestelltes `/`, können wir die Gruppe importieren. **...** durch Eure Subscriptions-Id ersetzen. 
+Mit der `id` können wir die Gruppe importieren. **...** durch Eure Subscriptions-Id ersetzen. 
 
     terraform import azurerm_resource_group.mygroup subscriptions/.../resourceGroups/mygroup
     
