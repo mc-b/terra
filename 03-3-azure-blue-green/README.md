@@ -41,5 +41,5 @@ Durch ändern der Einträge in `main.tf` und ausführen von `terraform plan` und
       weight            = 50
     }
     
-`target` bestimmt den Zielserver und `weight` die prozentual die Anfragen verteilt werden sollen. Probieren mit dem Edge Browser, der Chrome cacht zuviel.
+`target` bestimmt den Zielserver und `weight` die Verteilung der Anfragen in Promil. Probieren mit dem Edge Browser, der Chrome cacht zuviel.
     
