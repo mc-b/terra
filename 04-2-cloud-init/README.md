@@ -1,20 +1,18 @@
 ## Übung 04-2: Cloud Meta-Data
 
-Die Übungen finden in der [Git/Bash](https://git-scm.com/downloads) statt. 
+Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
 
 Ausserdem muss das Produkt [Multipass](https://multipass.run/) installiert sein.
 
-Öffnet die Git/Bash Umgebung oder VSCode und dort ein Terminal. Wechselt ins Arbeitsverzeichnis der Übung:
-
-    cd 04-2-cloud-init
+### Übung
     
-### Multipass
+#### Multipass
 
     multipass launch --name metadata --cloud-init cloud-init.yaml
     
 Nach erfolgter Installation öffnet einen Browser und wählt [http://metadata.mshome.net](http://metadata.mshome.net) an.       
 
-### Azure Cloud
+#### Azure Cloud
 
 Anmelden an der Azure Cloud 
 
@@ -53,7 +51,7 @@ Um die VM zu löschen, genügt es, die Resource Gruppe zu löschen.
 
     az group delete --name mygroup --yes    
     
-### AWS Cloud    
+#### AWS Cloud    
     
 Einloggen in AWS Cloud
 

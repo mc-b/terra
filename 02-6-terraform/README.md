@@ -1,10 +1,8 @@
 ## Übung 02-6: Terraform - Provisioners 
 
-Die Übungen finden in der [Git/Bash](https://git-scm.com/downloads) statt. 
+Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
 
-Öffnet die Git/Bash Umgebung oder VSCode und dort ein Terminal. Wechselt ins Arbeitsverzeichnis der Übung:
-
-    cd 02-6-terraform
+### Übung
     
 Kopiert die Dateien `main.tf` und `output.tf` von der Übung [02-5-terraform](../02-5-terraform/)    
     

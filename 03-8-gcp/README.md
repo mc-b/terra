@@ -1,10 +1,14 @@
 ## Übung 03-8: Google Cloud - Terraform Import 
 
+Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
+
+Ausserdem muss Google Cloud so konfiguriert werden, dass wir das Google Cloud SDK verwenden können.
+
+Die Anleitung finden wir [hier](https://cloud.google.com/sdk/docs/install).
+
+### Übung
+
 In dieser Übung wollen wir die erstellten Google Ressourcen aus [Übung 7](../03-7-gcp/) nach Terraform überführen.
-
-Wechsel in das Arbeitsverzeichnis
-
-    cd 03-8-gcp
     
 Erstellen einer Datei `provider.tf`, für den GCP Provider, mit folgenden Inhalt.    
 

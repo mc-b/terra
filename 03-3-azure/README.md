@@ -1,9 +1,8 @@
 ## Übung 03-3: Azure und Terraform
 
-Für die Übung sind die CLI für Azure und Terraform zu installieren.
+Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
 
-* [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/)
-* [Terraform Installation](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started)
+Ausserdem muss das [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/) installiert sein.
 
 ### Beispielapplikation WebShop
 
@@ -18,21 +17,16 @@ Order nutzt Catalog und Customer mit der REST-Schnittstelle. Ausserdem bietet je
 
 Zusätzlich ist im Beispiel ein Apache-Webserver installiert, der dem Benutzer mit einer Webseite einen einfachen Einstieg in das System ermöglicht.
 
-
-### Vorgehen
+### Übung
 
 Implementiert den [Webshop](../A#beispielapplikation-webshop) in der Azure Cloud mittels Terraform.
-
-Starten mittels
-
-    cd 03-3-azure
 
     az login
     
     terraform init
     terraform apply -auto-approve
 
-Nach dem erstellen der Ressourcen, VM `webshop` anwählen und IP-Adresse im Browser eingeben.
+Nach dem erstellen der Ressourcen: Ressource Gruppe `webshop` und dann VM `webshop`, im Azure Portal, anwählen und Public IP-Adresse im Browser eingeben.
 
 **Links**
 

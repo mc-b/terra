@@ -1,18 +1,18 @@
 ## Übung 03-7: Google Cloud (GCP)
 
+Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
+
+Ausserdem muss Google Cloud so konfiguriert werden, dass wir das Google Cloud SDK verwenden können.
+
+Die Anleitung finden wir [hier](https://cloud.google.com/sdk/docs/install).
+
+### Einleitung
+
 Als Cloud-init Datei verwenden wir die gleiche YAML-Datei wie aus [Übung 1](../01-1-iac/cloud-init-nginx.yaml).
 
 Mittels dieser Datei und dem Google Cloud SDK, erstellen wir eine neue VM.
 
-### Vorgehen
-
-Zuerst muss Google Cloud so konfiguriert werden, dass wir das Google Cloud SDK verwenden können.
-
-Die Anleitung finden wir [hier](https://cloud.google.com/sdk/docs/install).
-
-Wechsel in das Arbeitsverzeichnis
-
-    cd 03-7-gcp
+### Übung
 
 Einloggen in Google Cloud und Umgebung Initialisieren. Verwendet als Region `us-east`, als Zone `us-east1-b`.
 
@@ -29,7 +29,6 @@ Die Befehle sind wie folgt:
 
     gcloud compute firewall-rules create myfwrule --allow tcp:22,tcp:80 --description "Standard Ports"
     gcloud compute instances create myvm --image-family ubuntu-2204-lts --image-project ubuntu-os-cloud --machine-type f1-micro --tags http-server --metadata-from-file user-data=cloud-init.yaml --zone us-east1-b
-   
 
 Anschließend können wir uns die laufenden VMs anzeigen
 

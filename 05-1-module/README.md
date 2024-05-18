@@ -1,12 +1,10 @@
 ## Übung 05-1: Terraform - Module
 
-Die Übungen finden in der [Git/Bash](https://git-scm.com/downloads) statt. 
+Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
 
-Öffnet die Git/Bash Umgebung oder VSCode und dort ein Terminal. Wechselt ins Arbeitsverzeichnis der Übung:
+### Übung
 
-    cd 05-1-module
-
-### Modul anlegen
+#### Modul anlegen
 
 Jedes Modul wird in einem eigenen Verzeichnis abgelegt und besteht mindestens aus den Dateien `main.tf` und `variables.tf`.
 
@@ -33,7 +31,7 @@ In der Datei `modules/create_local_file/main.tf` kommen die eigentlichen Ressour
       filename = var.name_of_file
     }
     
-### Hauptdeklaration
+#### Hauptdeklaration
 
 Nachdem das Modul erstellt wurde können wir diese Verwenden.
 
@@ -58,7 +56,7 @@ Führt die Terraform Befehle zum Initialisieren, Vorschau und Erstellen der Ress
 
 Es wurde eine Datei `Datei1.txt` erstellt.
 
-### Modul mehrmals verwenden
+#### Modul mehrmals verwenden
 
 Soll das Modul mehrmals verwendet werden, z.B. um unterschiedliche Dateien mit unterschiedlichem Inhalt zu erstellen, können wir `main.tf` wie folgt ergänzen:
 
@@ -83,7 +81,7 @@ Soll das Modul mehrmals verwendet werden, z.B. um unterschiedliche Dateien mit u
       content_of_file = "Hallo Datei4!\n"
     }
     
-### Modul und `count`
+#### Modul und `count`
 
 Unterscheiden sich die Dateiinhalte, ausser einem Counter, nicht. Kann `count` verwendet werden. Datei ist `main.tf` wie folgt umzuschreiben:
 
@@ -95,7 +93,7 @@ Unterscheiden sich die Dateiinhalte, ausser einem Counter, nicht. Kann `count` v
       content_of_file = "Hallo Datei${count.index + 1}!\n"
     }
   
-### Standardwerte
+#### Standardwerte
 
 Nicht immer ist es sinnvoll, alle Argumente zu übergeben. Sehr oft sind die Argumente gleich. In unseren Fall, sind es die Zugriffsrechte für die Datei.
 

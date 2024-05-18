@@ -1,10 +1,16 @@
 ## Übung 03-4: AWS CLI
 
+Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
+
+Ausserdem muss das [AWS CLI](https://aws.amazon.com/de/cli/) installiert sein.
+
+### Einleitung
+
 Als Cloud-init Datei verwenden wir die gleiche YAML-Datei wie aus [Übung 1](../01-1-iac/cloud-init-nginx.yaml).
 
 Mittels dieser Datei und dem jeweiligen Cloud CLI, erstellen wir eine neu VM.
 
-### Vorgehen
+### Übung
 
 Zuerst muss AWS so konfiguriert werden, dass wir das AWS CLI verwenden können.
 
@@ -13,10 +19,6 @@ Die Schritte sind wie folgt:
 * Pulldown rechts beim Usernamen -> Sicherheitsanmeldeinformationen
 * Einen neuen Zugriffsschlüssel anlegen
 * Id und Secret Access Key notieren, die brauchen wir für `aws configure` unten.
-
-Wechsel in das Arbeitsverzeichnis
-
-    cd 03-4-aws
 
 Einloggen in AWS Cloud
 

@@ -1,10 +1,8 @@
 ## Übung 05-3: Terraform - Module Outputs
 
-Die Übungen finden in der [Git/Bash](https://git-scm.com/downloads) statt. 
+Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
 
-Öffnet die Git/Bash Umgebung oder VSCode und dort ein Terminal. Wechselt ins Arbeitsverzeichnis der Übung:
-
-    cd 05-3-module
+### Übung
 
 Was uns noch fehlt sind Output-Werte über unsere VMs wie:
 * IP-Adressen

@@ -1,13 +1,15 @@
 ## Übung 03-2: Azure - Terraform Import
 
+Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
+
+Ausserdem muss das [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/) installiert sein.
+
+### Übung
+
 In dieser Übung wollen wir die erstellten Azure Ressourcen aus [Übung 1](../03-1-azure/) nach Terraform überführen.
 
 Diese Arbeiten müssen in der **PowerShell** ausgeführt werden, weil Git/Bash mit `/sub...` nicht klar kommt.
 
-Wechsel in das Arbeitsverzeichnis
-
-    cd 03-2-azure
-    
 Erstellen einer Datei `provider.tf`, für den Azure Provider, mit folgenden Inhalt    
 
     provider "azurerm" {

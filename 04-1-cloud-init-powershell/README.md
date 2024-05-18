@@ -1,5 +1,7 @@
 ## Beispiel 04-1-powershell: Cloud-init und PowerShell
 
+### Einleitung 
+
 Im Feld `user.data`, wo üblicherweise eine Cloud-init Deklaration steht, kann für Windows VMs auch ein PowerShell Script angegeben werden.
 
 Dazu ist der Eintrag mit 
@@ -8,7 +10,9 @@ Dazu ist der Eintrag mit
     
 zu umschliessen.
 
-Um z.B. den Chrome Browser zu installieren, ist folgendes im Feld `user.data` einzufügen:
+### Übung
+
+Erstellt, in der Cloud Eurer Wahl, eine Windows VM über das Web UI und kopiert folgenden Code ins Feld `user.data`.
 
     <powershell>
     # PowerShell-Skript, um Chrome herunterzuladen und zu installieren
@@ -24,6 +28,8 @@ Um z.B. den Chrome Browser zu installieren, ist folgendes im Feld `user.data` ei
     # Aufräumen
     Remove-Item $output
     </powershell>
+    
+Damit wird der Chrome Browser installiert.    
     
 Azure Cloud erwartet das Script im Base64 Format
 

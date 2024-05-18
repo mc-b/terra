@@ -1,12 +1,10 @@
 ## Übung 05-4: Terraform - Module aus der Terraform Module Registry
 
-Die Übungen finden in der [Git/Bash](https://git-scm.com/downloads) statt. 
+Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
 
-Öffnet die Git/Bash Umgebung oder VSCode und dort ein Terminal. Wechselt ins Arbeitsverzeichnis der Übung:
+### Übung
 
-    cd 05-4-module
-
-### Modul anlegen
+#### Modul anlegen
 
 Die Module können direkt ab der [Terraform Module Registry](https://registry.terraform.io/browse/modules) verwendet werden. Deshalb entfällt das Anlegen des Moduls.
 
@@ -17,7 +15,7 @@ Mögliche Module um VMs mit den dazugehörenden Netzwerk- und Firewall-Einstellu
 * [mc-b/multipass/lerncloud](https://registry.terraform.io/modules/mc-b/multipass/lerncloud/latest) - für die lokale Umgebung mit `multipass`
  
     
-### Hauptdeklaration
+#### Hauptdeklaration
 
 Nachdem wir uns entschieden haben, welches Modul wir verwenden wollen, wir dieses Verwenden. 
 
@@ -57,7 +55,7 @@ Zum Schluss testen wir unsere Deklaration
     terraform plan
     terraform apply   
 
-### Modul und `count`
+#### Modul und `count`
 
 Durch einfügen von `count` können auch mehrere VMs erstellt werden.
 
@@ -81,7 +79,7 @@ Dazu `main.tf`, Eintrag `module` einen Zähler und den Eintrag `count` erweitern
       vpn = var.vpn        
     }
 
-### Tips & Tricks
+#### Tips & Tricks
 
 Zum Testen eines Modul, gehen wir wie folgt vor.
 

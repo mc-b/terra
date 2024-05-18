@@ -1,17 +1,14 @@
 ## Übung 03-66: AWS und Terraform
 
-Für die Übung sind die CLI für AWS und Terraform zu installieren.
+Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
 
-* [AWS CLI](https://aws.amazon.com/de/cli/)
-* [Terraform Installation](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started)
+Ausserdem muss das [AWS CLI](https://aws.amazon.com/de/cli/) installiert sein.
 
-### Vorgehen
+### Übung
 
 Implementiert den [Webshop](../03-3-azure/) in der AWS Cloud mittels Terraform.
 
 Starten mittels
-
-    cd 03-6-aws
 
     aws configure
         AWS Access Key ID [****************....]:

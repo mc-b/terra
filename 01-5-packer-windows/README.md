@@ -1,5 +1,9 @@
 ## Übung 01-5: Erstellen von vorgefertigten Windows Maschinen-Images - Packer
 
+Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
+
+### Einleitung
+
 Eines der am häufigsten eingesetzten Tools zum Erstellen eines vorgefertigten Maschinen-Images ist [Packer](). 
 
 Images sind in erster Linie Rechenressourcen, auf denen alle Konfigurationen, Metadaten, Artefakte und zugehörigen Dateien vorinstalliert/konfiguriert sind. 
@@ -16,6 +20,11 @@ Die Umbauten sind wie folgt:
 * Windows Updates beim Installieren deaktiviert
 
 In dieser Übung erstellen wir ein Maschinen-Image für Windows 10 und Windows Server 2022 mit Packer und Hyper-V. 
+
+**Dazu wird folgende Software benötigt**:
+* [Multipass](https://multipass.run/)
+* [Packer](https://www.packer.io/)
+* [Git/Bash](https://git-scm.com/downloads)
 
 ### Maschinen-Image erstellen
 

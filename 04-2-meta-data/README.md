@@ -1,7 +1,14 @@
 ## Beispiele 04-2-meta-data: Cloud Meta-Data ohne Cloud-init
 
+Für die Linux Übung muss zuerst eine Linux VM in der Cloud erstellt werden.
 
-### [Beispiel](https://github.com/mc-b/duk/blob/master/scripts/install.sh) Azure Cloud
+Für die Übungen mit PowerShell zuerst eine Windows VM in der Cloud erstellt werden, z.B. über das Web UI.
+
+**Die Befehle müssen in dieser VM ausgeführt werden!**
+
+### Übungen
+
+#### [Beispiel](https://github.com/mc-b/duk/blob/master/scripts/install.sh) Azure Cloud
 
 Abfragen ob wir uns in der Azure Cloud befinden und wenn ja, Public IP-Adresse ausgeben.
 
@@ -23,7 +30,7 @@ Abfragen ob wir uns in der Azure Cloud befinden und wenn ja, Public IP-Adresse a
         Invoke-WebRequest -Uri "http://169.254.169.254/metadata/instance/network?api-version=2021-02-01" -Headers @{"Metadata"="true"} -TimeoutSec 2 | Select-Object -ExpandProperty Content | ConvertFrom-Json | Select-Object -ExpandProperty interface | Select-Object -First 1 | Select-Object -ExpandProperty ipv4 | Select-Object -ExpandProperty ipAddress | Select-Object -First 1
     }
 
-### [Beispiel](https://github.com/mc-b/duk/blob/master/scripts/install.sh) AWS Cloud
+#### [Beispiel](https://github.com/mc-b/duk/blob/master/scripts/install.sh) AWS Cloud
 
 Abfragen ob wir uns in der AWS Cloud befinden und wenn ja, Public DNS Name ausgeben.
 
@@ -45,8 +52,7 @@ Abfragen ob wir uns in der AWS Cloud befinden und wenn ja, Public DNS Name ausge
         Invoke-WebRequest -Uri "http://169.254.169.254/latest/meta-data/public-hostname" -TimeoutSec 2
     }
     
-    
-### Google Cloud (von ChatGPT erstellt)
+#### Google Cloud (von ChatGPT erstellt)
 
 **Bash Script**
 

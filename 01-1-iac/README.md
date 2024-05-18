@@ -1,12 +1,8 @@
 ## Übung 01-1: Infrastruktur als Code
 
-Die Übungen finden in der [Git/Bash](https://git-scm.com/downloads) statt. 
+Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
 
 Ausserdem muss das Produkt [Multipass](https://multipass.run/) installiert sein.
-
-Öffnet die Git/Bash Umgebung oder VSCode und dort ein Terminal. Wechselt ins Arbeitsverzeichnis der Übung:
-
-    cd 01-1-iac
 
 ### VM mit NGINX Server
 

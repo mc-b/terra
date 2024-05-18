@@ -1,12 +1,10 @@
 ## Übung 05-2: Terraform - Module aus Git-Repository
 
-Die Übungen finden in der [Git/Bash](https://git-scm.com/downloads) statt. 
+Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
 
-Öffnet die Git/Bash Umgebung oder VSCode und dort ein Terminal. Wechselt ins Arbeitsverzeichnis der Übung:
+### Übung
 
-    cd 05-2-module
-
-### Modul anlegen
+#### Modul anlegen
 
 Die Module können direkt ab einen Git-Repository verwendet werden. Deshalb entfällt das Anlegen des Moduls.
 
@@ -17,7 +15,7 @@ Mögliche Module um VMs mit den dazugehörenden Netzwerk- und Firewall-Einstellu
 * [https://github.com/mc-b/terraform-lerncloud-multipass](https://github.com/mc-b/terraform-lerncloud-multipass) - für die lokale Umgebung mit `multipass`
  
     
-### Hauptdeklaration
+#### Hauptdeklaration
 
 Nachdem wir uns entschieden haben, welches Modul wir verwenden wollen, wir dieses Verwenden. 
 
@@ -43,7 +41,7 @@ Für die Übung erstellen wir eine Datei `main.tf` mit folgendem Inhalt:
     
 Je nach gewünschter Cloud ist einer der `source` Einträge zu aktiveren, d.h. Kommentarzeichen `#` entfernen.    
 
-Folgende Variablen können gesetzt werden:
+**Ausserdem können folgende Variablen werden**
 * module - der Name der VM
 * description - Kommentar zu VM
 * userdata - Pfad zu einer Cloud-init Datei
@@ -53,18 +51,17 @@ und Optional
 * storage - Grösser des persistenten Speichers
 * ports - Ports als Array, z.B. [ 22, 80 ], welche gegen Aussen geöffnet werden sollen.
 
-Zum Schluss testen wir unsere Deklaration
+Ändert bzw. aktiviert und deaktiviert die `source` Einträge und führt jeweils `terraform init` und `terraform plan` aus.
 
-    terraform init
-    terraform plan
-    terraform apply   
+Analysiert die Ausgaben von `terraform plan`
 
-### Modul und `count`
+**Hinweis**: Wir verzichten extra auf `terraform apply` um nicht unnötig Cloud Kosten zu verursachen.
+
+#### Modul und `count`
 
 Durch einfügen von `count` können auch mehrere VMs erstellt werden.
 
 Dazu `main.tf`, Eintrag `module` einen Zähler und den Eintrag `count` erweitern. 
-
     
     module "myvm" {
       source     = "git::https://github.com/mc-b/terraform-lerncloud-multipass"
@@ -78,7 +75,7 @@ Dazu `main.tf`, Eintrag `module` einen Zähler und den Eintrag `count` erweitern
       count     = 3
     }
 
-### Tips & Tricks
+#### Tips & Tricks
 
 Zum Testen eines Modul, gehen wir wie folgt vor:
 

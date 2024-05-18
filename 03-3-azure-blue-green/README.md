@@ -1,19 +1,16 @@
 ## Übung 03-3-blue-green: Create an Azure Traffic Manager profile using Terraform
 
+Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
+
+Ausserdem muss das [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/) installiert sein.
+
+### Einleitung
+
 Übungsdateien mit dem Traffic Manager vom Azure, basierend auf dem Beispiel [Create an Azure Traffic Manager profile using Terraform](https://learn.microsoft.com/en-us/azure/traffic-manager/quickstart-create-traffic-manager-profile-terraform)
 
-Für die Übung sind die CLI für Azure und Terraform zu installieren.
-
-* [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/)
-* [Terraform Installation](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started)
-
-### Vorgehen
+### Übung
 
 Erstellt einen Traffic Manager mit 2 Endpoints in der Azure Cloud
-
-Starten mittels
-
-    cd 03-3-azure-blue-green
 
     az login
     

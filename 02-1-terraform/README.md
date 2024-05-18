@@ -1,16 +1,16 @@
 ## Übung 02-1: Terraform mit Multipass
 
-Dazu Erstellen wir zwei VMs:
+Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
+
+Ausserdem muss das Produkt [Multipass](https://multipass.run/) installiert sein.
+
+### Einleitung
+
+Um das Zusammenspiel von Terraform und Multipass zu zeigen, erstellen wir zwei VMs:
 * eine VM mit dem Apache Web Server, PHP und Adminer
 * eine VM mit der MySQL Datenbank
 
-Die Übungen finden in der [Git/Bash](https://git-scm.com/downloads) statt. 
-
-Ausserdem müssen [Multipass](https://multipass.run/) und [Terraform](https://www.terraform.io/) installiert sein.
-
-Öffnet die Git/Bash Umgebung oder VSCode und dort ein Terminal. Wechselt ins Arbeitsverzeichnis der Übung:
-
-    cd 02-1-terraform
+### Übung
     
 Terraform Initialisieren und Umgebung anlegen:
 

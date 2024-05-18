@@ -1,9 +1,10 @@
 ## Übung 03-9: Google Cloud und Terraform 
 
-Für die Übung sind die CLI für Google Cloud und Terraform zu installieren.
+Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
 
-* [Google Cloud SDK Installation](https://cloud.google.com/sdk/docs/install)   
-* [Terraform Installation](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started)
+Ausserdem muss Google Cloud so konfiguriert werden, dass wir das Google Cloud SDK verwenden können.
+
+Die Anleitung finden wir [hier](https://cloud.google.com/sdk/docs/install).
 
 ### Beispielapplikation WebShop
 
@@ -18,8 +19,7 @@ Order nutzt Catalog und Customer mit der REST-Schnittstelle. Ausserdem bietet je
 
 Zusätzlich ist im Beispiel ein Apache-Webserver installiert, der dem Benutzer mit einer Webseite einen einfachen Einstieg in das System ermöglicht.
 
-
-### Vorgehen
+### Übung
 
 Implementiert den Webshop in der Google Cloud mittels Terraform.
 

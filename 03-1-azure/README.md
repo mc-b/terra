@@ -1,14 +1,14 @@
 ## Übung 03-1: Azure CLI
 
+Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
+
+Ausserdem muss das [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/) installiert sein.
+
+### Übung
+
 Als Cloud-init Datei verwenden wir die gleiche YAML-Datei wie aus [Übung 1](../01-1-iac/cloud-init-nginx.yaml).
 
 Mittels dieser Datei und dem jeweiligen Cloud CLI, erstellen wir eine neu VM.
-
-### Vorgehen
-
-Wechsel in das Arbeitsverzeichnis
-
-    cd 03-1-azure
 
 Anmelden an der Azure Cloud 
 
