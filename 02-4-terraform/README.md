@@ -34,10 +34,18 @@ Testet es:
 **Umgebungsvariablen**
 
 Alternativ zum fixen Wert `16` in `variables.tf` können wir den Wert mittels der Umgebungsvariable `TF_VAR_length` überschreiben.
- 
+
+**PowerShell**
+
+    terraform destroy -auto-approve
+    $env:TF_VAR_length = 20
+    terraform apply -auto-approve
+
+**Bash**
+
     terraform destroy -auto-approve
     export TF_VAR_length=20
-    terraform apply -auto-approve       
+    terraform apply -auto-approve
 
 **count**
 
