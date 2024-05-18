@@ -24,7 +24,7 @@ resource "random_string" "azurerm_traffic_manager_profile_dns_config_relative_na
 resource "azurerm_traffic_manager_profile" "profile" {
   name                   = random_string.azurerm_traffic_manager_profile_name.result
   resource_group_name    = azurerm_resource_group.rg.name
-  traffic_routing_method = "Performance"
+  traffic_routing_method = "Weighted"
   dns_config {
     relative_name = random_string.azurerm_traffic_manager_profile_dns_config_relative_name.result
     ttl           = 30
