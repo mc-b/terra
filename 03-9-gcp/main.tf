@@ -67,7 +67,7 @@ resource "google_compute_firewall" "webshop" {
 
 resource "google_compute_instance" "order" {
   name         = "order"
-  machine_type = "f1-micro"
+  machine_type = "e2-micro"
   zone         = "us-east1-b" // Die gewünschte Zone in der GCP
 
   boot_disk {
@@ -88,7 +88,7 @@ resource "google_compute_instance" "order" {
 
 resource "google_compute_instance" "customer" {
   name         = "customer"
-  machine_type = "f1-micro"
+  machine_type = "e2-micro"
   zone         = "us-east1-b" // Die gewünschte Zone in der GCP
   boot_disk {
     initialize_params {
@@ -106,7 +106,7 @@ resource "google_compute_instance" "customer" {
 
 resource "google_compute_instance" "catalog" {
   name         = "catalog"
-  machine_type = "f1-micro"
+  machine_type = "e2-micro"
   zone         = "us-east1-b" // Die gewünschte Zone in der GCP
   boot_disk {
     initialize_params {
@@ -124,7 +124,7 @@ resource "google_compute_instance" "catalog" {
 
 resource "google_compute_instance" "webshop" {
   name         = "webshop"
-  machine_type = "f1-micro"
+  machine_type = "e2-micro"
   zone         = "us-east1-b" // Die gewünschte Zone in der GCP
   boot_disk {
     initialize_params {
