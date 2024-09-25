@@ -21,8 +21,8 @@ Anschliessend müssen folgende Aktionen ausgeführt werden:
 
 Die Befehle sind wie folgt:
 
-    az group create --name mygroup --location switzerlandnorth
-    az vm create --resource-group mygroup --name myvm --image Ubuntu2204 --size Standard_B1ls --location switzerlandnorth --custom-data cloud-init.yaml --generate-ssh-keys --public-ip-sku Standard --admin-username myuser
+    az group create --name mygroup --location eastus2
+    az vm create --resource-group mygroup --name myvm --image Ubuntu2204 --size Standard_B1ls --location eastus2 --custom-data cloud-init.yaml --generate-ssh-keys --public-ip-sku Standard --admin-username myuser
     az vm open-port --port 80 --resource-group mygroup --name myvm
     
 Die Ausgabe ist ungefähr wie folgt:
@@ -30,7 +30,7 @@ Die Ausgabe ist ungefähr wie folgt:
     {
     "fqdns": "",
     "id": "/subscriptions/.../resourceGroups/mygroup/providers/Microsoft.Compute/virtualMachines/myvm",
-    "location": "switzerlandnorth",
+    "location": "eastus2",
     "macAddress": "...",
     "powerState": "VM running",
     "privateIpAddress": "10.0.0.4",
@@ -41,9 +41,9 @@ Die Ausgabe ist ungefähr wie folgt:
 
 **Hinweis**: Sollte beim Erstellen der VM eine Fehlermeldung wegen zu wenig Public IP-Adressen kommen, kann auf die Public-IP verzichtet werden.
 
-    az network vnet create --resource-group mygroup --name myVnet --subnet-name mySubnet --location switzerlandnorth
+    az network vnet create --resource-group mygroup --name myVnet --subnet-name mySubnet --location eastus2
     az network nic create --resource-group mygroup --name myNic --vnet-name myVnet --subnet mySubnet
-    az vm create --resource-group mygroup --name myvm --image Ubuntu2204 --size Standard_B1ls --location switzerlandnorth --custom-data cloud-init.yaml --generate-ssh-keys --nics myNic --admin-username myuser
+    az vm create --resource-group mygroup --name myvm --image Ubuntu2204 --size Standard_B1ls --location eastus2 --custom-data cloud-init.yaml --generate-ssh-keys --nics myNic --admin-username myuser
 
 Dazu müssen wir die Netzwerke manuell erstellen und dann die VM damit verbinden.
     

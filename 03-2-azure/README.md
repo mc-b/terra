@@ -34,7 +34,7 @@ Die Ausgabe sieht in etwa so aus:
 
     {
       "id": "/subscriptions/.../resourceGroups/mygroup",
-      "location": "switzerlandnorth",
+      "location": "eastus2",
       "name": "mygroup",
       "type": "Microsoft.Resources/resourceGroups"
     }
