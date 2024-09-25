@@ -14,6 +14,16 @@ Erweitert `main.tf` um folgenden Code:
 
     resource "null_resource" "myip" {
     
+      # terraform apply
+      provisioner "local-exec" {
+        command = "echo Meine IP-Adresse ist: ${data.http.myip.response_body}"
+      }
+    }
+
+Soll auch `destroy` abgehandelt werden, braucht es `triggers` weil `data.http.myip.response_body` bei `terraform destroy` nicht mehr zur Verfügung steht.
+
+    resource "null_resource" "myip" {
+    
       triggers = {
         name = data.http.myip.response_body
       }
@@ -21,6 +31,12 @@ Erweitert `main.tf` um folgenden Code:
       provisioner "local-exec" {
         command = "echo Meine IP-Adresse ist: ${data.http.myip.response_body}"
       }
+
+      # terraform apply
+      provisioner "local-exec" {
+        when    = destroy
+        command = "echo Meine IP-Adresse war: ${self.triggers.name}"
+      }      
     }
 
 Teilt die Änderungen Terraform mit und erstellt die Ressource mit den Provisioners:
