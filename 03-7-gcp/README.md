@@ -27,7 +27,7 @@ Anschließend müssen folgende Aktionen ausgeführt werden:
 
 Die Befehle sind wie folgt:
 
-    gcloud compute firewall-rules create myfwrule --allow tcp:22,tcp:80 --description "Standard Ports"
+    gcloud compute firewall-rules create myfwrule --allow tcp:22-22,tcp:80-80 --description "Standard Ports"
     gcloud compute instances create myvm --image-family ubuntu-2204-lts --image-project ubuntu-os-cloud --machine-type e2-micro --tags http-server --metadata-from-file user-data=cloud-init.yaml --zone us-east1-b
 
 Anschließend können wir uns die laufenden VMs anzeigen
