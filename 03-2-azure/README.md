@@ -41,7 +41,7 @@ Die Ausgabe sieht in etwa so aus:
     
 Mit der `id` können wir die Gruppe importieren. **...** durch Eure Subscriptions-Id ersetzen. 
 
-    terraform import azurerm_resource_group.mygroup subscriptions/.../resourceGroups/mygroup
+    terraform import azurerm_resource_group.mygroup /subscriptions/.../resourceGroups/mygroup
     
 Die erstelle Terraform Deklaration können wir wie folgt anzeigen:
 
@@ -63,7 +63,7 @@ Die Ausgabe sieht in etwa so aus:
        
 Import 
 
-    terraform import azurerm_linux_virtual_machine.myvm subscriptions/.../resourceGroups/MYGROUP/providers/Microsoft.Compute/virtualMachines/myvm  
+    terraform import azurerm_linux_virtual_machine.myvm /subscriptions/.../resourceGroups/MYGROUP/providers/Microsoft.Compute/virtualMachines/myvm  
     
 Deklaration
 
