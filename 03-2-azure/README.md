@@ -118,6 +118,10 @@ Die Ausgabe sieht in etwa so aus:
 Erstellt eine Datei `import.tf` und fügt alle zu Importierenden Ressourcen, im nachfolgenden Format, in die Datei ein (`...` durch `subscription-id` ersetzen):
 
     import {
+        to = azurerm_resource_group.main
+        id  = "/subscriptions/.../resourceGroups/mygroup"
+    }
+    import {
         to  = azurerm_public_ip.main  
         id  = "/subscriptions/.../resourceGroups/mygroup/providers/Microsoft.Network/publicIPAddresses/myvmPublicIP"
     }
