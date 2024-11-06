@@ -1,9 +1,6 @@
-resource "random_pet" "rg_name" {
-  prefix = var.resource_group_name_prefix
-}
 
 resource "azurerm_resource_group" "rg" {
-  name     = random_pet.rg_name.id
+  name     = "webshop-lb"
   location = var.resource_group_location
 }
 
@@ -31,8 +28,8 @@ resource "azurerm_traffic_manager_profile" "profile" {
   }
 
   monitor_config {
-    protocol                    = "HTTPS"
-    port                        = 443
+    protocol                    = "HTTP"
+    port                        = 80
     path                        = "/"
     expected_status_code_ranges = ["200-202", "301-302"]
   }
@@ -41,7 +38,7 @@ resource "azurerm_traffic_manager_profile" "profile" {
 resource "azurerm_traffic_manager_external_endpoint" "endpoint1" {
   profile_id        = azurerm_traffic_manager_profile.profile.id
   name              = "endpoint1"
-  target            = "www.contoso.com"
+  target            = "51.8.170.169"
   endpoint_location = "eastus"
   weight            = 50
 }
@@ -49,7 +46,7 @@ resource "azurerm_traffic_manager_external_endpoint" "endpoint1" {
 resource "azurerm_traffic_manager_external_endpoint" "endpoint2" {
   profile_id        = azurerm_traffic_manager_profile.profile.id
   name              = "endpoint2"
-  target            = "www.fabrikam.com"
-  endpoint_location = "westus"
+  target            = "51.8.174.29"
+  endpoint_location = "eastus"
   weight            = 50
 }
