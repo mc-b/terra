@@ -43,7 +43,7 @@ Einloggen in AWS Cloud
 
 ### Virtuelle Maschine
 
-Um die Ressource Gruppe zu importieren, brauchen wir deren `id`. Deshalb zeigen wir mit dem AWS CLI zuerst deren Informationen an:
+Um die VM zu importieren, brauchen wir deren `id`. Deshalb zeigen wir mit dem AWS CLI zuerst deren Informationen an:
 
     aws ec2 describe-instances 
     

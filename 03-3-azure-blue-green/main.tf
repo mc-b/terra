@@ -35,18 +35,18 @@ resource "azurerm_traffic_manager_profile" "profile" {
   }
 }
 
-resource "azurerm_traffic_manager_external_endpoint" "endpoint1" {
+resource "azurerm_traffic_manager_external_endpoint" "blue" {
   profile_id        = azurerm_traffic_manager_profile.profile.id
-  name              = "endpoint1"
-  target            = "51.8.170.169"
+  name              = "blue"
+  target            = "52.242.72.144"
   endpoint_location = "eastus"
-  weight            = 50
+  weight            = 500
 }
 
-resource "azurerm_traffic_manager_external_endpoint" "endpoint2" {
+resource "azurerm_traffic_manager_external_endpoint" "green" {
   profile_id        = azurerm_traffic_manager_profile.profile.id
-  name              = "endpoint2"
-  target            = "51.8.174.29"
+  name              = "green"
+  target            = "172.200.12.135"
   endpoint_location = "eastus"
-  weight            = 50
+  weight            = 500
 }
