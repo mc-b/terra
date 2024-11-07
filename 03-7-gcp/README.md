@@ -21,7 +21,7 @@ Einloggen in Google Cloud und Umgebung Initialisieren. Verwendet als Region `us-
 
 **Tipp** sollte eine Fehlermeldung wegen fehlenden PowerShell Rechten kommen `PowerShell.exe -ExecutionPolicy Bypass -File "C:\Program Files (x86)\Google\Cloud SDK\google-cloud-sdk\bin\gcloud.ps1"` statt `gcloud` verwenden. Alternativ kann `gcloud.ps1` umgenannt werden. Bei der Fehlermeldung, dass Python nicht gefunden wird `C:\Program Files (x86)\Google\Cloud SDK\google-cloud-sdk\platform\bundledpython` in PATH aufnehmen. 
 
-Anschließend müssen folgende Aktionen ausgeführt werden:
+Anschliessend müssen folgende Aktionen ausgeführt werden:
 * Firewall-Regel erstellen und Ports öffnen
 * Erstellen der VM 
 
@@ -30,7 +30,7 @@ Die Befehle sind wie folgt:
     gcloud compute firewall-rules create myfwrule --allow "tcp:22,tcp:80" --description "Standard Ports"
     gcloud compute instances create myvm --image-family ubuntu-2204-lts --image-project ubuntu-os-cloud --machine-type e2-micro --tags http-server --metadata-from-file user-data=cloud-init.yaml --zone us-east1-b
 
-Anschließend können wir uns die laufenden VMs anzeigen
+Anschliessend können wir uns die laufenden VMs anzeigen
 
     gcloud compute instances list
 
