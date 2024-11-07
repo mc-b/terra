@@ -33,22 +33,27 @@ Anschliessend müssen folgende Aktionen ausgeführt werden:
 * Security Group erstellen und Ports öffnen
 * Erstellen der VM 
 
-<pre>
-aws ec2 create-security-group --group-name mygroup --description "Standard Ports"
-aws ec2 authorize-security-group-ingress --group-name mygroup --protocol tcp --port 22 --cidr 0.0.0.0/0
-aws ec2 authorize-security-group-ingress --group-name mygroup --protocol tcp --port 80 --cidr 0.0.0.0/0   
+
     
-aws ec2 run-instances --image-id ami-053b0d53c279acc90 --security-group-ids mygroup --instance-type t2.micro --count 1 --user-data file://cloud-init.yaml 
-</pre>
+    aws ec2 create-security-group --group-name mygroup --description "Standard Ports"
+    aws ec2 authorize-security-group-ingress --group-name mygroup --protocol tcp --port 22 --cidr 0.0.0.0/0
+    aws ec2 authorize-security-group-ingress --group-name mygroup --protocol tcp --port 80 --cidr 0.0.0.0/0   
+        
+    aws ec2 run-instances --image-id ami-053b0d53c279acc90 --security-group-ids mygroup --instance-type t2.micro --count 1 --user-data file://cloud-init.yaml 
 
 Anschliessend können wir uns die laufenden VMs anzeigen
 
+    export AWS_PAGER=""
     aws ec2 describe-instances --output table   
     
 Und die erstellte Security Group
 
-    aws ec2 describe-security-groups
+    aws ec2 describe-security-groups --output table   
     
+Um die Ausgaben mehr einzugrenzen, z.B. auf `InstanceId`, `SubnetId`, `VpcId` und `Public DNS`
+
+    aws ec2 describe-instances --query "Reservations[*].Instances[*].[InstanceId, SubnetId, VpcId, PublicDnsName]" --output text
+  
 **Überprüft das Ergebnis, durch Anwählen der IP-Adresse Eurer VM im Browser.**
 
 Um die erstellten Ressourcen zu löschen. VM und Security Group löschen, der Disk der VM wird automatisch gelöscht:
@@ -56,7 +61,7 @@ Um die erstellten Ressourcen zu löschen. VM und Security Group löschen, der Di
     aws ec2 terminate-instances --instance-ids <InstanceId>
     aws ec2 delete-security-group --group-id <ID-der-Security-Group>
     
-**Hinweis** AWS verwendet fortlaufende Nummern (oder auch eigendefinierte Schlüssel) um Ressourcen zu identifizieren. Deshalb ist 
+**Hinweis** AWS verwendet fortlaufende Nummern (oder auch eigendefinierte Schlüssel) um Ressourcen zu identifizieren. 
     
 ### Links
 

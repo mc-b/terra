@@ -8,4 +8,11 @@
 	</buildSpec>
 	<natures>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>terraform-provider-lernmaas</name>
+			<type>2</type>
+			<location>D:/Sourcen/ws/terraform-provider-lernmaas</location>
+		</link>
+	</linkedResources>
 </projectDescription>

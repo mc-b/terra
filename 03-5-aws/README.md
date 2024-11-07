@@ -79,12 +79,32 @@ Die benötigten Metadaten sind in `main.tf` zu überführen, variable Werte durc
 
 ### Variante 2 - Experimentell
 
-Erstellt eine Datei `import.tf` und fügt alle zu Importierenden Ressourcen, im nachfolgenden Format, in die Datei ein:
+Erstellt eine Datei `import.tf` und fügt alle zu Importierenden Ressourcen mit Ids in die Datei ein:
 
     import {
         to  = aws_instance.main
-        id  = "i-01da79e473269858d"
+        id  = "i-..."
     }
+    
+    import {
+        to  = aws_subnet.main
+        id  = "subnet-..."
+    } 
+    
+    import {
+        to  = aws_vpc.main
+        id  = "vpc-..."
+    }    
+    
+    import {
+        to  = aws_security_group.main
+        id  = "sg-..."
+    }  
+
+Die Ids können wie folgt abgefragt werden:
+    
+    aws ec2 describe-instances --query "Reservations[*].Instances[*].[InstanceId, SubnetId, VpcId, PublicDnsName]" --output text
+    aws ec2 describe-security-groups --group-names mygroup --query "SecurityGroups[0].GroupId" --output text    
 
 Mittels `terraform plan` können die entsprechenden Terraform Deklaration automatisch erstellt werden:
 
