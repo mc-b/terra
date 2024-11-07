@@ -61,6 +61,11 @@ Um die erstellten Ressourcen zu löschen. VM und Security Group löschen, der Di
     aws ec2 terminate-instances --instance-ids <InstanceId>
     aws ec2 delete-security-group --group-id <ID-der-Security-Group>
     
+Oder die Kurzform (nur Bash-Shell)
+    
+    aws ec2 terminate-instances --instance-ids $(aws ec2 describe-instances --query "Reservations[*].Instances[*].InstanceId" --output text)
+    aws ec2 delete-security-group --group-id $(aws ec2 describe-security-groups --group-names mygroup --query "SecurityGroups[0].GroupId" --output text)
+    
 **Hinweis** AWS verwendet fortlaufende Nummern (oder auch eigendefinierte Schlüssel) um Ressourcen zu identifizieren. 
     
 ### Links
