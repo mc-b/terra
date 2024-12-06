@@ -34,7 +34,7 @@ Die Ausgabe von `01-stage-infrastructure` (Infrastruktur wie Netzwerke, Subnetze
 
 Dazu muss im ersten Stage die benötigten Werte als Outputs definiert werden:
 
-**Beispiel**: `01-stage-infrastructure/output.tf`
+**Beispiel**: `01-stage-infrastructure/outputs.tf`
 
     output "intern_security_group_id" {
       description = "ID of the internal security group created by the security module"
