@@ -29,7 +29,7 @@ Jede Umgebung (`prod`, `dev`, `test`) hat ihre eigene `.tfvars`-Datei, die spezi
 
 ---
 
-### Befehle für die Verwaltung der Umgebungen
+### Workflow
 
 #### 1. **Entwicklungsumgebung (dev)**
 
