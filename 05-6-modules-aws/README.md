@@ -23,15 +23,6 @@ Terraform-Module sind ein essenzieller Bestandteil zur Organisation, Wiederverwe
 
 Die ursprüngliche [03-6-aws/main.tf](../03-6-aws/main.tf)-Datei für AWS enthält alle Ressourcen für die Bereitstellung der Infrastruktur in einer einzigen Datei. Um die Struktur zu verbessern und die Verwaltung zu erleichtern, haben wir die Ressourcen in folgende Module aufgeteilt:
 
-1. **application/order**, **application/customer**, **application/catalog**
-2. **network** (nur mit dem externen Netzwerk)
-3. **routing** (mit der Webshop-VM, Netzwerk, interner Firewall)
-4. **security** (mit der externen Firewall)
-
----
-
-### **Übersicht der Ressourcen und deren Zuordnung zu Modulen**
-
 | **Modul**                 | **Beschreibung**                                        | **Ressourcen**                                                                                         |
 |---------------------------|---------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | **network**               | Internes Netzwerk                                       | - `aws_vpc.webshop`<br>- `aws_subnet.webshop`                                           |
