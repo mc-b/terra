@@ -33,13 +33,13 @@ Die ursprüngliche [03-6-aws/main.tf](../03-6-aws/main.tf)-Datei für AWS enthä
 ### **Übersicht der Ressourcen und deren Zuordnung zu Modulen**
 
 | **Modul**                 | **Beschreibung**                                        | **Ressourcen**                                                                                         |
-|---------------------------|--------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| **network**               | Externes Netzwerk                                       | - `aws_vpc.webshop`<br>- `aws_internet_gateway.webshop`                                           |
-| **routing**               | Routing und internes Subnetz                            | - `aws_route.internet_access`<br>- `aws_subnet.webshop_intern`<br>- `aws_instance.webshop`     |
+|---------------------------|---------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
+| **network**               | Internes Netzwerk                                       | - `aws_vpc.webshop`<br>- `aws_subnet.webshop`                                           |
+| **routing**               | Routing nach Aussen und "WebShop" (Reverse Proxy)       | - `aws_internet_gateway.webshop`<br>- `aws_route.internet_access`<br>- `aws_instance.webshop`     |
 | **security**              | Externe und interne Security Groups                     | - `aws_security_group.webshop`<br>- `aws_security_group.webshop_intern`                         |
-| **application/order**     | Anwendung "Order"                                       | - `aws_instance.order`                                                                          |
-| **application/customer**  | Anwendung "Customer"                                    | - `aws_instance.customer`                                                                       |
-| **application/catalog**   | Anwendung "Catalog"                                     | - `aws_instance.catalog`                                                                        |
+| **application/order**     | Applikation "Order"                                     | - `aws_instance.order`                                                                          |
+| **application/customer**  | Applikation "Customer"                                  | - `aws_instance.customer`                                                                       |
+| **application/catalog**   | Applikation "Catalog"                                   | - `aws_instance.catalog`                                                                        |
 
 ---
 
