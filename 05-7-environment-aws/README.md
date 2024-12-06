@@ -16,7 +16,15 @@ Die Kombination dieser beiden Funktionen ermöglicht eine flexible, skalierbare 
 
 Jede Umgebung (`prod`, `dev`, `test`) hat ihre eigene `.tfvars`-Datei, die spezifische Werte für die jeweilige Umgebung definiert. Die Workspaces sorgen dafür, dass Terraform für jede Umgebung separate Zustandsdateien verwaltet.
 
-#### **Beispielkonfiguration:**
+#### Projektstruktur für Environments
+
+    ├───environments
+    │   ├───dev
+    │   │       dev.tfvars
+    │   ├───prod
+    │   │       prod.tfvars
+    │   └───test
+    │           test.tfvars
 
 **`environments/dev/dev.tfvars`:**
 * Enthält Variablen für die Entwicklungsumgebung (z. B. kleinere Instanzen, weniger Replikate).
@@ -25,7 +33,7 @@ Jede Umgebung (`prod`, `dev`, `test`) hat ihre eigene `.tfvars`-Datei, die spezi
 * Definiert Variablen für die Testumgebung (ähnlich wie `prod`, aber mit isoliertem Netzwerk).
 
 **`environments/prod/prod.tfvars`:**
-* Enthält Werte für die Produktionsumgebung (z. B. Hochverfügbarkeit, große Ressourcen).
+* Enthält Werte für die Produktionsumgebung (z. B. Hochverfügbarkeit, grosse Ressourcen).
 
 ---
 
