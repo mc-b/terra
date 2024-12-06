@@ -15,7 +15,7 @@ provider "aws" {
   region  = "us-east-1"
 }
 
-# VPC inkl. Zugriff via Internet. Braucht alle drei Eintraege damit es funktioniert
+# VPC inkl. Zugriff via Internet. Braucht alle vier Eintraege damit es funktioniert
 
 resource "aws_vpc" "webshop" {
   cidr_block            = "10.0.0.0/16"
@@ -32,11 +32,17 @@ resource "aws_route" "internet_access" {
   gateway_id             = aws_internet_gateway.webshop.id
 }
 
+resource "aws_route_table_association" "webshop_public" {
+  subnet_id      = aws_subnet.webshop_intern.id
+  route_table_id = aws_vpc.webshop.main_route_table_id
+}
+
+
 # Subnet fuer interne Server. So kann webshop auf order, customer, catalog zugreifen, aber nicht das Internet
 
 resource "aws_subnet" "webshop_intern" {
   cidr_block              = "10.0.1.0/24"
-  map_public_ip_on_launch = false
+  map_public_ip_on_launch = true
   vpc_id                  = aws_vpc.webshop.id  
 }
 
