@@ -1,0 +1,45 @@
+#cloud-config
+users:
+  - name: ubuntu
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users, admin
+    shell: /bin/bash
+    ssh_import_id:
+     - gh:mc-b
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDPvLEdsh/Vpu22zN3M/lmLE8zEO1alk/aWzIbZVwXJYa1RbNHocyZlvE8XDcv1WqeuVqoQ2DPflkQxdrbp2G08AWYgPNiQrMDkZBHG4GlU2Jhe9kCRiWVx/oVDeK8v3+w2nhFt8Jk/eeQ1+E19JlFak1iYveCpHqa68W3NIWj5b10I9VVPmMJVJ4KbpEpuWNuKH0p0YsUKfTQdvrn42fz5jYS1aV7qCCOOzB3WC833QRy04iHZObxDWIi/IFeIp1Gw2FkzPhoZyx4Fk9bsXfm301IePp9cwzArI2LdcOhwEZ3RW2F7ie2WJlVy5tzJjMGCaE1tZTjiCahLNEeTiTQp public-key@cloud.tbz.ch
+packages:
+  - apache2
+write_files:
+ - content: |
+    <html>
+     <body>
+      <h1>My Application ${environment}</h1>
+       <ul>
+       <li><a href="/order">Order</a></li>
+       <li><a href="/customer">Customer</a></li>
+       <li><a href="/catalog">Catalog</a></li>
+       </ul>
+     </body>
+    </html>
+   path: /var/www/html/index.html
+   permissions: '0644'  
+ - content: |
+    ProxyRequests Off
+    <Proxy *>
+          Order deny,allow
+          Allow from all
+    </Proxy>
+    ProxyPass /order http://order         
+    ProxyPassReverse /order http://order 
+    ProxyPass /customer http://customer         
+    ProxyPassReverse /customer http://customer  
+    ProxyPass /catalog http://catalog         
+    ProxyPassReverse /catalog http://catalog 
+   path: /etc/apache2/sites-enabled/001-reverseproxy.conf
+   permissions: '0644'  
+runcmd:
+ - sudo a2enmod proxy
+ - sudo a2enmod proxy_html
+ - sudo a2enmod proxy_http
+ - sudo service apache2 restart
