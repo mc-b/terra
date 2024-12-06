@@ -1,4 +1,4 @@
-## Stages mit Environments
+## Stages - Environments
 
 Eine Kombination aus Stages und Environments (z. B. prod, dev, test) könnte dann wie folgt aussehen:
 
