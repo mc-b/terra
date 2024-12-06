@@ -34,6 +34,7 @@ Jede Umgebung (`prod`, `dev`, `test`) hat ihre eigene `.tfvars`-Datei, die spezi
 #### 1. **Entwicklungsumgebung (dev)**
 
     terraform workspace new dev
+    terraform workspace select dev
     terraform plan -var-file="environments/dev/dev.tfvars"
     terraform apply -var-file="environments/dev/dev.tfvars" -auto-approve
     terraform destroy -var-file="environments/dev/dev.tfvars" -auto-approve
@@ -43,9 +44,12 @@ Jede Umgebung (`prod`, `dev`, `test`) hat ihre eigene `.tfvars`-Datei, die spezi
 - **`apply`:** Führt die Änderungen durch und erstellt die Ressourcen basierend auf den Werten in `dev.tfvars`.
 - **`destroy`:** Entfernt alle Ressourcen der Entwicklungsumgebung.
 
+**Hinweis**: wenn die Workspace schon besteht ist nur `terraform workspace select dev` zu verwenden.
+
 #### 2. **Testumgebung (test)**
 
     terraform workspace new test
+    terraform workspace select test
     terraform plan -var-file="environments/test/test.tfvars"
     terraform apply -var-file="environments/test/test.tfvars" -auto-approve
     terraform destroy -var-file="environments/test/test.tfvars" -auto-approve
@@ -55,6 +59,7 @@ Jede Umgebung (`prod`, `dev`, `test`) hat ihre eigene `.tfvars`-Datei, die spezi
 #### 3. **Produktionsumgebung (prod)**
 
     terraform workspace new prod
+    terraform workspace select prod
     terraform plan -var-file="environments/prod/prod.tfvars"
     terraform apply -var-file="environments/prod/prod.tfvars" -auto-approve
     terraform destroy -var-file="environments/prod/prod.tfvars" -auto-approve
