@@ -4,9 +4,3 @@
 /terraform.tfstate
 /terraform.tfstate.*
 config.txt
-/beispiele/
-/packer-windows/
-/bank-of-anthos/
-/cloud-images/
-/robox/
-/config.txt-cli
