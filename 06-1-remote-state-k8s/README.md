@@ -1,6 +1,6 @@
 ## Übung 06-1: Remote State Storage - Kubernetes
 
-### Vorbereitung `k0s` Kubernetes
+### Vorbereitung `k0s` Kubernetes 
 
 `.kube/config` Datei für User `ubuntu` zur Verfügung stellen
 
@@ -11,6 +11,15 @@
     sudo snap install kubectl --classic
     
 Die Datei `~/.kube/config` ist lokal auf den PC zu übertragen, z.B. `scp ubuntu@<k8s host>:./kube/config config`
+
+Zusätzlich ist das CLI [kubectl](https://kubernetes.io/docs/tasks/tools/) zu installieren.
+
+### Vorbereitung `microk8s` Kubernetes (in PowerShell) 
+
+Wenn eine Kubernetes Umgebung lokal, z.B. in Hyper-V, läuft muss zuerst die `~/.kube/config` von der VM auf dem PC kopiert und anschliessend das CLI [kubectl](https://kubernetes.io/docs/tasks/tools/) installiert werden, z.B.:
+
+    New-Item -Path "$HOME\.kube" -ItemType Directory -Force
+    multipass transfer ubuntu:/home/ubuntu/.kube/config ~/.kube/config
 
 ### Übung   
 
