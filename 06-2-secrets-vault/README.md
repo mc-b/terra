@@ -57,10 +57,10 @@ Und [main.tf](main.tf):
     resource "local_file" "cloud_init" {
       filename = "rendered-cloud-init.yaml"
       content = templatefile("../scripts/webshop.tpl", {
-        password = data.kubernetes_secret.my_secret.data["password"]
-        ssh_key  = data.kubernetes_secret.my_secret.data["ssh_key"]
+        password = data.vault_generic_secret.my_secret.data["password"]
+        ssh_key  = data.vault_generic_secret.my_secret.data["ssh_key"]
       })
-    }        
+    }       
 
 #### Links
 
