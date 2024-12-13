@@ -15,7 +15,9 @@ Anschliessend können wir ganz normal die Ressourcen mit Terraform erstellen.
     terraform init
     terraform apply -auto-approve 
     
-Die Cloud-init Datei [webshop.tpl](../scripts/webshop.tbl) enthält keine geheimen Werte mehr, sondern diese werden von Kubernetes geholt.
+Das Ergebnis können wir in der Datei `rendered-cloud-init.yaml` anschauen.
+    
+Die Original Cloud-init Datei [webshop.tpl](../scripts/webshop.tbl) enthält keine geheimen Werte, sondern diese werden von Kubernetes geholt.
 
     #cloud-config
     hostname: webshop
