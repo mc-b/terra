@@ -1,0 +1,24 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: terra
+  namespace: mc-b
+  description: 'Kurs: Infrastructure as Code mit Terraform'
+  tags:
+  - cloud
+  - infrastructure-as-code
+  - terraform
+  - cloud-native
+  - education
+  links:
+  - url: https://github.com/mc-b/terra
+    title: Repository
+    icon: github
+  annotations:
+    github.com/project-slug: mc-b/terra
+    backstage.io/source-location: url:https://github.com/mc-b/terra
+    # backstage.io/techdocs-ref: url:https://github.com/mc-b/terra
+spec:
+  type: education
+  lifecycle: production
+  owner: group:mc-b/mc-b
