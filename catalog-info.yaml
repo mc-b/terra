@@ -8,8 +8,9 @@ metadata:
   - cloud
   - infrastructure-as-code
   - terraform
+  - opentofu
   - cloud-native
-  - education
+  - digicomp
   links:
   - url: https://github.com/mc-b/terra
     title: Repository
