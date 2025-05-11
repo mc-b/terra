@@ -11,6 +11,7 @@ metadata:
   - opentofu
   - cloud-native
   - digicomp
+  - education
   links:
   - url: https://github.com/mc-b/terra
     title: Repository
@@ -20,6 +21,6 @@ metadata:
     backstage.io/source-location: url:https://github.com/mc-b/terra
     # backstage.io/techdocs-ref: url:https://github.com/mc-b/terra
 spec:
-  type: education
+  type: website
   lifecycle: production
   owner: group:mc-b/mc-b
