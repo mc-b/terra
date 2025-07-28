@@ -1,1 +1,0 @@
-Outputverzeichnis für VMs
