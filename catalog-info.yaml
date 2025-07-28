@@ -24,3 +24,5 @@ spec:
   type: website
   lifecycle: production
   owner: group:mc-b/mc-b
+  dependsOn:
+  - component:mc-b/lerncloud   
