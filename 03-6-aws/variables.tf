@@ -10,20 +10,20 @@ variable "image" {
 
 # Scripts
 
-data "template_file" "order" {
-  template = file("${path.module}/../scripts/order.yaml")
+data "local_file" "order" {
+  filename  = "${path.module}/../scripts/order.yaml"
 }
 
-data "template_file" "customer" {
-  template = file("${path.module}/../scripts/customer.yaml")
+data "local_file" "customer" {
+  filename  = "${path.module}/../scripts/customer.yaml"
 }
 
-data "template_file" "catalog" {
-  template = file("${path.module}/../scripts/catalog.yaml")
+data "local_file" "catalog" {
+  filename  = "${path.module}/../scripts/catalog.yaml"
 }
 
-data "template_file" "webshop" {
-  template = file("${path.module}/../scripts/webshop.yaml")
+data "local_file" "webshop" {
+  filename  = "${path.module}/../scripts/webshop.yaml"
 }
 
 

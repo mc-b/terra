@@ -18,10 +18,10 @@ provider "aws" {
 # VPC inkl. Zugriff via Internet. Braucht alle vier Eintraege damit es funktioniert
 
 resource "aws_vpc" "webshop" {
-  cidr_block            = "10.0.0.0/16"
+  cidr_block = "10.0.0.0/16"
   # DNS Namen muessen aktiviert und im Cloud-init Script der hostname gesetzt werden.
-  enable_dns_support    = true
-  enable_dns_hostnames  = true
+  enable_dns_support   = true
+  enable_dns_hostnames = true
 }
 resource "aws_internet_gateway" "webshop" {
   vpc_id = aws_vpc.webshop.id
@@ -43,14 +43,14 @@ resource "aws_route_table_association" "webshop_public" {
 resource "aws_subnet" "webshop_intern" {
   cidr_block              = "10.0.1.0/24"
   map_public_ip_on_launch = true
-  vpc_id                  = aws_vpc.webshop.id  
+  vpc_id                  = aws_vpc.webshop.id
 }
 
 # Interne Security Group
 
 resource "aws_security_group" "webshop_intern" {
-  name        = "webshop_intern"
-  vpc_id      = aws_vpc.webshop.id
+  name   = "webshop_intern"
+  vpc_id = aws_vpc.webshop.id
 
   # SSH access vom Subnetz
   ingress {
@@ -80,8 +80,8 @@ resource "aws_security_group" "webshop_intern" {
 # Externe Security Group 
 
 resource "aws_security_group" "webshop" {
-  name        = "webshop"
-  vpc_id      = aws_vpc.webshop.id
+  name   = "webshop"
+  vpc_id = aws_vpc.webshop.id
 
   # SSH access from anywhere
   ingress {
@@ -111,12 +111,12 @@ resource "aws_security_group" "webshop" {
 # VMs
 
 resource "aws_instance" "order" {
-  ami                           = var.image
-  instance_type                 = "t2.micro"
-  associate_public_ip_address   = false
-  user_data                     = data.template_file.order.rendered
-  vpc_security_group_ids        = [aws_security_group.webshop_intern.id]
-  subnet_id                     = aws_subnet.webshop_intern.id  
+  ami                         = var.image
+  instance_type               = "t2.micro"
+  associate_public_ip_address = false
+  user_data                   = templatefile(data.local_file.order.filename, {})
+  vpc_security_group_ids      = [aws_security_group.webshop_intern.id]
+  subnet_id                   = aws_subnet.webshop_intern.id
 
   tags = {
     Name = "order"
@@ -124,12 +124,12 @@ resource "aws_instance" "order" {
 }
 
 resource "aws_instance" "customer" {
-  ami                           = var.image
-  instance_type                 = "t2.micro"
-  associate_public_ip_address   = false
-  user_data                     = data.template_file.customer.rendered
-  vpc_security_group_ids        = [aws_security_group.webshop_intern.id]
-  subnet_id                     = aws_subnet.webshop_intern.id  
+  ami                         = var.image
+  instance_type               = "t2.micro"
+  associate_public_ip_address = false
+  user_data                   = templatefile(data.local_file.customer.filename, {})
+  vpc_security_group_ids      = [aws_security_group.webshop_intern.id]
+  subnet_id                   = aws_subnet.webshop_intern.id
 
   tags = {
     Name = "customer"
@@ -137,12 +137,12 @@ resource "aws_instance" "customer" {
 }
 
 resource "aws_instance" "catalog" {
-  ami                           = var.image
-  instance_type                 = "t2.micro"
-  associate_public_ip_address   = false
-  user_data                     = data.template_file.catalog.rendered
-  vpc_security_group_ids        = [aws_security_group.webshop_intern.id]
-  subnet_id                     = aws_subnet.webshop_intern.id  
+  ami                         = var.image
+  instance_type               = "t2.micro"
+  associate_public_ip_address = false
+  user_data                   = templatefile(data.local_file.catalog.filename, {})
+  vpc_security_group_ids      = [aws_security_group.webshop_intern.id]
+  subnet_id                   = aws_subnet.webshop_intern.id
 
   tags = {
     Name = "catalog"
@@ -150,12 +150,12 @@ resource "aws_instance" "catalog" {
 }
 
 resource "aws_instance" "webshop" {
-  ami                           = var.image
-  instance_type                 = "t2.micro"
-  associate_public_ip_address   = true
-  user_data                     = data.template_file.webshop.rendered
-  vpc_security_group_ids        = [aws_security_group.webshop.id]
-  subnet_id                     = aws_subnet.webshop_intern.id  
+  ami                         = var.image
+  instance_type               = "t2.micro"
+  associate_public_ip_address = true
+  user_data                   = templatefile(data.local_file.webshop.filename, {})
+  vpc_security_group_ids      = [aws_security_group.webshop.id]
+  subnet_id                   = aws_subnet.webshop_intern.id
 
   tags = {
     Name = "Webshop"
