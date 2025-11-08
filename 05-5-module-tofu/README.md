@@ -73,7 +73,7 @@ Terraform (bzw. OpenTofu) erkennt anhand des aktiven Workspaces automatisch, wel
 
 ### 💡 Hinweis zu Terraform vs. OpenTofu
 
-> **OpenTofu** erlaubt die dynamische Verwendung von Ausdrücken wie `${tofu.workspace}` im `source`-Parameter eines Moduls.
+> **OpenTofu** erlaubt die dynamische Verwendung von Ausdrücken wie `${local.workspace}` (terraform: `${terraform.workspace}`) im `source`-Parameter eines Moduls.
 > **Terraform** hingegen verlangt, dass `source` ein **statischer String** ist, der **nicht** von Variablen oder Workspaces abhängt.
 >
 > Das oben gezeigte Beispiel funktioniert daher **vollständig nur mit OpenTofu**.
