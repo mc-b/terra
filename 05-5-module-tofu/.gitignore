@@ -1,0 +1,9 @@
+/.terraform.lock.hcl
+/.terraform/
+/terraform.tfstate
+/terraform.tfstate.d/
+/terraform.tfstate.backup
+/.terraform.tfstate.lock.info
+/graph.png
+/graph.svg
+/main.tf
