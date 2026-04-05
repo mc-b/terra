@@ -35,11 +35,11 @@ Anschliessend müssen folgende Aktionen ausgeführt werden:
 
 
     
-    aws ec2 create-security-group --group-name mygroup --description "Standard Ports"
-    aws ec2 authorize-security-group-ingress --group-name mygroup --protocol tcp --port 22 --cidr 0.0.0.0/0
-    aws ec2 authorize-security-group-ingress --group-name mygroup --protocol tcp --port 80 --cidr 0.0.0.0/0   
+    aws ec2 create-security-group --group-name ${TF_VAR_name_prefix} --description "Standard Ports"
+    aws ec2 authorize-security-group-ingress --group-name ${TF_VAR_name_prefix} --protocol tcp --port 22 --cidr 0.0.0.0/0
+    aws ec2 authorize-security-group-ingress --group-name ${TF_VAR_name_prefix} --protocol tcp --port 80 --cidr 0.0.0.0/0   
         
-    aws ec2 run-instances --image-id ami-053b0d53c279acc90 --security-group-ids mygroup --instance-type t2.micro --count 1 --user-data file://cloud-init.yaml 
+    aws ec2 run-instances --image-id ami-053b0d53c279acc90 --security-group-ids ${TF_VAR_name_prefix} --instance-type t2.micro --count 1 --user-data file://cloud-init.yaml 
 
 Anschliessend können wir uns die laufenden VMs anzeigen
 
@@ -64,7 +64,7 @@ Um die erstellten Ressourcen zu löschen. VM und Security Group löschen, der Di
 Oder die Kurzform (nur Bash-Shell)
     
     aws ec2 terminate-instances --instance-ids $(aws ec2 describe-instances --query "Reservations[*].Instances[*].InstanceId" --output text)
-    aws ec2 delete-security-group --group-id $(aws ec2 describe-security-groups --group-names mygroup --query "SecurityGroups[0].GroupId" --output text)
+    aws ec2 delete-security-group --group-id $(aws ec2 describe-security-groups --group-names ${TF_VAR_name_prefix} --query "SecurityGroups[0].GroupId" --output text)
     
 **Hinweis** AWS verwendet fortlaufende Nummern (oder auch eigendefinierte Schlüssel) um Ressourcen zu identifizieren. 
     
