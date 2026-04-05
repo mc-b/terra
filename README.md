@@ -25,7 +25,17 @@ Terraform verwendet [Multipass](https://multipass.run/) um mehrere VMs zu erstel
 
 Nach erfolgreicher Installation werden weitere Informationen für den Zugriff auf die VMs angezeigt.
 
-### Client Umgebung
+### Lizenz (Attribution-NonCommercial-ShareAlike 4.0 International)
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://gitlab.com/ch-mc-b/cdi/infra/gitpod-workspace)
+![](http://www.creativecommons.ch/wp-content/uploads/2014/03/by-nc-sa1.png)
+
+Quelle [Creative Commons](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de)
+
+- - -
+
+* Name muss genannt werden
+* keine kommerzielle Nutzung erlaubt
+* gleiche Lizenz vorgeschrieben
+
+* Copyright (c) Marcel Bernet, Zürich
 
