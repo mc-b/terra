@@ -6,32 +6,6 @@ In dieser Übung werden die in der vorherigen Übung erstellten AWS-Ressourcen a
 
 Dazu verwenden wir die neue Import-Variante von Terraform.
 
-Erstellen einer Datei `provider.tf`, für den AWS Provider, mit folgenden Inhalt    
-
-    terraform {
-      required_version = ">= 1.5.0"
-    
-      required_providers {
-        aws = {
-          source  = "hashicorp/aws"
-          version = "~> 5.0"
-        }
-        local = {
-          source  = "hashicorp/local"
-          version = "~> 2.5"
-        }
-      }
-    }
-    provider "aws" {
-      region = "us-east-1"
-    }
-    
-Und eine minimale `variables.tf`
-
-    variable "name_prefix" {
-      type = string
-    }    
-    
 Initialisierung des Providers
 
     terraform init    
