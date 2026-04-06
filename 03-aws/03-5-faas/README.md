@@ -1,9 +1,5 @@
 ## Übung 03-5: AWS - Einfaches FAAS mit AWS Lambda
 
-Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
-
-Ausserdem muss das [AWS CLI](https://aws.amazon.com/de/cli/) installiert sein.
-
 ### Übung
 
 Dieses Beispiel zeigt eine minimal lauffähige serverlose Funktion auf AWS mit Terraform/OpenTofu. Der Fokus liegt auf einem möglichst einfachen HTTP-Endpunkt ohne komplexe Infrastruktur.

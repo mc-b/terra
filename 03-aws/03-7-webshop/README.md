@@ -1,12 +1,8 @@
-## Übung 03-66: AWS und Terraform
-
-Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
-
-Ausserdem muss das [AWS CLI](https://aws.amazon.com/de/cli/) installiert sein.
+## Übung 03-7: AWS und Terraform
 
 ### Übung
 
-Implementiert den [Webshop](../03-3-azure/) in der AWS Cloud mittels Terraform.
+Implementiert den [Webshop](../../03-azure/03-7-webshop/README.md) in der AWS Cloud mittels Terraform.
 
 Starten mittels
 
