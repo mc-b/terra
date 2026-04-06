@@ -1,35 +1,44 @@
-## Übung 03-4: AWS CLI
+## Übung 03-1: AWS CLI
 
-Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
+Das AWS CLI (Command Line Interface) ermöglicht es, AWS-Dienste direkt über die Kommandozeile zu steuern. Damit kannst du Ressourcen wie S3, EC2 oder DynamoDB ohne Weboberfläche erstellen, verwalten und automatisieren.
 
-Ausserdem muss das [AWS CLI](https://aws.amazon.com/de/cli/) installiert sein.
+Wir verwenden das AWS CLI, um erste Ressourcen in der AWS Cloud manuell zu erstellen. Diese werden anschliessend analysiert und in Terraform-Code überführt, damit sie reproduzierbar und automatisiert verwaltet werden können.
 
-### Einleitung
+Hier ist eine kompakte Anleitung mit den passenden AWS CLI Befehlen.
+
+### Übung S3 Bucket und DynamoDB Tabelle erstellen
+
+* S3 Bucket: wird direkt mit `create-bucket` erstellt, Tags müssen separat gesetzt werden
+* DynamoDB: benötigt Schema (Attribute + Key), Tags ebenfalls separat
+* `${TF_VAR_name_prefix}` entspricht deinem Terraform `var.name_prefix`
+
+**S3 Bucket erstellen**
+
+    aws s3api create-bucket \
+      --bucket ${TF_VAR_name_prefix}-bucket \
+      --region us-east-1
+
+**DynamoDB Tabelle erstellen**
+
+    aws dynamodb create-table \
+      --table-name ${TF_VAR_name_prefix}-table \
+      --attribute-definitions AttributeName=id,AttributeType=S \
+      --key-schema AttributeName=id,KeyType=HASH \
+      --billing-mode PAY_PER_REQUEST \
+      --region us-east-1
+
+**Kontrolle**
+
+    aws s3 ls | grep ${TF_VAR_name_prefix}
+    aws dynamodb list-tables | grep ${TF_VAR_name_prefix}
+
+### Übung virtuellen Maschinen (VMs) erstellen
 
 Als Cloud-init Datei verwenden wir die gleiche YAML-Datei wie aus [Übung 1](../01-1-iac/cloud-init-nginx.yaml).
 
 Mittels dieser Datei und dem jeweiligen Cloud CLI, erstellen wir eine neu VM.
 
-### Übung
-
-Zuerst muss AWS so konfiguriert werden, dass wir das AWS CLI verwenden können.
-
-Die Schritte sind wie folgt:
-* Anmelden in der AWS Console mittels Stammbenutzer (root)
-* Pulldown rechts beim Usernamen -> Sicherheitsanmeldeinformationen
-* Einen neuen Zugriffsschlüssel anlegen
-* Id und Secret Access Key notieren, die brauchen wir für `aws configure` unten.
-
-Einloggen in AWS Cloud
-
-    aws configure
- 
-    AWS Access Key ID [****************WBM7]:
-    AWS Secret Access Key [****************eKJA]:
-    Default region name [us-east-1]:
-    Default output format [None]:
-    
-Anschliessend müssen folgende Aktionen ausgeführt werden:
+Die Reihenfolge ist wie folgt:
 * Security Group erstellen und Ports öffnen
 * Erstellen der VM 
 

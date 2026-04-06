@@ -1,85 +1,72 @@
-## Übung 03-5: AWS - Terraform Import
+## Übung 03-2: AWS - Terraform Import
 
-Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
+### Übung Import
 
-Ausserdem muss das [AWS CLI](https://aws.amazon.com/de/cli/) installiert sein.
+In dieser Übung werden die in der vorherigen Übung erstellten AWS-Ressourcen aus [Übung 1](../03-1-aws/) in Terraform übernommen.
 
-### Übung
-
-In dieser Übung wollen wir die erstellten AWS Ressourcen aus [Übung 4](../03-4-aws/) nach Terraform überführen.
+Dazu verwenden wir die neue Import-Variante von Terraform.
 
 Erstellen einer Datei `provider.tf`, für den AWS Provider, mit folgenden Inhalt    
 
     terraform {
+      required_version = ">= 1.5.0"
+    
       required_providers {
         aws = {
           source  = "hashicorp/aws"
-          version = "~> 3.27"
+          version = "~> 5.0"
+        }
+        local = {
+          source  = "hashicorp/local"
+          version = "~> 2.5"
         }
       }
-    
-      required_version = ">= 0.14.9"
     }
-    
-    
     provider "aws" {
-      profile = "default"
-      region  = "us-east-1"
+      region = "us-east-1"
     }
+    
+Und eine minimale `variables.tf`
+
+    variable "name_prefix" {
+      type = string
+    }    
     
 Initialisierung des Providers
 
     terraform init    
 
-Einloggen in AWS Cloud
+Terraform kann bestehende Ressourcen nicht nur importieren, sondern auch die passende Konfiguration automatisch generieren.
 
-    aws configure
- 
-    AWS Access Key ID [****************WBM7]:
-    AWS Secret Access Key [****************eKJA]:
-    Default region name [us-east-1]:
-    Default output format [None]:
+Dazu werden Import-Blöcke definiert, und Terraform erstellt daraus eine fertige main.tf.
+
+Erstelle zuerst eine Datei import.tf:
+
+    import {
+      to = aws_s3_bucket.example
+      id = "${var.name_prefix}-bucket"
+    }
     
-
-### Virtuelle Maschine
-
-Um die VM zu importieren, brauchen wir deren `id`. Deshalb zeigen wir mit dem AWS CLI zuerst deren Informationen an:
-
-    aws ec2 describe-instances 
+    import {
+      to = aws_dynamodb_table.example
+      id = "${var.name_prefix}-table"
+    }
     
-Die Ausgabe sieht in etwa so aus:
+Führe anschliessend folgenden Befehl aus:
 
-    {
-        "Reservations": [
-            {
-                "Groups": [],
-                "Instances": [
-                    {
-                        "AmiLaunchIndex": 0,
-                        "ImageId": "ami-053b0d53c279acc90",
-                        "InstanceId": "i-03dd68244cb5c33ce",
-       
-Import 
+    terraform plan -generate-config-out=main.tf
 
-    terraform import aws_instance.myvm i-03dd68244cb5c33ce
- 
-    
-Deklaration
+Terraform analysiert die bestehenden Ressourcen und erstellt automatisch eine Konfigurationsdatei (main.tf).
 
-    terraform state show aws_instance.myvm        
-        
-#### Restliche Ressourcen
+Diese Datei enthält die notwendigen Attribute, um die Ressourcen vollständig mit Terraform zu verwalten.    
 
-Für die restlichen Ressourcen wie
-- Netzwerk
-- Firewall
-etc. bleibt das Vorgehen gleich.
+**Hinweis**
 
-Die benötigten Metadaten sind in `main.tf` zu überführen, variable Werte durch Variablen `variables.tf` ersetzen und mit den bekannten Terraform Befehlen testen.
+Die generierte Konfiguration ist oft sehr detailliert und enthält auch Werte, die du normalerweise nicht selbst definieren würdest. Ziel ist es, die Datei zu vereinfachen und an deine bestehende Struktur anzupassen.
 
-### Variante 2 - Experimentell
+### Import Virtuelle Maschine
 
-Erstellt eine Datei `import.tf` und fügt alle zu Importierenden Ressourcen mit Ids in die Datei ein:
+Erweitert die Datei `import.tf` und fügt alle zu Importierenden Ressourcen mit Ids in die Datei ein:
 
     import {
         to  = aws_instance.main
@@ -109,8 +96,6 @@ Die Ids können wie folgt abgefragt werden:
 Mittels `terraform plan` können die entsprechenden Terraform Deklaration automatisch erstellt werden:
 
     terraform plan -generate-config-out main.tf
- 
-### Links
 
 ### Links
 
