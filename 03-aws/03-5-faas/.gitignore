@@ -43,3 +43,4 @@ config.txt
 /*config.txt
 /secrets/
 /lambda.zip
+/actions.tf
