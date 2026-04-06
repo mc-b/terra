@@ -1,0 +1,10 @@
+/.terraform.lock.hcl
+/.terraform/
+/.terraform.tfstate.lock.info
+/terraform.tfstate
+/terraform.tfstate.*
+config.txt
+/import.tf
+/main.tf
+
+/search.tfquery.hcl
