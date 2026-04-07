@@ -1,6 +1,4 @@
-## Übung 03-3-blue-green: Create an Azure Traffic Manager profile using Terraform
-
-Übungsdateien mit dem Traffic Manager vom Azure, basierend auf dem Beispiel [Create an Azure Traffic Manager profile using Terraform](https://learn.microsoft.com/en-us/azure/traffic-manager/quickstart-create-traffic-manager-profile-terraform)
+## Übung 03-8 Blue/Green
 
 ### Übung
 
