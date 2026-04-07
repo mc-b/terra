@@ -1,86 +1,57 @@
 ## Übung 03-2: Azure - Terraform Import
 
-Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
+### Übung 
 
-Ausserdem muss das [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/) installiert sein.
-
-### Übung
-
-In dieser Übung wollen wir die erstellten Azure Ressourcen aus [Übung 1](../03-1-azure/) nach Terraform überführen.
+In dieser Übung wollen wir die erstellten Azure Ressourcen aus [Übung 1](../03-1-cli/README.md) nach Terraform überführen.
 
 Diese Arbeiten müssen in der **PowerShell** ausgeführt werden, weil Git/Bash mit `/sub...` nicht klar kommt.
 
-Erstellen einer Datei `provider.tf`, für den Azure Provider, mit folgenden Inhalt    
+Dazu verwenden wir die neue Import-Variante von Terraform.
 
-    provider "azurerm" {
-      features {}
-    }
-    
 Initialisierung des Providers
 
     terraform init    
 
-Anmelden an der Azure Cloud 
+Terraform kann bestehende Ressourcen nicht nur importieren, sondern auch die passende Konfiguration automatisch generieren.
 
-    az login
-    
-### Ressource Gruppe
+Dazu werden Import-Blöcke definiert, und Terraform erstellt daraus eine fertige main.tf.
 
-Um die Ressource Gruppe zu importieren, brauchen wir deren `id`. Deshalb zeigen wir mit dem Azure CLI zuerst deren Informationen an:
+Erstelle zuerst eine Datei import.tf:
 
-    az group list
-    
-Die Ausgabe sieht in etwa so aus:
-
-    {
-      "id": "/subscriptions/.../resourceGroups/mygroup",
-      "location": "eastus2",
-      "name": "mygroup",
-      "type": "Microsoft.Resources/resourceGroups"
+    import {
+      to = azurerm_storage_account.example
+      id = "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"
     }
     
-Mit der `id` können wir die Gruppe importieren. **...** durch Eure Subscriptions-Id ersetzen. 
-
-    terraform import azurerm_resource_group.mygroup /subscriptions/.../resourceGroups/mygroup
+    import {
+      to = azurerm_storage_account_static_website.example
+      id = "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"
+    }
     
-Die erstelle Terraform Deklaration können wir wie folgt anzeigen:
+    import {
+      to = azurerm_storage_table.example
+      id = "https://<storage-account-name>.table.core.windows.net/studenttable"
+    }
 
-    terraform state show azurerm_resource_group.mygroup
-    
+Mittels `terraform plan` können die entsprechenden Terraform Deklaration automatisch erstellt werden:
 
-### Virtuelle Maschine
+    terraform plan -generate-config-out main.tf
 
-    az vm list
-    
-Die Ausgabe sieht in etwa so aus:
+Terraform analysiert die bestehenden Ressourcen und erstellt automatisch eine Konfigurationsdatei (main.tf).
 
-    [
-      {
-        "hardwareProfile": {
-          "vmSize": "Standard_D2_v4",
-        },
-        "id": "/subscriptions/.../resourceGroups/MYGROUP/providers/Microsoft.Compute/virtualMachines/myvm",
-       
-Import 
+Diese Datei enthält die notwendigen Attribute, um die Ressourcen vollständig mit Terraform zu verwalten.    
 
-    terraform import azurerm_linux_virtual_machine.myvm /subscriptions/.../resourceGroups/MYGROUP/providers/Microsoft.Compute/virtualMachines/myvm  
-    
-Deklaration
+**Hinweis**
 
-    terraform state show azurerm_linux_virtual_machine.myvm         
-        
-#### Restliche Ressourcen
+Die generierte Konfiguration ist oft sehr detailliert und enthält auch Werte, die du normalerweise nicht selbst definieren würdest. Ziel ist es, die Datei zu vereinfachen und an deine bestehende Struktur anzupassen.
 
-Für die restlichen Ressourcen wie
-- Netzwerk
-- Firewall
-etc. bleibt das Vorgehen gleich.
+### Übung (virtuelle Maschinen)
 
-Die benötigten Metadaten sind in `main.tf` zu überführen, variable Werte durch Variablen `variables.tf` ersetzen und mit den bekannten Terraform Befehlen testen.
+In dieser Übung wollen wir die erstellten Azure Ressourcen aus [Übung 1](../03-1-cli/README.md) nach Terraform überführen.
 
-### Variante 2 - Experimentell
+Diese Arbeiten müssen in der **PowerShell** ausgeführt werden, weil Git/Bash mit `/sub...` nicht klar kommt.
 
-Gibt alle erstellen Ressourcen zur Ressource Gruppe aus:
+Gibt alle erstellen Ressourcen zur Ressource Gruppe aus, ersetzt `mygroup` durch die Ausgabe von `$env:TF_VAR_name_prefix`
 
     az resource list --query "[?resourceGroup=='mygroup'].{ id: id, name: name, flavor: kind, resourceType: type, region: location }"
     
