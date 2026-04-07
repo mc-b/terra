@@ -8,7 +8,7 @@ Ausserdem muss das [AWS CLI](https://aws.amazon.com/de/cli/) installiert sein.
 
 Für die Übungen 1 bis 5 kannst du mit den vom Trainer bereitgestellten AWS-Zugangsdaten arbeiten.
 
-Kopiere dazu aus den Unterlagen das Verzeichnis `secrets` in dieses Arbeitsverzeichnis.
+Kopiere dazu aus den Unterlagen das Verzeichnis `aws/secrets` in dieses Arbeitsverzeichnis.
 
 Anschliessend lädst du die passende Umgebung:
 

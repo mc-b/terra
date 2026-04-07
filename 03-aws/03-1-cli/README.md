@@ -4,8 +4,6 @@ Das AWS CLI (Command Line Interface) ermöglicht es, AWS-Dienste direkt über di
 
 Wir verwenden das AWS CLI, um erste Ressourcen in der AWS Cloud manuell zu erstellen. Diese werden anschliessend analysiert und in Terraform-Code überführt, damit sie reproduzierbar und automatisiert verwaltet werden können.
 
-Hier ist eine kompakte Anleitung mit den passenden AWS CLI Befehlen.
-
 ### Übung S3 Bucket und DynamoDB Tabelle erstellen
 
 * S3 Bucket: wird direkt mit `create-bucket` erstellt, Tags müssen separat gesetzt werden
@@ -34,7 +32,7 @@ Hier ist eine kompakte Anleitung mit den passenden AWS CLI Befehlen.
 
 ### Übung virtuellen Maschinen (VMs) erstellen
 
-Als Cloud-init Datei verwenden wir die gleiche YAML-Datei wie aus [Übung 1](../01-1-iac/cloud-init-nginx.yaml).
+Als Cloud-init Datei verwenden wir die gleiche YAML-Datei wie aus [Übung 1](../../01-iac/01-1-iac/cloud-init-nginx.yaml).
 
 Mittels dieser Datei und dem jeweiligen Cloud CLI, erstellen wir eine neu VM.
 
