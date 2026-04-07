@@ -1,3 +1,5 @@
+/main.tf
+/web.tf
 /.terraform.lock.hcl
 /.terraform/
 /terraform.tfstate

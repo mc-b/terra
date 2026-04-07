@@ -35,7 +35,7 @@ Nach erfolgreichem Deployment ist die statische Website aktiviert.
     
 ### Webseiten mittels Terraform hochladen
 
-Dazu erweitet `main.tf` wie folgt:
+Erstellt eine neue Datei `web.tf` mit folgendem Inhalt
 
     resource "azurerm_storage_blob" "website_files" {
       for_each = {
