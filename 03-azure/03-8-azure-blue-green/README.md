@@ -26,6 +26,10 @@ Bevor wir zu Blue/Green und Canary kommen, erstellen wir zuerst einen Traffic Ma
    
 Durch ändern der Einträge in `main.tf` und ausführen von `terraform plan` und `terraform apply -auto-approve` können die EndPoints und die Verteilung `weight` angepasst werden. Dabei wird kein neuer Traffic Manager erzeugt, sondern dessen Werte geändert.
 
+**Hinweis (von Microsoft)**:
+
+AFD configuration updates take up to 20 minutes to take effect. Back to Back changes may take up to 40 minutes. More details in Azure Front Door Frequently Asked Questions (FAQ).
+
 #### Blue / Green Deployment
 
 Unter Blue / Green Deployment wird der Prozess verstanden, bei dem neben einer bisherigen Infrastruktur (Blue Deployment) parallel eine neue Version (Green Deployment) aufgebaut wird. 
