@@ -1,3 +1,0 @@
-#cloud-config - Installiert den nginx Web Server
-packages:
- - nginx
