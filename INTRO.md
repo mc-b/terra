@@ -1,16 +1,10 @@
-GitLab
-======
+Terraform
+=========
 
-GitLab Testumgebung zum Kurs: [Infrastructure as Code mit Terraform (Terra)](https://github.com/mc-b/terra).
+Testumgebung zum Kurs: [Infrastructure as Code mit Terraform (Terra)](https://github.com/mc-b/terra).
 
-Git(Lab) Umgebung
------------------
+UI
+--
 
-* http://${git} - GitLab Admin Oberfläche.
-* Einloggen mit `root`.
-* Für das Password: 
-  * Rechte Maustaste auf Multipass Icon in der Taskleiste 
-    -> ${git} -> Open Shell -> `sudo cat /etc/gitlab/initial_root_password`.
-
-
- 
+* http://${terra}:32188   - Jupyter Lab Oberfläche
+* https://${terra}:30443  - Kubernetes Dashboard

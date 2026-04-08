@@ -26,5 +26,5 @@ variable "vpn" {
 variable "host_no" {
   description = "Host-No fuer die erste Host-IP Nummer"
   type        = number
-  default     = 20
+  default     = 10
 }

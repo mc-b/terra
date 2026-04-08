@@ -1,8 +1,8 @@
 ###
-#   GitLab Umgebung
+#   Terraform Umgebung
 #
 
-module "git" {
+module "terra" {
 
   #source     = "./terraform-lerncloud-module"
   source = "git::https://github.com/mc-b/terraform-lerncloud-multipass"
@@ -12,12 +12,12 @@ module "git" {
   #source     = "git::https://github.com/mc-b/terraform-lerncloud-azure" 
   #source     = "git::https://github.com/mc-b/terraform-lerncloud-proxmox"      
 
-  module      = "git-${var.host_no + 1}-${terraform.workspace}"
-  description = "GitLab"
-  userdata    = "cloud-init-git.yaml"
+  module      = "dukmaster-${var.host_no}-${terraform.workspace}"
+  description = "Terra"
+  userdata    = "cloud-init.yaml"
 
-  cores   = 2
-  memory  = 8
+  cores   = 4
+  memory  = 12
   storage = 32
   ports   = [22, 80]
 
