@@ -2,23 +2,23 @@
 
 Für verschiedene Umgebungen wie `dev`, `test`, `prod` strukturieren wir das Beispiel 03-3-web neu.
 
-├── main.tf
-├── variables.tf
-├── outputs.tf
-├── provider.tf
-└── environments
-    ├── dev
-    │   ├── dev.tfvars
-    │   ├── index.html
-    │   └── error.html
-    ├── test
-    │   ├── test.tfvars
-    │   ├── index.html
-    │   └── error.html
-    └── prod
-        ├── prod.tfvars
-        ├── index.html
-        └── error.html
+    ├── main.tf
+    ├── variables.tf
+    ├── outputs.tf
+    ├── provider.tf
+    └── environments
+        ├── dev
+        │   ├── dev.tfvars
+        │   ├── index.html
+        │   └── error.html
+        ├── test
+        │   ├── test.tfvars
+        │   ├── index.html
+        │   └── error.html
+        └── prod
+            ├── prod.tfvars
+            ├── index.html
+            └── error.html
         
 Die `*.html` Dateien entfernen wir aus Terraform und legen sie separat ab und arbeiten neu mit `*.tfvars` pro Umgebung.        
 
