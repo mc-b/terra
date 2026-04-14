@@ -29,6 +29,22 @@ Wir verwenden das AWS CLI, um erste Ressourcen in der AWS Cloud manuell zu erste
 
     aws s3 ls | grep ${TF_VAR_name_prefix}
     aws dynamodb list-tables | grep ${TF_VAR_name_prefix}
+    
+**Aufräumen**
+
+Ein Bucket muss zuerst leer sein, sonst schlägt das Löschen fehl:
+
+    aws s3 rm s3://${TF_VAR_name_prefix}-bucket --recursive
+
+Danach den Bucket selbst löschen:
+
+    aws s3api delete-bucket --bucket ${TF_VAR_name_prefix}-bucket --region us-east-1
+
+DynamoDB Tabelle löschen
+
+    aws dynamodb delete-table \
+      --table-name ${TF_VAR_name_prefix}-table \
+      --region us-east-1
 
 ### Übung virtuellen Maschinen (VMs) erstellen
 
