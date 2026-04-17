@@ -1,4 +1,4 @@
-## Übung 04-3 AWS Stage
+## Übung 04-2 AWS Stage
 
 Wir trennen das 03-3-web Beispiel in verschiedene Stages auf und trennen damit Infrastrukturverwaltung von Applikationslogik.
 
