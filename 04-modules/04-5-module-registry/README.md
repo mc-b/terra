@@ -1,4 +1,4 @@
-## Übung 05-4: Terraform - Module aus der Terraform Module Registry
+## Übung 04-5: Terraform - Module aus der Terraform Module Registry
 
 Für die Übungen wird [VSCode](https://code.visualstudio.com/), benötigt. Diese Anleitung steht in der Datei [README.md](README.md). Die Eingaben finden im integrierten Terminalfenster statt, in dem Verzeichnis wo sich auch die Übungendateien befinden.
 
