@@ -79,7 +79,9 @@ Dabei wird **nur die Action ausgeführt**, ohne dass Infrastruktur verändert wi
 
 Die Ausgabe der Lambda-Funktion kann über CloudWatch Logs eingesehen werden:
 
-    aws logs tail "/aws/lambda/$(terraform output -raw function_name)" --since 10m
+    powershell -Command 'aws logs tail /aws/lambda/$(terraform output -raw function_name) --since 10m'
+    
+**Hinweis**: wir müssen PowerShell verwenden, weil Git/Bash `/aws/...` in ein MS-DOS Path Umwandeln will.    
 
 **Erwartetes Ergebnis**
 
