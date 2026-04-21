@@ -44,14 +44,14 @@ Erstellt eine neue Datei `web.tf` mit folgendem Inhalt
       }
     
       name                   = each.key
-      storage_account_name   = azurerm_storage_account.example.name
+      storage_account_name   = azurerm_storage_account.green.name
       storage_container_name = "$web"
       type                   = "Block"
       source                 = each.value
       content_type           = "text/html"
     
       depends_on = [
-        azurerm_storage_account_static_website.example
+        azurerm_storage_account_static_website.green
       ]
     } 
     
@@ -59,7 +59,8 @@ Und führt `terraform apply -auto-approve` nochmals aus.
 
 Die Website kann direkt im Browser geöffnet werden:
 
-    az storage account show --name $NAME --query "primaryEndpoints.web" --output tsv
+    NAME=$(echo ${TF_VAR_name_prefix} | tr -d '-')
+    az storage account show --name ${NAME}green --query "primaryEndpoints.web" --output tsv
 
 **Hinweis** warum zwei Schritte:
 
