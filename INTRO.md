@@ -6,6 +6,6 @@ Testumgebung zum Kurs: [Infrastructure as Code mit Terraform (Terra)](https://gi
 UI
 --
 
-* http://${terra}:32188/lab/tree/terra  - Jupyter Lab Oberfläche
-* https://${terra}:30443                - Kubernetes Dashboard
-* http://${terra}:8200                  - HashiCorp Vault (token: insecure)
+* http://${control}:32188/lab/tree/terra  - Jupyter Lab Oberfläche
+* https://${control}:30443                - Kubernetes Dashboard
+* http://${control}:8200                  - HashiCorp Vault (token: insecure)

@@ -2,7 +2,7 @@
 # Einfuehrungsseite(n)
 
 output "README" {
-  value = templatefile("INTRO.md", { terra = module.terra.fqdn_vm })
+  value = templatefile("INTRO.md", { control = module.control.fqdn_vm })
 }
 
 
