@@ -1,4 +1,8 @@
 #cloud-config - Installiert den Apache Web Server mit PHP Unterstuetzung und einer Introseite
+apt:
+  primary:
+    - arches: [default]
+      uri: http://mirror.init7.net/ubuntu
 packages:
   - apache2 
   - php 

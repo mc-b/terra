@@ -1,3 +1,7 @@
 #cloud-config - Installiert den nginx Web Server
+apt:
+  primary:
+    - arches: [default]
+      uri: http://mirror.init7.net/ubuntu
 packages:
  - nginx
