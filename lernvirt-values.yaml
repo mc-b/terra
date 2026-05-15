@@ -1,0 +1,14 @@
+#
+# Erstellt eine Control Plane Node fuer Terraform Kurs
+#
+
+vm:
+  count: 1
+  cpu: 4
+  memory: 12Gi
+  storage: 64Gi  
+  userdata: https://raw.githubusercontent.com/mc-b/terra/refs/heads/main/cloud-init-control.yaml
+  ports:
+    - 16443
+    - 32188
+    - 30443
