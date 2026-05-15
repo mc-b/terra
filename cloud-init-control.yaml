@@ -19,7 +19,7 @@ packages:
   - git-lfs
 runcmd:
   - curl -sfL https://raw.githubusercontent.com/mc-b/lerncloud/main/services/nfsshare.sh | bash -  
-  - curl -sfL https://raw.githubusercontent.com/mc-b/lerncloud/main/services/cloud-cli.sh | bash -   
+  - curl -sfL https://raw.githubusercontent.com/mc-b/lerncloud/main/services/vpn.sh | bash -
   - curl -sfL https://raw.githubusercontent.com/mc-b/lerncloud/main/services/k3scontrol.sh | bash -
   - curl -sfL https://raw.githubusercontent.com/mc-b/lerncloud/main/services/k3scontroladdons.sh | bash - 
   - runuser -l ubuntu -c "curl -sfL https://raw.githubusercontent.com/mc-b/lerncloud/main/services/jupyter-lab.sh | SKIP_LIBRARIES=true bash -"
@@ -27,5 +27,6 @@ runcmd:
   - runuser -l ubuntu -c "curl -sfL https://raw.githubusercontent.com/mc-b/lerncloud/main/services/connectivity-init.sh | TS_HOSTNAME=terra bash -" 
   - runuser -l ubuntu -c "curl -sfL https://raw.githubusercontent.com/mc-b/lerncloud/main/services/kubevirt.sh | bash -"
   - curl -sfL https://raw.githubusercontent.com/mc-b/lerncloud/main/services/k8stools.sh | bash - 
+  - curl -sfL https://raw.githubusercontent.com/mc-b/lerncloud/main/services/cloud-cli.sh | bash -   
   - runuser -l ubuntu -c "curl -sfL https://raw.githubusercontent.com/mc-b/lerncloud/main/services/vault.sh | bash -"    
   - curl -sfL https://raw.githubusercontent.com/mc-b/lerncloud/main/services/gitlab-ce.sh | bash -
