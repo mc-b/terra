@@ -25,6 +25,15 @@ Terraform verwendet [Multipass](https://multipass.run/) um mehrere VMs zu erstel
 
 Nach erfolgreicher Installation werden weitere Informationen für den Zugriff auf die VMs angezeigt.
 
+### Deployment auf lernvirt Umgebungen
+  
+    cd lernvirt
+    helm install terra . -n terra --create-namespace -f ${HELM_VALUES_HOST} -f ../terra/lernvirt-values.yaml 
+    
+Deinstallation
+    
+    helm uninstall terra -n terra && kubectl delete ns terra
+
 ### Lizenz (Attribution-NonCommercial-ShareAlike 4.0 International)
 
 ![](http://www.creativecommons.ch/wp-content/uploads/2014/03/by-nc-sa1.png)
