@@ -17,7 +17,7 @@ resource "terraform_data" "web" {
   # terraform destroy
   provisioner "local-exec" {
     when       = destroy
-    command    = "multipass delete ${self.output.name} --purge"
+    command    = "multipass delete ${self.triggers_replace.name} --purge"
     on_failure = continue
   }
 }
@@ -36,7 +36,7 @@ resource "terraform_data" "mysql" {
   # terraform destroy
   provisioner "local-exec" {
     when       = destroy
-    command    = "multipass delete ${self.output.name} --purge"
+    command    = "multipass delete ${self.triggers_replace.name} --purge"
     on_failure = continue
   }
 }
