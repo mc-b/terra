@@ -1,0 +1,11 @@
+/.terraform.lock.hcl
+/.terraform/
+/.terraform.tfstate.lock.info
+/terraform.tfstate
+/terraform.tfstate.*
+
+/web.tf
+/main.tf
+/outputs.tf
+/provider.tf
+/variables.tf
