@@ -13,13 +13,10 @@ Die brauchen wir als Input für `02-files`.
 Ersetzt den Inhalt von `02-files/main.tf` um das lesen des `01-infra` Outputs
 
     data "terraform_remote_state" "infra" {
-      backend = "azurerm"
+      backend = "local"
     
       config = {
-        resource_group_name  = "rg-terraform-state"
-        storage_account_name = "stterraformstate"
-        container_name       = "tfstate"
-        key                  = "01-infra.tfstate"
+        path = "../01-infra/terraform.tfstate"
       }
     }
     
