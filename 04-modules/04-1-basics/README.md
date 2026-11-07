@@ -105,4 +105,27 @@ Dazu ist die Datei  `modules/create_local_file/variables.tf` wie folgt zu ergän
       type        = string
       description = "Permissions of the file"
       default     = "0644"
-    }        
+    }
+    
+    
+### Eingrenzung des Dateinamens
+
+Mit `validation` können die erlaubten Werte einer Variablen eingeschränkt werden.
+
+In unserem Beispiel sollen nur Dateinamen erlaubt sein, welche folgende Bedingungen erfüllen:
+
+- Der Dateiname darf nur Buchstaben, Zahlen, `_` und `-` enthalten.
+- Die Dateiendung muss `.txt` sein.
+- Verzeichnisangaben sind nicht erlaubt.
+
+Dazu ist die bestehende Variable `name_of_file` in der Datei `modules/create_local_file/variables.tf` wie folgt anzupassen:
+
+    variable "name_of_file" {
+      type        = string
+      description = "Name of the file"
+    
+      validation {
+        condition     = can(regex("^[a-zA-Z0-9_-]+\\.txt$", var.name_of_file))
+        error_message = "Der Dateiname darf nur Buchstaben, Zahlen, _ und - enthalten und muss mit .txt enden."
+      }
+    }
