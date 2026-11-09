@@ -15,18 +15,18 @@ Für die Übungen 1 bis 5 arbeitest du mit den vom Trainer bereitgestellten Azur
 
 **Skript kopieren und neu ausführen**
 
-* Kopiere das Verzeichnis azure/student aus den Unterlagen in dein Arbeitsverzeichnis.
+* Kopiere das Verzeichnis azure/secrets aus den Unterlagen in dein Arbeitsverzeichnis.
 * Führe den passenden Befehl aus, um die Umgebung neu zu laden und den ersten Login zu starten:
 * Git Bash
 
 ```
-source student/studentXX.sh
+source secrets/studentXX.sh
 ```
 
 * PowerShell
 
 ```
-. \student\studentXX.ps1
+. \secrets\studentXX.ps1
 ```
 
 **Erster Login und MFA aktivieren**
