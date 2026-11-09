@@ -34,7 +34,7 @@ In dieser Datei werden `list`-Blöcke definiert. Ein `list`-Block beschreibt, na
 Beispielstruktur:
 
     list "aws_s3_bucket" "buckets" {
-      provider = provider.aws
+      provider = aws
     
       config {
         # provider-spezifische Suchparameter
@@ -42,7 +42,7 @@ Beispielstruktur:
     }
     
     list "aws_dynamodb_table" "tables" {
-      provider = provider.aws
+      provider = aws
     
       config {
         # provider-spezifische Suchparameter
