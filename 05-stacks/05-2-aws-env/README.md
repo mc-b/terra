@@ -22,11 +22,9 @@ Für verschiedene Umgebungen wie `dev`, `test`, `prod` strukturieren wir das Bei
         
 Die `*.html` Dateien entfernen wir aus Terraform und legen sie separat ab und arbeiten neu mit `*.tfvars` pro Umgebung.        
 
-### Übung
+### Folgende Anpassungen wurden bereits vorgenommen:
 
-Ändert/Erweitert folgende Dateien
-
-`variables.tf` ergänzt `html_path` und Variable `environment`
+`variables.tf` - die Variable environment wurde ergänzt, damit Terraform die gewünschte Umgebung auswählen kann.
 
     locals {
       bucket_name = "${var.name_prefix}-${data.aws_caller_identity.current.account_id}-${environment}"
@@ -37,7 +35,7 @@ Die `*.html` Dateien entfernen wir aus Terraform und legen sie separat ab und ar
       type = string
     }
 
-`main.tf` ersetzt die zwei Ressourcen
+`main.tf` - der S3-Bucket-Name wurde um die Umgebung erweitert, damit jede Umgebung einen eigenen Bucket erhält.
 
     resource "aws_s3_object" "index" {
       bucket       = aws_s3_bucket.website.id
@@ -54,6 +52,28 @@ Die `*.html` Dateien entfernen wir aus Terraform und legen sie separat ab und ar
       content_type = "text/html"
       etag         = filemd5("${local.html_path}/error.html")
     }
+    
+- Die Ressourcen aws_s3_object.index und aws_s3_object.error verwenden nun die HTML-Dateien aus diesem Pfad.    
+
+### Übung: .tfvars-Dateien erstellen
+
+**Entwicklungsumgebung**
+
+Erstellt die Datei environments/dev/dev.tfvars mit folgendem Inhalt:
+
+    environment = "dev"
+    
+**Testumgebung**
+
+Erstellt die Datei environments/test/test.tfvars mit folgendem Inhalt:
+
+    environment = "test"
+    
+**Produktionsumgebung**
+
+Erstellt die Datei environments/prod/prod.tfvars mit folgendem Inhalt:
+
+    environment = "prod"
 
 ### Deployment
 
