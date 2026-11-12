@@ -51,7 +51,7 @@ resource "azurerm_linux_virtual_machine" "example" {
   name                            = "${var.name_prefix}-vm"
   resource_group_name             = data.azurerm_resource_group.main.name
   location                        = data.azurerm_resource_group.main.location
-  size                            = "Standard_B1s"
+  size                            = "Standard_B1ms"
   admin_username                  = "azureuser"
   admin_password                  = "M1cr0s0ft%insecure"
   disable_password_authentication = false

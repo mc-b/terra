@@ -101,7 +101,7 @@ resource "azurerm_linux_virtual_machine" "webshop" {
   name                              = "webshop"
   resource_group_name               = azurerm_resource_group.webshop.name
   location                          = azurerm_resource_group.webshop.location
-  size                              = "Standard_B1s"
+  size                              = "Standard_B1ms"
   admin_username                    = "ubuntu"
   admin_password                    = "P@ssw0rd1234!"
   disable_password_authentication   = false  
@@ -110,8 +110,8 @@ resource "azurerm_linux_virtual_machine" "webshop" {
 
   source_image_reference {
     publisher = "canonical"
-    offer     = "0001-com-ubuntu-server-focal"
-    sku       = "20_04-lts"
+    offer     = "ubuntu-24_04-lts"
+    sku       = "ubuntu-pro-gen1"
     version   = "latest"
   }
 
@@ -143,7 +143,7 @@ resource "azurerm_linux_virtual_machine" "order" {
   name                              = "order"
   resource_group_name               = azurerm_resource_group.webshop.name
   location                          = azurerm_resource_group.webshop.location
-  size                              = "Standard_B1s"
+  size                              = "Standard_B1ms"
   admin_username                    = "ubuntu"
   admin_password                    = "P@ssw0rd1234!"
   disable_password_authentication   = false  
@@ -152,8 +152,8 @@ resource "azurerm_linux_virtual_machine" "order" {
 
   source_image_reference {
     publisher = "canonical"
-    offer     = "0001-com-ubuntu-server-focal"
-    sku       = "20_04-lts"
+    offer     = "ubuntu-24_04-lts"
+    sku       = "ubuntu-pro-gen1"
     version   = "latest"
   }
 
@@ -186,7 +186,7 @@ resource "azurerm_linux_virtual_machine" "catalog" {
   name                              = "catalog"
   resource_group_name               = azurerm_resource_group.webshop.name
   location                          = azurerm_resource_group.webshop.location
-  size                              = "Standard_B1s"
+  size                              = "Standard_B1ms"
   admin_username                    = "ubuntu"
   admin_password                    = "P@ssw0rd1234!"
   disable_password_authentication   = false  
@@ -195,8 +195,8 @@ resource "azurerm_linux_virtual_machine" "catalog" {
 
   source_image_reference {
     publisher = "canonical"
-    offer     = "0001-com-ubuntu-server-focal"
-    sku       = "20_04-lts"
+    offer     = "ubuntu-24_04-lts"
+    sku       = "ubuntu-pro-gen1"
     version   = "latest"
   }
 
@@ -229,7 +229,7 @@ resource "azurerm_linux_virtual_machine" "customer" {
   name                              = "customer"
   resource_group_name               = azurerm_resource_group.webshop.name
   location                          = azurerm_resource_group.webshop.location
-  size                              = "Standard_B1s"
+  size                              = "Standard_B1ms"
   admin_username                    = "ubuntu"
   admin_password                    = "P@ssw0rd1234!"
   disable_password_authentication   = false  
@@ -238,8 +238,8 @@ resource "azurerm_linux_virtual_machine" "customer" {
 
   source_image_reference {
     publisher = "canonical"
-    offer     = "0001-com-ubuntu-server-focal"
-    sku       = "20_04-lts"
+    offer     = "ubuntu-24_04-lts"
+    sku       = "ubuntu-pro-gen1"
     version   = "latest"
   }
 
